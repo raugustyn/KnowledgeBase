@@ -1,0 +1,17 @@
+/*
+https://scotch.io/@micwanyoike/how-to-add-fonts-to-a-react-project
+https://fontdrop.info/
+*/
+@font-face {
+  font-family: 'trellicons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('trellicons.woff'); /* IE9 Compat Modes */
+  src: url('trellicons.woff') format('woff') /* Modern Browsers */
+}
+
+
+.GlyphIcon {
+    font-family: trellicons;
+    vertical-align: top;
+}

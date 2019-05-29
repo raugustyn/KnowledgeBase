@@ -1,0 +1,84 @@
+.Card {
+    background-color: rgb(245, 246, 247);
+}
+
+.Card tr {
+    vertical-align: top;
+}
+
+.Card td {
+    padding-right: 5px;
+    padding-bottom: 8px;
+}
+
+/* https://love2dev.com/blog/css-background-stripes/ */
+.DiscussionThreat {
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 1),
+                rgba(255, 255, 255, 1) 20px,
+                rgb(192, 211, 235) 20px,
+                rgb(192, 211, 235) 22px,
+                rgba(255, 255, 255, 1) 20px
+            );
+            height: 200px;
+            width: 200px;
+}
+
+.Card img {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.CommentText {
+    padding: 8px 12px 8px 12px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    box-shadow:rgba(9, 45, 66, 0.25) 0px 1px 2px -1px, rgba(9, 45, 66, 0.08) 0px 0px 0px 1px;
+;
+}
+
+.edit-action {
+    font-size: 12px;
+    outline-color: rgb(23, 57, 77);
+    text-decoration-line: underline;
+}
+
+.timestamp-action {
+    font-size: 12px;
+    outline-color: rgb(23, 57, 77);
+}
+
+.timestamp-action:hover {
+    text-decoration-line: underline;
+}
+
+.Discussion-item-header {
+    border-radius: 3px;
+    background-color: rgb(241, 248, 255);
+    border:  rgb(192, 211, 235) 1px solid;
+    padding: 10px 15px 10px 15px;
+}
+
+.Card h1 {
+    color: rgb(23, 43, 77);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.IconsCol {
+    width: 60px;
+}
+
+.VerticalButtonsCol {
+    width: 130px;
+}
+
+.CardContentTable {
+    background-color: transparent;
+}
+
+.NoWrapText.btn {
+    white-space: nowrap;
+    text-align: left;
+}

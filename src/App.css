@@ -1,0 +1,555 @@
+.App {
+  __text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+    font-family: "Helvetica Neue", arial;
+}
+
+.imageContainer {
+    position: relative;
+    max-width: 300px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+
+.imageContainer .content {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    color: #f1f1f1;
+    width: 100%;
+    padding: 10px;
+    margin: 0.3em;
+    border: 20px;
+    text-align: center;
+}
+
+.imageContainer img {
+    box-shadow: 0.3em 0.3em 0.3em #888888;
+    border: rgb(0, 112, 192) solid thin;
+    color: rgb(34, 34, 34);
+    display: inline-block;
+    list-style-type: none;
+    margin: 0.3em;
+    width:100%;
+}
+
+.GalleryList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.GalleryList li {
+    display: inline-block;
+    padding: 5px;
+}
+
+
+.FrammedImage {
+    width: 150px;
+    box-shadow: 0.3em 0.3em 0.3em #888888;
+    border: rgb(0, 112, 192) solid thin;
+    color: rgb(34, 34, 34);
+    display: inline;
+    list-style-type: none;
+    margin: 0.3em;
+}
+
+body, button, html, input, select, textarea {
+    color: #17394d;
+    font-family: Helvetica Neue,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+.mod-card-back-title {
+    background: transparent;
+    border-radius: 3px;
+    box-shadow: none;
+    font-size: 20px;
+    font-weight: 700;
+    height: 32px;
+    line-height: 24px;
+    margin: -4px -8px;
+    min-height: 24px;
+    padding: 4px 8px;
+    resize: none;
+}
+
+.window-module-title h3 {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    min-height: 18px;
+    min-width: 40px;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h3, h4, h5, h6 {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 8px;
+}
+
+.u-bottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+
+.SearchPanel {
+    margin: 0px;
+    padding: 0px;
+    border: rgb(165, 165, 165) 1px solid;
+    border-radius: 3px;
+    background-color: white;
+}
+
+input.BlankInput {
+    border: 0px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    outline: none;
+    color: rgb(90, 90, 90);
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 1px;
+}
+
+.PageDesktop, body {
+    background-color: #fafafa;
+}
+
+.LeftMenuBar {
+    background-color: rgb(0, 40, 65);
+    color: white;
+}
+
+.SVGButton {
+    padding-left: 8px;
+}
+
+.MenuBar {
+    background-color: rgb(53, 88, 118);
+    height: 54px;
+    color: rgb(197, 210, 225);
+    font-size: 24px;
+    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-top: 10px;
+}
+
+.MenuBar a:visited {
+    color: white
+}
+
+/*
+ * Examples
+ *
+ * Isolated sections of example content for each component or feature. Usually
+ * followed by a code snippet.
+ */
+
+.bs-example {
+  position: relative;
+  padding: 45px 15px 15px;
+  margin: 0 -15px 15px;
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
+  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+}
+/* Echo out a label for the example */
+.bs-example:after {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #959595;
+  _text-transform: uppercase;
+  letter-spacing: 1px;
+  content: "Example";
+}
+
+.bs-example-padded-bottom {
+  padding-bottom: 24px;
+}
+
+/* Tweak display of the code snippets when following an example */
+.bs-example + .highlight,
+.bs-example + .zero-clipboard + .highlight {
+  margin: -15px -15px 15px;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+
+/* Make the examples and snippets not full-width */
+@media (min-width: 768px) {
+  .bs-example {
+    margin-right: 0;
+    margin-left: 0;
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .bs-example + .highlight,
+  .bs-example + .zero-clipboard + .highlight {
+    margin-top: -16px;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+  .bs-example-standalone {
+    border-radius: 4px;
+  }
+}
+
+/* Undo width of container */
+.bs-example .container {
+  width: auto;
+}
+
+/* Tweak content of examples for optimum awesome */
+.bs-example > p:last-child,
+.bs-example > ul:last-child,
+.bs-example > ol:last-child,
+.bs-example > blockquote:last-child,
+.bs-example > .form-control:last-child,
+.bs-example > .table:last-child,
+.bs-example > .navbar:last-child,
+.bs-example > .jumbotron:last-child,
+.bs-example > .alert:last-child,
+.bs-example > .panel:last-child,
+.bs-example > .list-group:last-child,
+.bs-example > .well:last-child,
+.bs-example > .progress:last-child,
+.bs-example > .table-responsive:last-child > .table {
+  margin-bottom: 0;
+}
+.bs-example > p > .close {
+  float: none;
+}
+
+/* Typography */
+.bs-example-type .table .type-info {
+  color: #767676;
+  vertical-align: middle;
+}
+.bs-example-type .table td {
+  padding: 15px 0;
+  border-color: #eee;
+}
+.bs-example-type .table tr:first-child td {
+  border-top: 0;
+}
+.bs-example-type h1,
+.bs-example-type h2,
+.bs-example-type h3,
+.bs-example-type h4,
+.bs-example-type h5,
+.bs-example-type h6 {
+  margin: 0;
+}
+
+/* Contextual background colors */
+.bs-example-bg-classes p {
+  padding: 15px;
+}
+
+/* Images */
+.bs-example > .img-circle,
+.bs-example > .img-rounded,
+.bs-example > .img-thumbnail {
+  margin: 5px;
+}
+
+/* Tables */
+.bs-example > .table-responsive > .table {
+  background-color: #fff;
+}
+
+/* Buttons */
+.bs-example > .btn,
+.bs-example > .btn-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.bs-example > .btn-toolbar + .btn-toolbar {
+  margin-top: 10px;
+}
+
+/* Forms */
+.bs-example-control-sizing select,
+.bs-example-control-sizing input[type="text"] + input[type="text"] {
+  margin-top: 10px;
+}
+.bs-example-form .input-group {
+  margin-bottom: 10px;
+}
+.bs-example > textarea.form-control {
+  resize: vertical;
+}
+
+/* List groups */
+.bs-example > .list-group {
+  max-width: 400px;
+}
+
+/* Navbars */
+.bs-example .navbar:last-child {
+  margin-bottom: 0;
+}
+.bs-navbar-top-example,
+.bs-navbar-bottom-example {
+  z-index: 1;
+  padding: 0;
+  overflow: hidden; /* cut the drop shadows off */
+}
+.bs-navbar-top-example .navbar-header,
+.bs-navbar-bottom-example .navbar-header {
+  margin-left: 0;
+}
+.bs-navbar-top-example .navbar-fixed-top,
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  position: relative;
+  margin-right: 0;
+  margin-left: 0;
+}
+.bs-navbar-top-example {
+  padding-bottom: 45px;
+}
+.bs-navbar-top-example:after {
+  top: auto;
+  bottom: 15px;
+}
+.bs-navbar-top-example .navbar-fixed-top {
+  top: -1px;
+}
+.bs-navbar-bottom-example {
+  padding-top: 45px;
+}
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  bottom: -1px;
+}
+.bs-navbar-bottom-example .navbar {
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  .bs-navbar-top-example .navbar-fixed-top,
+  .bs-navbar-bottom-example .navbar-fixed-bottom {
+    position: absolute;
+  }
+}
+
+/* Pagination */
+.bs-example .pagination {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Pager */
+.bs-example > .pager {
+  margin-top: 0;
+}
+
+/* Example modals */
+.bs-example-modal {
+  background-color: #f5f5f5;
+}
+.bs-example-modal .modal {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+  display: block;
+}
+.bs-example-modal .modal-dialog {
+  left: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Example dropdowns */
+.bs-example > .dropdown > .dropdown-toggle {
+  float: left;
+}
+.bs-example > .dropdown > .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 5px;
+  clear: left;
+}
+
+/* Example tabbable tabs */
+.bs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
+}
+
+/* Tooltips */
+.bs-example-tooltips {
+  text-align: center;
+}
+.bs-example-tooltips > .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.bs-example-tooltip .tooltip {
+  position: relative;
+  display: inline-block;
+  margin: 10px 20px;
+  opacity: 1;
+}
+
+/* Popovers */
+.bs-example-popover {
+  padding-bottom: 24px;
+  background-color: #f9f9f9;
+}
+.bs-example-popover .popover {
+  position: relative;
+  display: block;
+  float: left;
+  width: 260px;
+  margin: 20px;
+}
+
+/* Scrollspy demo on fixed height div */
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
+.bs-example > .nav-pills-stacked-example {
+  max-width: 300px;
+}
+
+/* Simple collapse example */
+#collapseExample .well {
+  margin-bottom: 0;
+}
+
+/* Don't wrap event names in Events tables in JS plugin docs */
+.bs-events-table > thead > tr > th:first-child,
+.bs-events-table > tbody > tr > td:first-child {
+  white-space: nowrap;
+}
+
+.bs-events-table > thead > tr > th:first-child {
+  width: 150px;
+}
+
+
+/* ************************************************************************** */
+/* highlight                                                                  */
+/* ************************************************************************** */
+.highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+}
+.highlight pre {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  word-break: normal;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.highlight pre code {
+  font-size: inherit;
+  color: #333; /* Effectively the base text color */
+}
+.highlight pre code:first-child {
+  display: inline-block;
+  padding-right: 45px;
+}
+
+
+.badge {
+    _display: inline-block;
+    margin: 0 4px 4px 0;
+    max-width: 100%;
+    __min-height: 20px;
+    __overflow: hidden;
+    __position: relative;
+    padding: 4px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    font-weight: normal;
+}
+
+.badge, .badge-icon {
+    __color: #6b778c;
+    __vertical-align: top;
+}
+
+.badge.is-complete {
+    background-color: #61bd4f;
+    border-radius: 3px;
+    color: #fff;
+}
+
+
+.CardEditorExampleDiv {
+
+}

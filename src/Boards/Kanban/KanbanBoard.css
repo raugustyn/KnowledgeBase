@@ -1,0 +1,68 @@
+.KanbanBoard {
+    background-image: url("https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x320/7b7c5a1a05030e4c12f4599c745d5f2a/photo-1557787108-f84b241bf836.jpg");
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.KanbanSlot {
+    background-color: #DFE1E6;
+    width: 272px;
+    margin: 0px 4px 8px 8px;
+    padding: 4px 4px 4px 4px;
+}
+
+.CardsList {
+    margin: 0px 4px 0px 4px;
+}
+
+.CardsListHeader {
+
+}
+
+.CardsListCaption {
+    color: rgb(23, 43, 77);
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.CardListExtras {
+}
+
+
+.KanbanCard {
+    border-radius: 3px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 0px 0px;
+    padding: 7px 7px 7px 7px;
+    background-color: white;
+    margin: 0px 0px 4px 0px;
+}
+
+.BoardHeader {
+    background-color: rgba(0, 0, 0, 0.24);
+    width: 100%;
+    height: 32px;
+    padding: 8px 4px 8px 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* https://stackoverflow.com/questions/16152275/how-to-resize-twitter-bootstrap-modal-dynamically-based-on-the-content */
+._modal-body {
+    width: auto;
+    _position: relative;
+    overflow-y: auto;
+    max-height: 800px;
+    _padding: 15px;
+}
+
+.modal-dialog{
+    position: relative;
+    display: table; /* This is important */
+    overflow-y: auto;
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px;
+    min-height: 450px;
+}
