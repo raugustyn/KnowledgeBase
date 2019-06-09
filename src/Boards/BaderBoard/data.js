@@ -5,10 +5,10 @@ function addItems(parent, items)
 {
     var result = []
     items.forEach( function (item, index) {
-        let itemCard = new Card(parent.ref + "/" + index, item.name, item.description)
+        let itemCard = new Card(parent.ref + "/" + index, item.caption, item.description)
         result.push(itemCard)
-        if (item.items && item.items.length > 0) {
-            addItems(itemCard, item.items)
+        if (item.getChildern && item.getChildern.length > 0) {
+            addItems(itemCard, item.getChildern)
         }
     })
     if (parent && result.length) {
@@ -17,25 +17,131 @@ function addItems(parent, items)
     return result
 }
 
-const items = [
+let items = [
     {
-        name: "Constraint Context",
-        items: [
+        caption: "Situations",
+        getChildern: [
             {
-                name: "Element Rendering Context",
-                description: "Problem can be solved by minor rendering changes",
-                imageName: "./Samples/Bader/03_DisplacementFromItself.png"
-            },
-            {
-                name: "Elements Context",
-                items: [
+                caption: "Terénní Reliéf",
+                getChildern: [
                     {
-                        name: "Two Elements Context",
-                        description: "Most common context interacting two elements",
-                        imageName: "./Samples/Bader/04_Shift.png"
+                        caption: "Missing Shape Population",
+                        description: "Missing Shape Population",
+                        getChildern: [
+                            {
+                                caption: "01_MissingPopulation",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/01_MissingPopulation.png"
+                            }
+                        ]
                     },
                     {
-                        name: "Multiple Elements Context",
+                        caption: "Displacement and Shortening",
+                        description: "One element [displaced](/Displaced) and second shortened",
+                        getChildern: [
+                            {
+                                caption: "02_DisplacementAndShortening",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/02_DisplacementAndShortening.png"
+                            }
+                        ]
+                    },
+                    {
+                        caption: "Displacement From Itself",
+                        description: "Element displaced from itself",
+                        getChildern: [
+                            {
+                                caption: "03_DisplacementFromItself",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/03_DisplacementFromItself.png"
+                            }
+                        ]
+                    },
+                    {
+                        caption: "Shift",
+                        description: "Element displace by shift",
+                        getChildern: [
+                            {
+                                caption: "04_Shift",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/04_Shift.png"
+                            }
+                        ]
+                    },
+                    {
+                        caption: "Displacement no Population",
+                        getChildern: [
+                            {
+                                caption: "05_DisplacementNoPopulation",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/05_DisplacementNoPopulation.png"
+                            }
+                        ]
+                    },
+                    {
+                        caption: "06_DoubleCoalescence",
+                        getChildern: [
+                            {
+                                caption: "06_DoubleCoalescence",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/06_DoubleCoalescence.png"
+                            }
+                        ]
+                    },
+                    {
+                        caption: "07_SignificantShapeShift",
+                        getChildern: [
+                            {
+                                caption: "07_SignificantShapeShift",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/07_SignificantShapeShift.png"
+                            }
+                        ]
+                    },
+                    {
+                        caption: "08_CoalescentAndPropagation",
+                        getChildern: [
+                            {
+                                caption: "08_CoalescentAndPropagation",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/08_CoalescentAndPropagation.png"
+                            }
+                        ]
+                    },
+                    {
+                        caption: "09_PartialShiftAndShapeShortening",
+                        getChildern: [
+                            {
+                                caption: "09_PartialShiftAndShapeShortening",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/09_PartialShiftAndShapeShortening.png"
+                            }
+                        ]
+                    },
+                    {
+                        caption: "10_NoShiftCoalescence",
+                        getChildern: [
+                            {
+                                caption: "10_NoShiftCoalescence",
+                                imagecaption: "/Samples/Situations/01_TerrainRelief/10_NoShiftCoalescence.png"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+
+
+    },
+    {
+        caption: "Constraint Context",
+        getChildern: [
+            {
+                caption: "Element Rendering Context",
+                description: "Problem can be solved by minor rendering changes",
+                imagecaption: "./Samples/Bader/03_DisplacementFromItself.png"
+            },
+            {
+                caption: "Elements Context",
+                getChildern: [
+                    {
+                        caption: "Two Elements Context",
+                        description: "Most common context interacting two elements",
+                        imagecaption: "./Samples/Bader/04_Shift.png"
+                    },
+                    {
+                        caption: "Multiple Elements Context",
                         description: "Multiple elements are part of conflict"
                     }
                 ]
@@ -43,100 +149,100 @@ const items = [
         ]
     },
     {
-        name: "Operators Application Strategy",
-                items: [
+        caption: "Operators Application Strategy",
+                getChildern: [
                     {
-                        name: "Batch",
-                        imageName: "./img/ActionPlanIcon.png",
+                        caption: "Batch",
+                        imagecaption: "./img/ActionPlanIcon.png",
                         iconSize: 28
                     },
                     {
-                        name: "Condition Action",
-                        imageName: "./img/SweepIcon.png"
+                        caption: "Condition Action",
+                        imagecaption: "./img/SweepIcon.png"
                     },
                     {
-                        name: "Elements Processing",
-                        items: [
+                        caption: "Elements Processing",
+                        getChildern: [
                             {
-                                name: "Sequential",
-                                imageName: "./img/SequentialIcon.png"
+                                caption: "Sequential",
+                                imagecaption: "./img/SequentialIcon.png"
                             },
                             {
-                                name: "In Cluster",
-                                imageName: "./img/ClusterIcon.png",
-                                items: [
+                                caption: "In Cluster",
+                                imagecaption: "./img/ClusterIcon.png",
+                                getChildern: [
                                     {
-                                        name: "Predefined",
-                                        items: [
+                                        caption: "Predefined",
+                                        getChildern: [
                                             {
-                                                name: "Road and River Network"
+                                                caption: "Road and River Network"
                                             }
                                         ]
                                     },
                                     {
-                                        name: "Context",
-                                        items: [
-                                            {name: "Spatial"}
+                                        caption: "Context",
+                                        getChildern: [
+                                            {caption: "Spatial"}
                                         ]
                                     }
                                 ]
                             },
-                            {name: "Global"}
+                            {caption: "Global"}
                         ]
                     },
-                    { name: "Iterative" },
-                    { name: "Least Square Fit" },
-                    { name: "Simulated Annealing"},
-                    { name: "Machine Learning" }
+                    { caption: "Iterative" },
+                    { caption: "Least Square Fit" },
+                    { caption: "Simulated Annealing"},
+                    { caption: "Machine Learning" }
                 ]
 
     },
     {
-        name: "Operators (Solutions)",
+        caption: "Operators (Solutions)",
         items : [
     {
-        name: "Attribute Transformation",
-        items: [
+        caption: "Attribute Transformation",
+        getChildern: [
             {
-                name: "Clasification",
-                items: [
-                    { name: "Thematic Selection" },
-                    { name: "Thematic Aggregation" }
+                caption: "Clasification",
+                getChildern: [
+                    { caption: "Thematic Selection" },
+                    { caption: "Thematic Aggregation" }
                 ]
             }
             ]
     },
     {
-        name: "Spatial Transformation",
-        items: [
+        caption: "Spatial Transformation",
+        getChildern: [
             {
-                name: "Individual Objects",
-                items: [
+                caption: "Individual Objects",
+                getChildern: [
                     {
-                        name: "Simplification",
-                        items: [
-                            { name: "Weeding" },
-                            { name: "Unrestricted Simplification" }
+                        caption: "Simplification",
+                        getChildern: [
+                            { caption: "Weeding" },
+                            { caption: "Unrestricted Simplification" }
                         ]
                     },
-                    { name: "Collapse" },
+                    { caption: "Collapse" },
                     {
-                        name: "Enhancement",
+                        caption: "Enhancement",
                         description: "The shape and size of a feature may need to be enhanced to meet the legibility requirements of a map",
-                        items: [
+                        getChildern: [
                             {
-                                name: "with regard to geometric constraints",
-                                items: [
-                                    { name: "Enlargement" },
-                                    { name: "Exaggeration (Caricature)" }
+                                caption: "with regard to geometric constraints",
+                                getChildern: [
+                                    { caption: "Enlargement" },
+                                    { caption: "Exaggeration (Caricature)" }
                                 ]
                             },
                             {
-                                name: "with regard to semantic constraints",
-                                items: [
-                                    { name: "Smoothing" },
-                                    { name: "Fractalization" },
-                                    { name: "Rectification/Squaring" }
+                                caption: "with regard to semantic constraints",
+                                getChildern: [
+                                    { caption: "Smoothing" },
+                                    { caption: "Fractalization" },
+                                    { caption: "Rectification/Squaring" }
                                 ]
                             }
                         ]
@@ -144,41 +250,76 @@ const items = [
                 ]
             },
             {
-                name: "Individual objects or Set of objects",
-                items: [
+                caption: "Individual objects or Set of objects",
+                getChildern: [
                     {
-                        name: "Selection/Elimination",
-                        items: [
-                            { name: "Selection" },
-                            { name: "Elimination" }
+                        caption: "Selection/Elimination",
+                        getChildern: [
+                            { caption: "Selection" },
+                            { caption: "Elimination" }
                         ]
                     },
-                    { name: "Displacement" }
+                    {
+                        caption: "Displacement",
+                        getChildern: [
+                            {
+                                caption: "Kontext kolize",
+                                getChildern: [
+                                    { caption: "Od jiného elementu" },
+                                    { caption: "Od jiných elementů" },
+                                    { caption: "Od sama sebe"}
+                                ]
+                            },
+            {
+                caption: "Terénní Reliéf",
+                getChildern: [
+                    { caption: "Zkrácení" },
+                    {
+                        caption: "Odsun",
+                        getChildern: [
+                            { caption: "Od jiného elementu" },
+                            { caption: "Od sama sebe"}
+                        ]
+                    },
+                    {
+                        caption: "Paralelizace",
+                        getChildern: [
+                            { caption: "Celý element" },
+                            { caption: "Část elementu" }
+                        ]
+                    },
+                    {
+                        caption: "Slícování"
+                    }
+                ]
+            }
+        ]
+                    }
                 ]
             },
             {
-                name: "Set of objects",
-                items: [
+                caption: "Set of objects",
+                getChildern: [
                     {
-                        name: "Aggregation",
-                        items: [
+                        caption: "Aggregation",
+                        getChildern: [
                             {
-                                name: "Join features to 1 object",
-                                items: [
+                                caption: "Join features to 1 object",
+                                getChildern: [
                                     {
-                                        name: "Amalgamation",
-                                        items: [
-                                            { name: "Fusion" },
-                                            { name: "Merge" }
+                                        caption: "Amalgamation",
+                                        getChildern: [
+                                            { caption: "Fusion" },
+                                            { caption: "Merge" }
                                         ]
                                     },
-                                    { name: "Combine" }
+                                    { caption: "Combine" }
                                 ]
                             },
                             {
-                                name: "Join feature to several objects",
-                                items: [
-                                    { name: "Typification"}
+                                caption: "Join feature to several objects",
+                                getChildern: [
+                                    { caption: "Typification"}
                                 ]
                             }
                         ]
@@ -194,6 +335,6 @@ const items = [
 
 let generalizationCards = new Card("Generalization", "Generalization")
 addItems(generalizationCards, items)
-console.log("generalizationCards:", generalizationCards)
+items = generalizationCards.getChildern()
 
 export default items

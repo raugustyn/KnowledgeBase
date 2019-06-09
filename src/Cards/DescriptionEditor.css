@@ -1,0 +1,26 @@
+.DescriptionEdit .EmptyDescription {
+    background-color: #888888;
+    border-radius: 2px;
+    height: 56px;
+}
+
+.DescriptionEdit Description {
+    margin: 0px 0px 8px 0px;
+}
+
+.DescriptionEdit .textwrapper
+{
+  display: block;
+}
+
+.DescriptionEdit textarea {
+    width: 100%;
+    height: 250px;
+    display: block;
+}
+
+.DescriptionEdit textarea:focus {
+    border: none;
+    box-shadow: inset 0 0 0 2px #0079bf;
+    border-radius: 3px;
+}

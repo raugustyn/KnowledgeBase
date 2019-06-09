@@ -13,10 +13,8 @@ export default class ChildernsNavBar extends Component {
     render() {
         if (this.state.card) {
             let childern
-            let childernCards = this.state.card.getChilderns()
-            console.log(childernCards)
+            let childernCards = this.state.card.getChildern()
             if (childernCards) {
-                console.log("ChildernsNavBar.render::childernCards:", childernCards)
                 childern = (
                     <div className="ChildernsNavBar">
                         <h1>Childern</h1>

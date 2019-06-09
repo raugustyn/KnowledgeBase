@@ -27,4 +27,5 @@
     transform-origin: left top 0;
     float: left;
     text-align: center;
+    writing-mode: tb-lr;
 }

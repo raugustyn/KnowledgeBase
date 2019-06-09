@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./BaderBoard.css"
 import PopoverPreview from "./PopoverPreview"
+import FilterPanel from "../../Cards/FilterPanel"
 import { Button } from 'reactstrap';
 import items from "./data"
 
@@ -26,16 +27,25 @@ export default class BaderBoard extends Component {
             useBackgroundColor: props.useBackgroundColor,
             showControls: props.showControls,
             maxDepthShown: props.maxDepthShown,
-            verticalTextDepth: props.verticalTextDepth
+            verticalTextDepth: props.verticalTextDepth,
+            filterText: props.filterText
         }
     }
 
+
+    onFilterChange(newFilterText) {
+        if (newFilterText !== this.state.filterText) {
+            console.log("newFilterText:", newFilterText)
+            this.setState({ filterText: newFilterText} )
+        }
+
+    }
 
     buildCellContent(item, indent=0) {
         let name, description, previewImage;
 
         if (item) {
-            name = item.name
+            name = item.caption
             if (this.state.showDescription && item.description)
                 description = <div className="Description">{item.description}</div>
             if (this.props.showImages && item.imageName)
@@ -54,19 +64,26 @@ export default class BaderBoard extends Component {
 
     oldRenderItems(items, indent=0) {
         if (items && (!this.state.maxDepthShown || indent <= this.state.maxDepthShown)) {
-            let backgroundColor = 'white'
-            if (this.state.useBackgroundColor) {
-                backgroundColor = indent < this.BACKGROUND_COLORS.length ? this.BACKGROUND_COLORS[indent] : this.BACKGROUND_COLORS[0]
+            items = items.filter((item, index) => this.state.filterText === "" || item.caption.search(this.state.filterText) >= 0)
+            console.log("items.length:", items.length)
+            if (items) {
+                let backgroundColor = 'white'
+                if (this.state.useBackgroundColor) {
+                    backgroundColor = indent < this.BACKGROUND_COLORS.length ? this.BACKGROUND_COLORS[indent] : this.BACKGROUND_COLORS[0]
+                }
+                return items.map((item, index) => (
+                    <table key={index} className="BoardCell" style={{backgroundColor: backgroundColor}}>
+                        <tbody>
+                        <tr key={index}>
+                            {this.buildCellContent(item, indent)}
+                            <td className="BoardItem">{this.oldRenderItems(item.getChildern(), indent + 1)}</td>
+                        </tr>
+                        </tbody>
+                    </table>))
             }
-            return items.map((item, index) => (
-                <table key={index} className="BoardCell" style={{ backgroundColor: backgroundColor }} >
-                    <tbody>
-                    <tr key={index}>
-                        {this.buildCellContent(item, indent)}
-                        <td className="BoardItem">{this.oldRenderItems(item.items, indent + 1)}</td>
-                    </tr>
-                    </tbody>
-                </table>))
+            else {
+                return ""
+            }
         }
     }
 
@@ -90,7 +107,7 @@ export default class BaderBoard extends Component {
                 this.items.push(item)
                 if (this.maxRow < row) this.maxRow = row
                 if (this.maxCol < col) this.maxCol = col
-                row = this.analyseItems(item.items, row, col+1, indent + 1)
+                row = this.analyseItems(item.getChildern(), row, col+1, indent + 1)
                 item.rowSpan = this.maxRow - item.row + 1
                 item.outgoingRow = row
                 row = row + 1
@@ -103,7 +120,7 @@ export default class BaderBoard extends Component {
 
     renderItem(item) {
         if (item) {
-            return item.name + ":" + item.row + "x" + item.col + "=" + item.rowSpan
+            return item.caption + ":" + item.row + "x" + item.col + "=" + item.rowSpan
         }
         else {
             return ""
@@ -146,6 +163,7 @@ export default class BaderBoard extends Component {
     }
 
     onAlignClick() {
+        // https://stackoverflow.com/questions/31159732/every-item-to-have-the-same-width-as-the-widest-element
         for (var col=0; col<this.maxDepth; col++) {
             var maxWidth = 0;
             var choices = document.getElementsByClassName('BoardItem col_' + col);
@@ -184,7 +202,7 @@ export default class BaderBoard extends Component {
                     <Button color="primary" onClick={this.onAlignClick.bind(this)}>Align</Button>
 
                     <div className="form-group">
-                        <label>Vertical Text Depth</label>
+                        <label>Display Depth</label>
                         <input
                             ref={this.depthSliderRef}
                             type="range" className="custom-range" min="0" max={this.maxDepth-1} style={{ width: "150px" }}
@@ -201,6 +219,8 @@ export default class BaderBoard extends Component {
                         />
                     </div>
 
+                    <FilterPanel onFilterChange={this.onFilterChange.bind(this)}/>
+
                 </form>
             )
         }
@@ -215,6 +235,7 @@ export default class BaderBoard extends Component {
 
 
     render() {
+        console.log("BaderBoard.render()")
         this.analyseItems(items, 0, 0)
         return this.renderItems(items)
     }
@@ -226,7 +247,6 @@ BaderBoard.defaultProps = {
     showControls: true,
     showDescription: true,
     maxDepthShown: 3,
-    verticalTextDepth: 0
+    verticalTextDepth: 0,
+    filterText: ""
 }
-
-// https://stackoverflow.com/questions/31159732/every-item-to-have-the-same-width-as-the-widest-element

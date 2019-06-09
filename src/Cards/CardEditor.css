@@ -66,7 +66,7 @@
     font-weight: 700;
 }
 
-.IconsCol {
+.IconsCol, .SectionIcon {
     width: 60px;
 }
 
@@ -76,9 +76,25 @@
 
 .CardContentTable {
     background-color: transparent;
+    width: 100%
 }
 
 .NoWrapText.btn {
     white-space: nowrap;
     text-align: left;
+}
+
+.SectionIcon {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(23, 43, 77);
+}
+
+.NoBottomMargin {
+    margin-bottom: 0px;
+}
+
+.Transparent {
+    background-color: transparent;
 }

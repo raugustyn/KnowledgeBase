@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="utf-8" />
+                <style>
+				img {
+					width: 200px;
+				}
+				
+				.GalleryContainer {
+					padding-left: 50px;
+					padding-top: 70px;
+				}
+				
+                #hlavni
+                { 
+					float: left;
+					transition: all 1s ease;
+                        width: 160px;
+                        height: 200px;
+                        border: 1px black solid;
+                        margin: 0px;
+                        perspective: 150px;
+                        -webkit-perspective: 150px;         /* Chrome, Safari, Opera */
+                        -moz-perspective: 150px;            /* Mozilla Firefox */
+                }
+
+                #hlavni:hover
+                {
+                        width: 200px;
+                        height: 200px;
+				}
+						
+                #vedlejsi {
+					transition: all 1s ease;
+                        width: 200px;
+                        height: 200px;
+                        background-color: #ADD8E6;
+                        transform: rotateY(40deg);
+                        -webkit-transform: rotateY(40deg);  /* Chrome, Safari, Opera */
+                        -moz-transform: rotateY(40deg);     /* Mozilla Firefox */
+                }
+                
+				#vedlejsi:hover
+                {
+                        width: 200px;
+                        height: 200px;
+                        background-color: red;
+                        transform: rotateY(0deg);
+                        -webkit-transform: rotateY(0deg);  /* Chrome, Safari, Opera */
+                        -moz-transform: rotateY(0deg);     /* Mozilla Firefox */
+                }
+                </style>
+                <title>perspective</title>
+        </head>
+        <body>
+			<div class="GalleryContainer">
+					<div id="hlavni">
+							<div id="vedlejsi">
+								<img src="KubaNeseBrusle01.jpg" />
+							</div>
+					</div>
+					<div id="hlavni">
+							<div id="vedlejsi"><img src="KubaNeseBrusle01.jpg" /></div>
+					</div>
+					<div id="hlavni">
+							<div id="vedlejsi"><img src="KubaNeseBrusle01.jpg" /></div>
+					</div>
+			</div>
+        </body>
+</html>

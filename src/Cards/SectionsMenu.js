@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import GlyphIcon from "../Components/GlyphIcons"
 import "./CardNameEditor.css"
-import {Popover, PopoverBody, PopoverHeader} from "reactstrap"
 import "./FormStyles.css"
 import { Button, ButtonGroup } from 'reactstrap';
+import registry from "./ItemClasses"
 
 export default class SectionsMenuComponent extends Component {
-
     constructor(props) {
         super(props);
 
@@ -16,6 +15,7 @@ export default class SectionsMenuComponent extends Component {
         };
     }
 
+
     switchChecklists() {
         console.log("Switching check lists")
         this.setState({
@@ -24,16 +24,20 @@ export default class SectionsMenuComponent extends Component {
     }
 
     render() {
-        let discussionCount = this.props.card.discussion.length === 0? "": "(" + this.props.card.discussion.length + ")"
-        return (
-            <ButtonGroup vertical={true}>
-                <Button color="primary" active={true} className="NoWrapText" onClick={ this.props.switchDetails } ><GlyphIcon charToBeDisplyed="\uE919"/>Discussions&nbsp;{discussionCount}</Button>
-                <Button  color="primary" className="NoWrapText" onClick={ this.props.switchLabels } ><GlyphIcon charToBeDisplyed="\uE937"/>Labels</Button>
-                <Button id="LabelsButton" color="primary" className="btn btn-primary btn-xs NoWrapText" onClick={ this.switchChecklists }><GlyphIcon charToBeDisplyed="\uE913"/>Checklist</Button>
-                <Popover placement="bottom" isOpen={this.state.popoverOpen} target="LabelsButton" toggle={this.toggle}>
+        const discussionCount = this.props.card.discussion.length === 0? "": "(" + this.props.card.discussion.length + ")"
+        const visibleItems = registry.items.filter(function(registryItem) { return registryItem.sectionButtonDef != null} )
+        const buttons = visibleItems.map(function(registryItem) {
+            return {
+                caption: (registryItem.sectionButtonDef && registryItem.sectionButtonDef.label) ? registryItem.sectionButtonDef.label : registryItem.caption,
+                glyph: (registryItem.sectionButtonDef && registryItem.sectionButtonDef.glyphIcon) ? <GlyphIcon charToBeDisplyed={registryItem.sectionButtonDef.glyphIcon}/> : null
+            }
+        })
+
+        /*
+        const popover = <Popover placement="bottom" isOpen={this.state.popoverOpen} target="LabelsButton" toggle={this.toggle}>
                   <PopoverHeader>Add Checklist</PopoverHeader>
                   <PopoverBody>
-                      <div className="input-group">
+                      <div className="form-group col-xs-4">
                         <label>Title</label><br/>
                         <input defaultValue="ToDo" type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/><br/>
                         <label>Copy items from</label><br/>
@@ -51,7 +55,20 @@ export default class SectionsMenuComponent extends Component {
                       </div>
                   </PopoverBody>
                 </Popover>
-                <Button color="primary" className="NoWrapText" onClick={ this.props.switchDetails } disabled><GlyphIcon charToBeDisplyed="\uE907"/>Attachment</Button>
+    */
+
+        return (
+            <ButtonGroup vertical={true}>
+                <Button color="primary" active={true} className="NoWrapText" onClick={ this.props.switchDetails } ><GlyphIcon charToBeDisplyed="\uE919"/>&nbsp;Discussions&nbsp;{discussionCount}</Button>
+                <Button  color="primary" className="NoWrapText" onClick={ this.props.switchLabels } ><GlyphIcon charToBeDisplyed="\uE937"/>&nbsp;Labels</Button>
+                <div id="LabelsButton" color="primary" className="btn btn-primary btn-xs NoWrapText" onClick={this.switchChecklists}>
+                    <GlyphIcon charToBeDisplyed="\uE913"/>&nbsp;Checklist&nbsp;&nbsp;
+                    <Button color="primary" size="sm"><GlyphIcon charToBeDisplyed="\uE964" onClick={ this.props.switchCheckLists }/></Button>
+                </div>
+
+
+                { buttons.map((button, index) => <Button key={index} color="primary" className="NoWrapText" disabled>{button.glyph} {button.caption}</Button>)}
+
             </ButtonGroup>
         )
     }

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
-import DescriptionComponent from "./DescriptionComponent.js"
+import "./CardEditor.css"
+import cards from "./CardDatabase"
+import DescriptionEditor from "./DescriptionEditor.js"
 import CardNameEditor from "./CardNameEditor";
 import PersonFaceComponent from "../Components/Users/PersonFaceComponent.js";
 import SectionsMenuComponent from "./SectionsMenu"
-import "./CardEditor.css"
 import BadgesPanel from "../Components/BadgesPanel"
-import cards from "./CardDatabase"
 import ChildernsNavBar from "./ChildernsNavBar"
+import GlyphIcon from "../Components/GlyphIcons"
+import CheckListPanel from "../Components/CheckListPanel"
 
 
 class CardComponent extends Component {
@@ -18,10 +20,21 @@ class CardComponent extends Component {
         this.state = {
             showDetails: true,
             showLabels: true,
+            showCheckLists: true,
             card: props.card
         };
+        this.rowKey = 0
     }
 
+    getRowKey() {
+        this.rowKey = this.rowKey + 1
+        return this.rowKey
+    }
+
+    switchCheckLists() {
+        console.log("Switching this.state.showCheckLists:", this.state.showCheckLists)
+        this.setState( { showCheckLists: !this.state.showCheckLists });
+    }
 
     switchLabels()
     {
@@ -39,26 +52,37 @@ class CardComponent extends Component {
         }
     }
 
-    render()
-    {
-        let details;
-        let discussionsHeader;
-        let labels;
-        let childern;
-
-        if (this.state.showLabels && this.state.card.labels.length > 0) {
-            labels = (
-                <tr>
+    getCheckListItems(checkList) {
+        return (
+                <tr key={this.getRowKey()}>
                     <td></td>
+                    <td><CheckListPanel items={checkList.items} /></td>
+                </tr>
+        )
+    }
+
+    getCheckListsRows() {
+        let checkLists = []
+        for (var item of this.state.card.checklists) {
+            checkLists.push(
+                <tr key={this.getRowKey()} style={{ verticalAlign: "middle"}}>
+                    <td className="SectionIcon">
+                        <GlyphIcon charToBeDisplyed="\uE913"/>
+                    </td>
                     <td>
-                        <BadgesPanel showCaption="false" badges={this.state.card.labels} />
+                        <h1 className="NoBottomMargin">{item.caption}</h1>
                     </td>
                 </tr>
             )
+            checkLists = checkLists.concat(this.getCheckListItems(item))
         }
+        return checkLists
+    }
 
-
+    renderChildernCards() {
         let childernCards
+        let childern
+
         if (this.state.card.childernRefs && this.state.card.childernRefs.length > 0) {
             childernCards = cards.childernRefsToChildern(this.state.card.childernRefs)
         }
@@ -68,7 +92,7 @@ class CardComponent extends Component {
         if (childernCards) {
             console.log("childernCards:", childernCards)
             childern = (
-                <tr>
+                <tr key={this.getRowKey()}>
                     <td></td>
                     <td>
                         <h1>Childern</h1>
@@ -78,13 +102,45 @@ class CardComponent extends Component {
             )
         }
 
+        return childern
+    }
+
+    render()
+    {
+        console.log("Rendering CardEditor")
+        let details
+        let discussionsHeader
+        let labels
+        console.log("this.state.showCheckLists:", this.state.showCheckLists)
+        const checkLists = (this.state.showCheckLists) ? this.getCheckListsRows() : null
+
+        if (this.state.showLabels && this.state.card.labels.length > 0) {
+            labels = (
+                <tr key={this.getRowKey()} style={{ verticalAlign: "middle"}}>
+                    <td className="SectionIcon">
+                        <GlyphIcon  charToBeDisplyed="\uE937"/>
+                    </td>
+                    <td>
+                        <BadgesPanel showCaption="false" badges={this.state.card.labels} />
+                    </td>
+                </tr>
+            )
+        }
+
+
+        let childern = this.renderChildernCards()
+
         if (this.state.showDetails) {
             discussionsHeader = <tr>
-                                    <td><img alt="Activity" src="img/Activity.png"/></td>
-                                    <td><h1>Discussions</h1></td>
+                                    <td className="SectionIcon">
+                                        <GlyphIcon charToBeDisplyed="\uE900"/>
+                                    </td>
+                                    <td>
+                                        <h1>Discussions</h1>
+                                    </td>
                                 </tr>
             details = this.state.card.discussion.map((discussion, index) => (
-                <tr key={index}>
+                <tr key={this.getRowKey()}>
                     <td><PersonFaceComponent showAsFace={true} personName={discussion.userId} /></td>
                     <td className="DiscussionThreat">
                         <div className="Discussion-item-header">
@@ -106,17 +162,22 @@ class CardComponent extends Component {
                         <td>
                             <table width="100%">
                                 <tbody>
-                                <tr>
-                                    <td className="IconsCol"><img alt="WindowHeaderFormIcon" src="img/WindowHeaderFormIcon.png"/></td>
+                                <tr key={this.getRowKey()}>
+                                    <td className="SectionIcon">
+                                        <GlyphIcon charToBeDisplyed="\uE90F"/>
+                                    </td>
                                     <td><CardNameEditor name={this.state.card.caption} /></td>
                                 </tr>
                                 { labels }
-                                <tr>
-                                    <td><img alt="DescriptionIcon" src="img/DescriptionIcon.png"/></td>
+                                <tr key={this.getRowKey()}>
+                                    <td className="SectionIcon">
+                                        <GlyphIcon charToBeDisplyed="\uE91C"/>
+                                    </td>
                                     <td>
-                                        <DescriptionComponent description={this.state.card.description}/>
+                                        <DescriptionEditor description={this.state.card.description}/>
                                     </td>
                                 </tr>
+                                {checkLists.map(item => item)}
                                 {childern}
                                 {discussionsHeader}
                                 {details}
@@ -128,6 +189,7 @@ class CardComponent extends Component {
                                 card={this.state.card}
                                 switchDetails={this.switchDetails.bind(this)}
                                 switchLabels={this.switchLabels.bind(this)}
+                                switchCheckLists={this.switchCheckLists.bind(this)}
                             />
 
                             <ChildernsNavBar card={this.state.card}/>
@@ -135,8 +197,6 @@ class CardComponent extends Component {
                     </tr>
                     </tbody>
                 </table>
-
-
             </div>
         )
     }

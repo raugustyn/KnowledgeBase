@@ -8,9 +8,7 @@ function convertUnicode(input) {
   });
 }
 
-
-
-class GlyphIcon extends Component {
+export default class GlyphIcon extends Component {
     /*
         <GlyphIcon charToBeDisplyed="\uE919"/>
         <GlyphIcon glyphName="PLUS" />
@@ -27,9 +25,7 @@ class GlyphIcon extends Component {
         }
 
         charToBeDisplayed = convertUnicode(charToBeDisplayed)
-        return <span className="GlyphIcon">{ charToBeDisplayed }</span>
+        return <span className="GlyphIcon">{charToBeDisplayed}</span>
     }
 
 }
-
-export default GlyphIcon

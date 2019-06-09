@@ -4,7 +4,7 @@ import CardEditor from "./Cards/CardEditor"
 import ListControlsBar from "./Cards/ListControlsBar"
 import CardNameEditor from "./Cards/CardNameEditor"
 import PersonFaceComponent from "./Components/Users/PersonFaceComponent"
-import DescriptionComponent from "./Cards/DescriptionComponent"
+import DescriptionEditor from "./Cards/DescriptionEditor"
 import { KanbanBoard, KanbanSlot, KanbanCard } from "./Boards/Kanban"
 import BaderBoard from "./Boards/BaderBoard/BaderBoard.js";
 import Login from "./Components/Users/Login"
@@ -12,8 +12,13 @@ import "./ConsoleEnhancements"
 import BadgesPanel from "./Components/BadgesPanel"
 import Card from "./Cards/Card"
 import Discussion from "./Cards/Discussion"
-import CardCollectionComponent from "./Components/CardCollections/CardCollectionComponent"
+import CardCollectionComponent from "./Cards/CardCollections/CardCollectionComponent"
 import cardDatabase from "./Cards/CardDatabase"
+import CheckListPanel from "./Components/CheckListPanel"
+import CheckBoxButton from "./Components/CheckBoxButton"
+import CardsNavBar from "./Cards/CardCollections/CardsNavBar"
+import AcorrdionOutline from "./Components/AcorrdionOutline"
+
 
 const discussionExample = [
                         new Discussion('Drozda', 'Oct 8, 2015 at 4:18 PM', "odsun liniových prvků (Z_TerenniRelief_L) od cesty\n" +
@@ -48,7 +53,7 @@ const componentExamples = [
     },
     {
         caption: 'DescriptionComponent',
-        componentClass: DescriptionComponent,
+        componentClass: DescriptionEditor,
         description: "This component edits card description.",
         props: {description: "Description value..."}
     },
@@ -65,9 +70,7 @@ const componentExamples = [
         caption: "BaderBoard",
         componentClass: BaderBoard,
         description: "This component shows Bader Board.",
-        props: {
-
-        }
+        props: {  }
     },
     {
         caption: "BookmarksGallery",
@@ -85,31 +88,32 @@ const componentExamples = [
         props: {
             title: "Generated Board",
             slots: [
-                { title: "ToDo",
-            cards : [
-                    { card: new Card(13, "Plain card") },
-                    { card: new Card(13, "Card with description", 'Description') },
-                    { card: new Card(15, "Card with todo list(s) in progress, done 5 out of 8 todo items."),
-                        toDo: {
-                            totalCount: 8,
-                            doneCount: 5
-                        }
-                    },
-                    {
-                        card: new Card("Card with todo list(s), all 8 items done."),
-                        toDo: {
-                            totalCount: 8,
-                            doneCount: 8
-                        }
-                    },
-                    {
-                        card: new Card(12, "Card with 3 discussion items, description and done todo list.", 'Description', discussionExample),
-                        toDo: {
-                            totalCount: 8,
-                            doneCount: 8
-                        }
-                    }
-                ]},
+                {
+                    title: "ToDo",
+                    cards : [
+                            { card: new Card(13, "Plain card") },
+                            { card: new Card(13, "Card with description", 'Description') },
+                            { card: new Card(15, "Card with todo list(s) in progress, done 5 out of 8 todo items."),
+                                toDo: {
+                                    totalCount: 8,
+                                    doneCount: 5
+                                }
+                            },
+                            {
+                                card: new Card("Card with todo list(s), all 8 items done."),
+                                toDo: {
+                                    totalCount: 8,
+                                    doneCount: 8
+                                }
+                            },
+                            {
+                                card: new Card(12, "Card with 3 discussion items, description and done todo list.", 'Description', discussionExample),
+                                toDo: {
+                                    totalCount: 8,
+                                    doneCount: 8
+                                }
+                            }
+                        ]},
                 {
                     title: "Doing",
                     cards: [ { card: new Card(12, "Plain Card") } ]
@@ -217,7 +221,41 @@ const componentExamples = [
         props: {
             card: cardDatabase.getCardByRef("/SoftwareLibraries/WebGen")
         }
+    },
+    {
+        caption: "CheckListPanel",
+        componentClass: CheckListPanel,
+        props: {
+            enableAddItems: true,
+            items: [
+                ["Make Caption", true],
+                ["Make Description", true],
+                ["Understand", true],
+                ["Primary Analyse", false]
+            ]
+        }
+    },
+    {
+        caption: "CheckBoxButton",
+        componentClass: CheckBoxButton,
+        props: {
+            checked: false,
+            size: 3
+        }
+    },
+    {
+        caption: "CardsNavBar",
+        componentClass: CardsNavBar,
+        props: {
+            card: cardDatabase.getCardByRef("/SoftwareLibraries/WebGen")
+        }
+    },
+    {
+        caption: "AcorrdionOutline",
+        componentClass: AcorrdionOutline,
+        props: { }
     }
+
 ];
 
 
