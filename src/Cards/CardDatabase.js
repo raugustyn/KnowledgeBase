@@ -35,7 +35,7 @@ class CardDatabase  {
         this.cards = drozdosvet.map(function(cardInfo) {
             let result = new Card(cardInfo.ref, cardInfo.caption, cardInfo.description, discussionExample)
             result.labels.push("Knowledge Item")
-            result.childernRefs = cardInfo.childern
+            result.childrenRefs = cardInfo.children
 
             return result
         })
@@ -47,8 +47,8 @@ class CardDatabase  {
         return this.cards.filter(card => card.ref === ref)[0]
     }
 
-    childernRefsToChildern(childernRefs) {
-        return childernRefs.map(ref => this.getCardByRef(ref))
+    childrenRefsTochildren(childrenRefs) {
+        return childrenRefs.map(ref => this.getCardByRef(ref))
     }
 
 }

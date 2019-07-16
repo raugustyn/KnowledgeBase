@@ -41,7 +41,6 @@ class Importer:
     def processPath(self, path, ref="", recurse=True):
         log.openSection("Importing directory %s as %s" % (path, ref))
         containerCard = None
-        containerCardName = pathLeaf(path) + ".cs.json"
         childern = []
         for name in os.listdir(path):
             itemPath = path + os.sep + name

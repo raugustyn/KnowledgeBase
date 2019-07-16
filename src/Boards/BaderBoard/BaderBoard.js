@@ -3,7 +3,7 @@ import "./BaderBoard.css"
 import PopoverPreview from "./PopoverPreview"
 import FilterPanel from "../../Cards/FilterPanel"
 import { Button } from 'reactstrap';
-import items from "./data"
+import defaultItems from "./data"
 
 
 export default class BaderBoard extends Component {
@@ -46,6 +46,17 @@ export default class BaderBoard extends Component {
 
         if (item) {
             name = item.caption
+            const LSCHAR = "\u2028"
+            if (name.indexOf(LSCHAR) >= 0) {
+                let nameItems = name.split("\u2028")
+                let separatedItems = nameItems.slice(0, nameItems.length - 1)
+                name = (
+                    <div>
+                        {separatedItems.map(item => <span>{item}<br/></span>)}
+                        {nameItems[nameItems.length-1]}
+                    </div>
+                )
+            }
             if (this.state.showDescription && item.description)
                 description = <div className="Description">{item.description}</div>
             if (this.props.showImages && item.imageName)
@@ -65,7 +76,6 @@ export default class BaderBoard extends Component {
     oldRenderItems(items, indent=0) {
         if (items && (!this.state.maxDepthShown || indent <= this.state.maxDepthShown)) {
             items = items.filter((item, index) => this.state.filterText === "" || item.caption.search(this.state.filterText) >= 0)
-            console.log("items.length:", items.length)
             if (items) {
                 let backgroundColor = 'white'
                 if (this.state.useBackgroundColor) {
@@ -76,7 +86,7 @@ export default class BaderBoard extends Component {
                         <tbody>
                         <tr key={index}>
                             {this.buildCellContent(item, indent)}
-                            <td className="BoardItem">{this.oldRenderItems(item.getChildern(), indent + 1)}</td>
+                            <td className="BoardItem">{this.oldRenderItems(item.getchildren(), indent + 1)}</td>
                         </tr>
                         </tbody>
                     </table>))
@@ -107,7 +117,7 @@ export default class BaderBoard extends Component {
                 this.items.push(item)
                 if (this.maxRow < row) this.maxRow = row
                 if (this.maxCol < col) this.maxCol = col
-                row = this.analyseItems(item.getChildern(), row, col+1, indent + 1)
+                row = this.analyseItems(item.getchildren(), row, col+1, indent + 1)
                 item.rowSpan = this.maxRow - item.row + 1
                 item.outgoingRow = row
                 row = row + 1
@@ -235,7 +245,7 @@ export default class BaderBoard extends Component {
 
 
     render() {
-        console.log("BaderBoard.render()")
+        let items = this.props.items ? this.props.items : defaultItems
         this.analyseItems(items, 0, 0)
         return this.renderItems(items)
     }

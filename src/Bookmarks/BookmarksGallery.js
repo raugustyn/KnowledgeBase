@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 
 import ImagePreview from "./ImagePreview.js";
 import ExtentCoordinates from "./ExtentCoordinates";
+import "./BookmarksGallery.css"
+import DefaultHeader from "../containers/DefaultLayout/DefaultHeader"
 
 
-class BookmarksGallery extends Component {
+export default class BookmarksGallery extends Component {
+
     render () {
         return (
             <ul className="GalleryList">
@@ -12,6 +15,8 @@ class BookmarksGallery extends Component {
             </ul>
         )
     }
-}
 
-export default BookmarksGallery;
+}
+BookmarksGallery.defaultProps = {
+    imagesPath : ""
+}

@@ -5,7 +5,7 @@ import GlyphIcon from "../Components/GlyphIcons/GlyphIcon"
 
 export default class Card  {
 
-    constructor(ref, caption, description=null, discussion=[], labels=[], options={}) {
+    constructor(ref, caption, description=null, discussion=[], labels=[], options=null) {
         // caption = edit label
         this.ref = ref
         this.caption = caption
@@ -28,11 +28,15 @@ export default class Card  {
                 ["Config Measure Method", false]
             ])
         ]
+
+        if (options != null) {
+            Object.assign(this, options)
+        }
     }
 
     renderTreeIcon() {
         let glyphCharacter
-        if (this.hasChildern()) {
+        if (this.haschildren()) {
             glyphCharacter = "\uE918"
         }
         else {
@@ -50,7 +54,7 @@ export default class Card  {
             if (this.caption.search(filterText) >= 0) {
                 return true
             } else {
-                for (var childCard of this.childernCards) {
+                for (var childCard of this.childrenCards) {
                     if (childCard.meetsFilter(filterText)) {
                         return true
                     }
@@ -61,20 +65,20 @@ export default class Card  {
         return false
     }
 
-    hasChildern() {
-        return (this.childernRefs && this.childernRefs.length) || (this.childern && this.childern.length > 0)
+    haschildren() {
+        return (this.childrenRefs && this.childrenRefs.length) || (this.children && this.children.length > 0)
     }
 
-    getChildern(filterText = "") {
-        let childernCards
-        if (this.childernRefs && this.childernRefs.length > 0) {
-            childernCards = cards.childernRefsToChildern(this.childernRefs)
+    getchildren(filterText = "") {
+        let childrenCards
+        if (this.childrenRefs && this.childrenRefs.length > 0) {
+            childrenCards = cards.childrenRefsTochildren(this.childrenRefs)
         }
-        if (this.childern && this.childern.length > 0) {
-            childernCards = this.childern
+        if (this.children && this.children.length > 0) {
+            childrenCards = this.children
         }
 
-        return childernCards
+        return childrenCards
     }
 
 }

@@ -47,10 +47,10 @@ for (var item of sampleData) {
         const filteredSamples = sampleData.filter(parentCandidate => item.parentRef === parentCandidate.innerRef)
         if (filteredSamples.length) {
             item.card.parent = filteredSamples[0].card
-            if (! item.card.parent.childern) {
-                item.card.parent.childern = []
+            if (! item.card.parent.children) {
+                item.card.parent.children = []
             }
-            item.card.parent.childern.push(item.card)
+            item.card.parent.children.push(item.card)
         }
     }
 }

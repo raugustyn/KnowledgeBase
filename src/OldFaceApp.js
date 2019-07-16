@@ -1,27 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
-
+import './OldApp.css';
+import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import "./ConsoleEnhancements"
 import componentExamples from "./ExampleItems"
-
-//https://stackoverflow.com/questions/11233498/json-stringify-without-quotes-on-properties
-/*
-function stringify(obj_from_json){
-    if(typeof obj_from_json !== "object" || Array.isArray(obj_from_json)){
-        // not an object, stringify using native function
-        return JSON.stringify(obj_from_json);
-    }
-    // Implements recursive object serialization according to JSON spec
-    // but without quotes around the keys.
-    let props = Object
-        .keys(obj_from_json)
-        .map(key => `${key}:${stringify(obj_from_json[key])}`)
-        .join(",");
-    return `{${props}}`;
-}
-*/
 
 
 class App extends Component {
@@ -29,7 +12,7 @@ class App extends Component {
     constructor() {
         super()
         this.state = {
-            activePageName: "CardsNavBar",
+            activePageName: "PreviewGallery",
             activeComponentName: null
         };
         this.pageContent = null;
@@ -45,7 +28,7 @@ class App extends Component {
 
     render() {
         const selectedExamples = componentExamples.filter(exampleData => exampleData.caption === this.state.activePageName);
-        if (selectedExamples) {
+        if (selectedExamples && selectedExamples.length > 0) {
             const example = selectedExamples[0];
             const exampleComponent = React.createElement(example.componentClass, example.props);
             console.error("Fix the problem with code example!!!")
@@ -56,7 +39,7 @@ class App extends Component {
             this.pageContent = (
                 <div>
                     <h2>{example.caption}</h2>
-                    <p>{example.description}</p>
+                    <ReactMarkdown source={example.description} />
 
 
                     <div className="bs-example">
@@ -73,7 +56,11 @@ class App extends Component {
 
         }
         else {
-            this.pageContent = <p>Unknown {this.state.activePageName}</p>
+            this.pageContent = (
+                <div className="alert alert-danger" role="alert">
+                    Unknown example: {this.state.activePageName}
+                </div>
+            )
         }
 
         return (

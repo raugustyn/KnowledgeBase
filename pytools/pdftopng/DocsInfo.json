@@ -1,0 +1,33 @@
+{
+  "A System Approach to Automated Map Generalization": {
+    "date": "April 2015",
+    "authors": ["Weiping Yang", "Christopher M. Gold"],
+    "url": "https://www.researchgate.net/publication/249911390_A_System_Approach_to_Automated_Map_Generalization"
+  },
+
+  "Automated Cartographic Generalization in Italy": {
+    "date": "August 2011",
+    "authors": ["Sandro Savino", "M. Rumor", "S. Congiu"]
+  },
+
+  "Cartographic generalization yesterday and today": {
+    "date": "March 2017",
+    "authors": ["Paweł Cebrykow"]
+  },
+
+  "Selection of Roads for Cartographic Generalization": {
+    "date": "January 2008",
+    "authors": ["Fatih Gülgen", "T Gokgoz"]
+  },
+
+  "Cartographic Generalization: An implmented Automation": {
+    "date": "October 2010",
+    "authors": ["Said Kharbouche"],
+    "url": "https://www.researchgate.net/publication/320858644_Cartographic_Generalization_An_implmented_Automation"
+  },
+
+  "A Review of Map and Spatial Database Generalization for Developing a Generalization Framework": {
+    "authors": ["Sharon Kazemi", "Samsung Lim", "Chris Rizos"]
+  }
+
+}

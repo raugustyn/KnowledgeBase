@@ -16,6 +16,8 @@ export default class CheckListPanel extends Component {
     }
 
     toggleItem(ref, index) {
+        console.log("Calling checkbox onChange " + Date.now())
+
         let newItems = this.state.items.map(function(checkListItem, itemIndex) {
             const itemChecked = (index === itemIndex) ? ref.current.checked : checkListItem[1]
 
@@ -26,6 +28,7 @@ export default class CheckListPanel extends Component {
     }
 
     render () {
+        console.log("Rendering checklistpanel...")
         this.rowKey = 0
         let checkItems, content, addItemButton
         if (this.state.items) {

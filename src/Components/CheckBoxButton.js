@@ -12,14 +12,15 @@ export default class CheckBoxButton extends GlyphIcon {
     }
 
     toggleChecked() {
-        if (this.props.onChangeChecked) (
-            this.props.onChangeChecked(this, !this.state.checked)
-        )
+        if (this.props.onChange) {
+            this.props.onChange(this, !this.state.checked)
+        }
         this.setState({ checked: !this.state.checked })
     }
 
 
     render() {
+        //console.log("Rendering checkbox..." + Date.now())
         const checkBoxChars = { true: "\uE913", false: "\uE914"}
         const charToBeDisplyed = checkBoxChars[this.state.checked]
         let paragraphStyle = { cursor: "pointer" }

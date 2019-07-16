@@ -9,15 +9,19 @@ import { KanbanBoard, KanbanSlot, KanbanCard } from "./Boards/Kanban"
 import BaderBoard from "./Boards/BaderBoard/BaderBoard.js";
 import Login from "./Components/Users/Login"
 import "./ConsoleEnhancements"
-import BadgesPanel from "./Components/BadgesPanel"
+import { BadgesPanel } from "./Components/Badges"
 import Card from "./Cards/Card"
 import Discussion from "./Cards/Discussion"
 import CardCollectionComponent from "./Cards/CardCollections/CardCollectionComponent"
 import cardDatabase from "./Cards/CardDatabase"
 import CheckListPanel from "./Components/CheckListPanel"
 import CheckBoxButton from "./Components/CheckBoxButton"
-import CardsNavBar from "./Cards/CardCollections/CardsNavBar"
-import AcorrdionOutline from "./Components/AcorrdionOutline"
+import csvReader from "./Boards/BaderBoard/csvreader"
+import { NoteEditor } from "./Components/NoteEditor"
+import PreviewGallery from "./Boards/PreviewGallery/PreviewGallery"
+import galleryItems from "./Boards/PreviewGallery/data"
+//import CardsNavBar from "./Cards/CardCollections/CardsNavBar"
+//import AcorrdionOutline from "./Components/AcorrdionOutline"
 
 
 const discussionExample = [
@@ -178,10 +182,14 @@ const componentExamples = [
     {
         caption: "BadgesPanel",
         componentClass: BadgesPanel,
-        description: "This component is BadgesPanel.",
+        description: "BadgesPanel shows badges list.\n\n" +
+            "### Simplified badges on information bar\n" +
+            "- each badge has different color and caption.\n" +
+            "- badge click expands/collapses showing description",
         props: {
             badges: ['Operátor', 'Strukturální vzor', 'Situation', 'Rule'],
-            showCaption: true
+            showCaption: true,
+            showAddButton: false
         }
     },
     {
@@ -195,7 +203,7 @@ const componentExamples = [
                     "\n" +
                     "Pozn.: Vyjádření situace kartografickými znaky po odstranění kolize ovlivní také kresbu liniových objektů terénního reliéfu - vrstevnice.",
                     discussionExample,
-                    ['Operátor', 'Strukturální vzor', 'Rule']
+                    ['Operátor', 'Strukturální vzor']
                 )
         }
     },
@@ -219,7 +227,7 @@ const componentExamples = [
         caption: "Samples",
         componentClass: CardEditor,
         props: {
-            card: cardDatabase.getCardByRef("/SoftwareLibraries/WebGen")
+            card: cardDatabase.getCardByRef("/SoftwareLibraries/WebGen/WebGen.Operator")
         }
     },
     {
@@ -244,6 +252,39 @@ const componentExamples = [
         }
     },
     {
+        caption: "NoteEditor",
+        componentClass: NoteEditor,
+        props: { }
+    },
+    {
+        caption: "PreviewGallery",
+        componentClass: PreviewGallery,
+        props: {
+            items: galleryItems
+        }
+    },
+    {
+        caption: "MindMap CSV as BaderBoard",
+        componentClass: csvReader,
+        props: { }
+    },
+    {
+        caption: "KnowledgeBase",
+        componentClass: CardEditor,
+        multilineProps: true,
+        description: "This is very basic card information. Each card is identified by it's identifier. It has a caption and might have description as well.",
+        props: {
+            card : new Card(345, "Odsun náspu a zářezu od cesty",
+                "V části průběhu liniového prvku kategorie **Komunikace dochází** k souběžnému, [nesymetrickému]() průběhu dvou celých _liniových_ objektů různých typů téže kategorie Terénní reliéf. Prostým vyjádřením průběhů kartografickými znaky, při čemž prioritní objekt komunikací nebude modifikován, by došlo ke kolizím: - čárky smluvené značky zářezu by se dotýkaly nebo překrývaly se značkou lesní cesty a hrana náspu by byla ke značce lesní cesty blíže, než je povolený limit.\n" +
+                    "\n" +
+                    "Pozn.: Vyjádření situace kartografickými znaky po odstranění kolize ovlivní také kresbu liniových objektů terénního reliéfu - vrstevnice.",
+                    discussionExample,
+                    ['Operátor', 'Strukturální vzor', 'Rule']
+                )
+        }
+    }
+    /*
+    {
         caption: "CardsNavBar",
         componentClass: CardsNavBar,
         props: {
@@ -254,7 +295,7 @@ const componentExamples = [
         caption: "AcorrdionOutline",
         componentClass: AcorrdionOutline,
         props: { }
-    }
+    }*/
 
 ];
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-class ImagePreview extends Component {
+export default class ImagePreview extends Component {
+
   render() {
     return (
         <div className="imageContainer">
@@ -14,6 +15,5 @@ class ImagePreview extends Component {
         </div>
     )
   }
-}
 
-export default ImagePreview;
+}

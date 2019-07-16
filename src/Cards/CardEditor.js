@@ -6,8 +6,8 @@ import DescriptionEditor from "./DescriptionEditor.js"
 import CardNameEditor from "./CardNameEditor";
 import PersonFaceComponent from "../Components/Users/PersonFaceComponent.js";
 import SectionsMenuComponent from "./SectionsMenu"
-import BadgesPanel from "../Components/BadgesPanel"
-import ChildernsNavBar from "./ChildernsNavBar"
+import { BadgesPanel } from "../Components/Badges"
+import ChildrenNavBar from "./ChildrenNavBar"
 import GlyphIcon from "../Components/GlyphIcons"
 import CheckListPanel from "../Components/CheckListPanel"
 
@@ -79,30 +79,30 @@ class CardComponent extends Component {
         return checkLists
     }
 
-    renderChildernCards() {
-        let childernCards
-        let childern
+    renderchildrenCards() {
+        let childrenCards
+        let children
 
-        if (this.state.card.childernRefs && this.state.card.childernRefs.length > 0) {
-            childernCards = cards.childernRefsToChildern(this.state.card.childernRefs)
+        if (this.state.card.childrenRefs && this.state.card.childrenRefs.length > 0) {
+            childrenCards = cards.childrenRefsTochildren(this.state.card.childrenRefs)
         }
-        if (this.state.card.childern && this.state.card.childern.length > 0) {
-            childernCards = this.state.card.childern
+        if (this.state.card.children && this.state.card.children.length > 0) {
+            childrenCards = this.state.card.children
         }
-        if (childernCards) {
-            console.log("childernCards:", childernCards)
-            childern = (
+        if (childrenCards) {
+            console.log("childrenCards:", childrenCards)
+            children = (
                 <tr key={this.getRowKey()}>
                     <td></td>
                     <td>
-                        <h1>Childern</h1>
-                        {childernCards.map((childCard, index) => <div key={index}><a href="#" onClick={this.switchToAnotherCard.bind(this, childCard)}> {childCard.caption}</a></div> )}
+                        <h1>children</h1>
+                        {childrenCards.map((childCard, index) => <div key={index}><a href="#" onClick={this.switchToAnotherCard.bind(this, childCard)}> {childCard.caption}</a></div> )}
                     </td>
                 </tr>
             )
         }
 
-        return childern
+        return children
     }
 
     render()
@@ -121,14 +121,14 @@ class CardComponent extends Component {
                         <GlyphIcon  charToBeDisplyed="\uE937"/>
                     </td>
                     <td>
-                        <BadgesPanel showCaption="false" badges={this.state.card.labels} />
+                        <BadgesPanel showLabels={true} showAddButton={true} badges={this.state.card.labels} />
                     </td>
                 </tr>
             )
         }
 
 
-        let childern = this.renderChildernCards()
+        let children = this.renderchildrenCards()
 
         if (this.state.showDetails) {
             discussionsHeader = <tr>
@@ -178,7 +178,7 @@ class CardComponent extends Component {
                                     </td>
                                 </tr>
                                 {checkLists.map(item => item)}
-                                {childern}
+                                {children}
                                 {discussionsHeader}
                                 {details}
                                 </tbody>
@@ -192,7 +192,7 @@ class CardComponent extends Component {
                                 switchCheckLists={this.switchCheckLists.bind(this)}
                             />
 
-                            <ChildernsNavBar card={this.state.card}/>
+                            <ChildrenNavBar card={this.state.card}/>
                         </td>
                     </tr>
                     </tbody>

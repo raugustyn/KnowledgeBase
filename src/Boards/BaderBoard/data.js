@@ -7,12 +7,12 @@ function addItems(parent, items)
     items.forEach( function (item, index) {
         let itemCard = new Card(parent.ref + "/" + index, item.caption, item.description)
         result.push(itemCard)
-        if (item.getChildern && item.getChildern.length > 0) {
-            addItems(itemCard, item.getChildern)
+        if (item.getchildren && item.getchildren.length > 0) {
+            addItems(itemCard, item.getchildren)
         }
     })
     if (parent && result.length) {
-        parent.childern = result
+        parent.children = result
     }
     return result
 }
@@ -20,14 +20,14 @@ function addItems(parent, items)
 let items = [
     {
         caption: "Situations",
-        getChildern: [
+        getchildren: [
             {
                 caption: "Terénní Reliéf",
-                getChildern: [
+                getchildren: [
                     {
                         caption: "Missing Shape Population",
                         description: "Missing Shape Population",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "01_MissingPopulation",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/01_MissingPopulation.png"
@@ -37,7 +37,7 @@ let items = [
                     {
                         caption: "Displacement and Shortening",
                         description: "One element [displaced](/Displaced) and second shortened",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "02_DisplacementAndShortening",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/02_DisplacementAndShortening.png"
@@ -47,7 +47,7 @@ let items = [
                     {
                         caption: "Displacement From Itself",
                         description: "Element displaced from itself",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "03_DisplacementFromItself",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/03_DisplacementFromItself.png"
@@ -57,7 +57,7 @@ let items = [
                     {
                         caption: "Shift",
                         description: "Element displace by shift",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "04_Shift",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/04_Shift.png"
@@ -66,7 +66,7 @@ let items = [
                     },
                     {
                         caption: "Displacement no Population",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "05_DisplacementNoPopulation",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/05_DisplacementNoPopulation.png"
@@ -75,7 +75,7 @@ let items = [
                     },
                     {
                         caption: "06_DoubleCoalescence",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "06_DoubleCoalescence",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/06_DoubleCoalescence.png"
@@ -84,7 +84,7 @@ let items = [
                     },
                     {
                         caption: "07_SignificantShapeShift",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "07_SignificantShapeShift",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/07_SignificantShapeShift.png"
@@ -93,7 +93,7 @@ let items = [
                     },
                     {
                         caption: "08_CoalescentAndPropagation",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "08_CoalescentAndPropagation",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/08_CoalescentAndPropagation.png"
@@ -102,7 +102,7 @@ let items = [
                     },
                     {
                         caption: "09_PartialShiftAndShapeShortening",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "09_PartialShiftAndShapeShortening",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/09_PartialShiftAndShapeShortening.png"
@@ -111,7 +111,7 @@ let items = [
                     },
                     {
                         caption: "10_NoShiftCoalescence",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "10_NoShiftCoalescence",
                                 imagecaption: "/Samples/Situations/01_TerrainRelief/10_NoShiftCoalescence.png"
@@ -126,7 +126,7 @@ let items = [
     },
     {
         caption: "Constraint Context",
-        getChildern: [
+        getchildren: [
             {
                 caption: "Element Rendering Context",
                 description: "Problem can be solved by minor rendering changes",
@@ -134,7 +134,7 @@ let items = [
             },
             {
                 caption: "Elements Context",
-                getChildern: [
+                getchildren: [
                     {
                         caption: "Two Elements Context",
                         description: "Most common context interacting two elements",
@@ -150,7 +150,7 @@ let items = [
     },
     {
         caption: "Operators Application Strategy",
-                getChildern: [
+                getchildren: [
                     {
                         caption: "Batch",
                         imagecaption: "./img/ActionPlanIcon.png",
@@ -162,7 +162,7 @@ let items = [
                     },
                     {
                         caption: "Elements Processing",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "Sequential",
                                 imagecaption: "./img/SequentialIcon.png"
@@ -170,10 +170,10 @@ let items = [
                             {
                                 caption: "In Cluster",
                                 imagecaption: "./img/ClusterIcon.png",
-                                getChildern: [
+                                getchildren: [
                                     {
                                         caption: "Predefined",
-                                        getChildern: [
+                                        getchildren: [
                                             {
                                                 caption: "Road and River Network"
                                             }
@@ -181,7 +181,7 @@ let items = [
                                     },
                                     {
                                         caption: "Context",
-                                        getChildern: [
+                                        getchildren: [
                                             {caption: "Spatial"}
                                         ]
                                     }
@@ -202,10 +202,10 @@ let items = [
         items : [
     {
         caption: "Attribute Transformation",
-        getChildern: [
+        getchildren: [
             {
                 caption: "Clasification",
-                getChildern: [
+                getchildren: [
                     { caption: "Thematic Selection" },
                     { caption: "Thematic Aggregation" }
                 ]
@@ -214,13 +214,13 @@ let items = [
     },
     {
         caption: "Spatial Transformation",
-        getChildern: [
+        getchildren: [
             {
                 caption: "Individual Objects",
-                getChildern: [
+                getchildren: [
                     {
                         caption: "Simplification",
-                        getChildern: [
+                        getchildren: [
                             { caption: "Weeding" },
                             { caption: "Unrestricted Simplification" }
                         ]
@@ -229,17 +229,17 @@ let items = [
                     {
                         caption: "Enhancement",
                         description: "The shape and size of a feature may need to be enhanced to meet the legibility requirements of a map",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "with regard to geometric constraints",
-                                getChildern: [
+                                getchildren: [
                                     { caption: "Enlargement" },
                                     { caption: "Exaggeration (Caricature)" }
                                 ]
                             },
                             {
                                 caption: "with regard to semantic constraints",
-                                getChildern: [
+                                getchildren: [
                                     { caption: "Smoothing" },
                                     { caption: "Fractalization" },
                                     { caption: "Rectification/Squaring" }
@@ -251,20 +251,20 @@ let items = [
             },
             {
                 caption: "Individual objects or Set of objects",
-                getChildern: [
+                getchildren: [
                     {
                         caption: "Selection/Elimination",
-                        getChildern: [
+                        getchildren: [
                             { caption: "Selection" },
                             { caption: "Elimination" }
                         ]
                     },
                     {
                         caption: "Displacement",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "Kontext kolize",
-                                getChildern: [
+                                getchildren: [
                                     { caption: "Od jiného elementu" },
                                     { caption: "Od jiných elementů" },
                                     { caption: "Od sama sebe"}
@@ -272,18 +272,18 @@ let items = [
                             },
             {
                 caption: "Terénní Reliéf",
-                getChildern: [
+                getchildren: [
                     { caption: "Zkrácení" },
                     {
                         caption: "Odsun",
-                        getChildern: [
+                        getchildren: [
                             { caption: "Od jiného elementu" },
                             { caption: "Od sama sebe"}
                         ]
                     },
                     {
                         caption: "Paralelizace",
-                        getChildern: [
+                        getchildren: [
                             { caption: "Celý element" },
                             { caption: "Část elementu" }
                         ]
@@ -299,16 +299,16 @@ let items = [
             },
             {
                 caption: "Set of objects",
-                getChildern: [
+                getchildren: [
                     {
                         caption: "Aggregation",
-                        getChildern: [
+                        getchildren: [
                             {
                                 caption: "Join features to 1 object",
-                                getChildern: [
+                                getchildren: [
                                     {
                                         caption: "Amalgamation",
-                                        getChildern: [
+                                        getchildren: [
                                             { caption: "Fusion" },
                                             { caption: "Merge" }
                                         ]
@@ -318,7 +318,7 @@ let items = [
                             },
                             {
                                 caption: "Join feature to several objects",
-                                getChildern: [
+                                getchildren: [
                                     { caption: "Typification"}
                                 ]
                             }
@@ -335,6 +335,6 @@ let items = [
 
 let generalizationCards = new Card("Generalization", "Generalization")
 addItems(generalizationCards, items)
-items = generalizationCards.getChildern()
+items = generalizationCards.getchildren()
 
 export default items
