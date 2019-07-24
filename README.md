@@ -1,4 +1,5 @@
 # REST Card Server
 
 ## Run Server
-node src/index.js
+cd src
+node cardserver.js
