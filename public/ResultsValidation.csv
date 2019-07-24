@@ -1,105 +1,0 @@
-Id,Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Text Area 1
-1,Page,,,,,,,,,Bubble Map
-2,Text,Standard,1,,104,,,,,Results Validation
-3,Text,Standard,1,,104,,,,,"Radek Augustýn  |  June 12, 2019"
-4,Circle,Mind Mapping,1,,,,,,,Results Validation
-5,Circle,Mind Mapping,1,,,,,,,Large Sample Area
-6,Circle,Mind Mapping,1,,,,,,,Samples
-7,Circle,Mind Mapping,1,,,,,,,Typycally Representative Map Sheets
-8,Circle,Mind Mapping,1,,,,,,,Managers Like It
-9,Circle,Mind Mapping,1,,,,,,,Difficult to Identify Representative Area
-10,Circle,Mind Mapping,1,,,,,,,It is used in New Mapping Design
-11,Circle,Mind Mapping,1,,,,,,,They Can Bring It to Customers or Higher Managers
-12,Circle,Mind Mapping,1,,,,,,,Can be used to show ability to run in a complex and on larger data
-13,Circle,Mind Mapping,1,,,,,,,Random
-14,Circle,Mind Mapping,1,,,,,,,Representative Example
-15,Circle,Mind Mapping,1,,,,,,,Isolated
-16,Circle,Mind Mapping,1,,,,,,,Multiple Requirements
-17,Circle,Mind Mapping,1,,,,,,,Drop to Isolated Examples
-18,Circle,Mind Mapping,1,,,,,,,Might be duplicity
-19,Circle,Mind Mapping,1,,,,,,,Duplicity Example
-20,Circle,Mind Mapping,1,,,,,,,Evaluation
-21,Circle,Mind Mapping,1,,,,,,,Manual (Visual)
-22,Circle,Mind Mapping,1,,,,,,,Coverage
-23,Circle,Mind Mapping,1,,,,,,,Automatic
-24,Circle,Mind Mapping,1,,,,,,,Full Phenomenon Coverage
-25,Circle,Mind Mapping,1,,,,,,,Standardized
-26,Circle,Mind Mapping,1,,,,,,,Fit to the Use Case
-27,Circle,Mind Mapping,1,,,,,,,Test Data
-28,Circle,Mind Mapping,1,,,,,,,Source-Target Pair
-29,Circle,Mind Mapping,1,,,,,,,Known in Design Phase
-30,Circle,Mind Mapping,1,,,,,,,Acquired After Implementation
-31,Circle,Mind Mapping,1,,,,,,,Output Context Geodata- base Content
-32,Circle,Mind Mapping,1,,,,,,,Expected Results
-33,Circle,Mind Mapping,1,,,,,,,Source Data
-34,Circle,Mind Mapping,1,,,,,,,Settings
-35,Circle,Mind Mapping,1,,,,,,,Is this context of a given Structural Pattern???
-36,Circle,Mind Mapping,1,,,,,,,Use Case Izolation
-37,Circle,Mind Mapping,1,,,,,,,In Requirements Capture hase
-38,Circle,Mind Mapping,1,,,,,,,In Implementation Evaluation Phase
-39,Circle,Mind Mapping,1,,,,,,,Exactly the same
-40,Circle,Mind Mapping,1,,,,,,,Check Number of Features
-41,Circle,Mind Mapping,1,,,,,,,Is pattern X found?
-42,Circle,Mind Mapping,1,,,,,,,Are these conflicts found?
-43,Circle,Mind Mapping,1,,,,,,,Constraints Evaluation (Happenies/Cost) Values
-44,Circle,Mind Mapping,1,,,,,,,Isolated Data
-45,Circle,Mind Mapping,1,,,,,,,Derived Broadert Context
-46,Circle,Mind Mapping,1,,,,,,,Extraction Type
-47,Circle,Mind Mapping,1,,,,,,,Manual
-48,Circle,Mind Mapping,1,,,,,,,Automatic
-49,Circle,Mind Mapping,1,,,,,,,Full Mapping Coverage
-50,Circle,Mind Mapping,1,,,,,,,Requires Production
-51,Circle,Mind Mapping,1,,,,,,,Take Huge Effort
-52,Circle,Mind Mapping,1,,,,,,,"In automated process cartographer doesn't inspect object model, just representation"
-53,Circle,Mind Mapping,1,,,,,,,With Last Edition
-54,Line,,1,,104,2,2,None,None,
-55,Line,,1,,,22,5,None,None,
-56,Line,,1,,,22,6,None,None,
-57,Line,,1,,,5,7,None,None,
-58,Line,,1,,,7,8,None,None,
-59,Line,,1,,,5,9,None,None,
-60,Line,,1,,,8,10,None,None,
-61,Line,,1,,,8,11,None,None,
-62,Line,,1,,,5,12,None,None,
-63,Line,,1,,,6,13,None,None,
-64,Line,,1,,,6,14,None,None,
-65,Line,,1,,,6,15,None,None,
-66,Line,,1,,,6,16,None,None,
-67,Line,,1,,,16,17,None,None,
-68,Line,,1,,,13,18,None,None,
-69,Line,,1,,,6,19,None,None,
-70,Line,,1,,,4,20,None,None,
-71,Line,,1,,,20,21,None,None,
-72,Line,,1,,,4,22,None,None,
-73,Line,,1,,,20,23,None,None,
-74,Line,,1,,,22,24,None,None,
-75,Line,,1,,,23,25,None,None,
-76,Line,,1,,,23,26,None,None,
-77,Line,,1,,,23,27,None,None,
-78,Line,,1,,,32,28,None,None,
-79,Line,,1,,,28,29,None,None,
-80,Line,,1,,,28,30,None,None,
-81,Line,,1,,,25,31,None,None,
-82,Line,,1,,,27,32,None,None,
-83,Line,,1,,,27,33,None,None,
-84,Line,,1,,,27,34,None,None,
-85,Line,,1,,,32,35,None,None,
-86,Line,,1,,,23,36,None,None,
-87,Line,,1,,,21,37,None,None,
-88,Line,,1,,,21,38,None,None,
-89,Line,,1,,,31,39,None,None,
-90,Line,,1,,,31,40,None,None,
-91,Line,,1,,,25,41,None,None,
-92,Line,,1,,,25,42,None,None,
-93,Line,,1,,,25,43,None,None,
-94,Line,,1,,,27,44,None,None,
-95,Line,,1,,,44,45,None,None,
-96,Line,,1,,,27,46,None,None,
-97,Line,,1,,,46,47,None,None,
-98,Line,,1,,,46,48,None,None,
-99,Line,,1,,,22,49,None,None,
-100,Line,,1,,,49,50,None,None,
-101,Line,,1,,,49,51,None,None,
-102,Line,,1,,,49,52,None,None,
-103,Line,,1,,,23,53,None,None,
-104,Group 1,,1,,,,,,,
