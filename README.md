@@ -3,6 +3,6 @@
 [develop](https://github.com/raugustyn/KnowledgeBase/tree/develop)
 
 ## Functionality Branches
-[Components Heap](/tree/componentsheap)
+[Components Heap](https://github.com/raugustyn/KnowledgeBase/tree/componentsheap)
 
-[Generalization Features](/tree/generalizationfeatures)
+[Generalization Features](https://github.com/raugustyn/KnowledgeBase/tree/generalizationfeatures)
