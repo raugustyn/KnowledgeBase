@@ -1,6 +1,8 @@
 # REST Card Server
 
 ## Run Server
-cd src
+```console
+KnowledgeBase> cd src
 
-node cardserver.js
+KnowledgeBase\src> node cardserver.js
+```
