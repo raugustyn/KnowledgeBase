@@ -1,8 +1,4 @@
-# Generalization Knowledge Base
+# REST Card Server
 
-[develop](https://github.com/raugustyn/KnowledgeBase/tree/develop)
-
-## Functionality Branches
-[Components Heap](https://github.com/raugustyn/KnowledgeBase/tree/componentsheap)
-
-[Generalization Features](https://github.com/raugustyn/KnowledgeBase/tree/generalizationfeatures)
+## Run Server
+node src/index.js
