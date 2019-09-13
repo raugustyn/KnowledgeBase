@@ -1,4 +1,5 @@
+import MapSymbols from './MapSymbols';
 import Dashboard from './Dashboard';
 
-export { Dashboard };
+export { MapSymbols, Dashboard };
 

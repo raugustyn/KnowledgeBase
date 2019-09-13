@@ -260,38 +260,6 @@ const cardChartOpts4 = {
   },
 };
 
-const cardChartData5 = {
-  labels: ['Examples', 'b', '', '', '', '', '', ''],
-  datasets: [
-    {
-      label: '',
-      backgroundColor: 'rgba(0,255,255,.3)',
-      borderColor: 'transparent',
-      data: [5, 41, 40, 25, 16, 6, 20, 36],
-    },
-  ],
-};
-const cardChartOpts5 = {
-  tooltips: {
-    enabled: false,
-    custom: CustomTooltips
-  },
-  maintainAspectRatio: false,
-  legend: {
-    display: true,
-  },
-  scales: {
-    xAxes: [
-      {
-        display: false,
-        barPercentage: 0.6,
-      }],
-    yAxes: [
-      {
-        display: false,
-      }],
-  },
-};
 
 
 // Main Chart
@@ -456,7 +424,6 @@ export default class MapSymbols extends Component {
 
     return (
       <div className="animated fadeIn">
-
         <Row>
           <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-info">
@@ -474,11 +441,35 @@ export default class MapSymbols extends Component {
                     </DropdownMenu>
                   </ButtonDropdown>
                 </ButtonGroup>
-                <div className="text-value">826</div>
-                <div>Features Identification</div>
+                <div className="text-value">9.823</div>
+                <div>Rules</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
+              </div>
+            </Card>
+          </Col>
+
+          <Col xs="12" sm="6" lg="3">
+            <Card className="text-white bg-primary">
+              <CardBody className="pb-0">
+                <ButtonGroup className="float-right">
+                  <Dropdown id='card2' isOpen={this.state.card2} toggle={() => { this.setState({ card2: !this.state.card2 }); }}>
+                    <DropdownToggle className="p-0" color="transparent">
+                      <i className="icon-location-pin"></i>
+                    </DropdownToggle>
+                    <DropdownMenu right>
+                      <DropdownItem>Action</DropdownItem>
+                      <DropdownItem>Another action</DropdownItem>
+                      <DropdownItem>Something else here</DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                </ButtonGroup>
+                <div className="text-value">9.823</div>
+                <div>Constraints</div>
+              </CardBody>
+              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
+                <Line data={cardChartData1} options={cardChartOpts1} height={70} />
               </div>
             </Card>
           </Col>
@@ -498,8 +489,8 @@ export default class MapSymbols extends Component {
                     </DropdownMenu>
                   </Dropdown>
                 </ButtonGroup>
-                <div className="text-value">64</div>
-                <div>Proof of Concept</div>
+                <div className="text-value">9.823</div>
+                <div>Patterns</div>
               </CardBody>
               <div className="chart-wrapper" style={{ height: '70px' }}>
                 <Line data={cardChartData3} options={cardChartOpts3} height={70} />
@@ -522,51 +513,14 @@ export default class MapSymbols extends Component {
                     </DropdownMenu>
                   </ButtonDropdown>
                 </ButtonGroup>
-                <div className="text-value">15</div>
-                <div>Prototype</div>
+                <div className="text-value">9.823</div>
+                <div>Actions</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Bar data={cardChartData4} options={cardChartOpts4} height={70} />
               </div>
             </Card>
           </Col>
-
-          <Col xs="12" sm="6" lg="3">
-            <Card className="text-white bg-danger">
-              <CardBody className="pb-0">
-                <div className="text-value">5</div>
-                <div>Production</div>
-              </CardBody>
-              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
-                <Bar data={cardChartData4} options={cardChartOpts4} height={70} />
-              </div>
-            </Card>
-          </Col>
-
-          <Col xs="12" sm="6" lg="3">
-            <Card className="text-white bg-danger">
-              <CardBody className="pb-0">
-                <ButtonGroup className="float-right">
-                  <ButtonDropdown id='card4' isOpen={this.state.card4} toggle={() => { this.setState({ card4: !this.state.card4 }); }}>
-                    <DropdownToggle caret className="p-0" color="transparent">
-                      <i className="icon-settings"></i>
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                    </DropdownMenu>
-                  </ButtonDropdown>
-                </ButtonGroup>
-                <div className="text-value">4</div>
-                <div>Acceptation</div>
-              </CardBody>
-              <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
-                <Bar data={cardChartData5} options={cardChartOpts4} height={70} />
-              </div>
-            </Card>
-          </Col>
-
         </Row>
         <Row>
           <Col>
@@ -574,7 +528,7 @@ export default class MapSymbols extends Component {
               <CardBody>
                 <Row>
                   <Col sm="5">
-                    <CardTitle className="mb-0">Features</CardTitle>
+                    <CardTitle className="mb-0">Map Symbols</CardTitle>
                     <div className="small text-muted">November 2015</div>
                   </Col>
                   <Col sm="7" className="d-none d-sm-inline-block">
@@ -595,29 +549,24 @@ export default class MapSymbols extends Component {
               <CardFooter>
                 <Row className="text-center">
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Features Identification</div>
-                    <strong>826 Features (12%)</strong>
-                    <Progress className="progress-xs mt-2" color="danger" value="12" />
+                    <div className="text-muted">Rules</div>
+                    <strong>29.703 Users (40%)</strong>
+                    <Progress className="progress-xs mt-2" color="success" value="40" />
+                  </Col>
+                  <Col sm={12} md className="mb-sm-2 mb-0 d-md-down-none">
+                    <div className="text-muted">Constraints</div>
+                    <strong>24.093 Users (20%)</strong>
+                    <Progress className="progress-xs mt-2" color="info" value="20" />
                   </Col>
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Proof of Concept</div>
-                    <strong>64 Proofed (10%)</strong>
-                    <Progress className="progress-xs mt-2" color="warning" value="10" />
+                    <div className="text-muted">Patterns</div>
+                    <strong>78.706 Views (60%)</strong>
+                    <Progress className="progress-xs mt-2" color="warning" value="60" />
                   </Col>
                   <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Prototype</div>
-                    <strong>15 Prototyped (95%)</strong>
-                    <Progress className="progress-xs mt-2" color="success" value="95" />
-                  </Col>
-                  <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Production</div>
-                    <strong>5 Produced (80%)</strong>
-                    <Progress className="progress-xs mt-2" color="success" value="80" />
-                  </Col>
-                  <Col sm={12} md className="mb-sm-2 mb-0">
-                    <div className="text-muted">Acceptation</div>
-                    <strong>4 Accepted (95%)</strong>
-                    <Progress className="progress-xs mt-2" color="success" value="95" />
+                    <div className="text-muted">Actions</div>
+                    <strong>22.123 Users (80%)</strong>
+                    <Progress className="progress-xs mt-2" color="danger" value="80" />
                   </Col>
                 </Row>
               </CardFooter>
@@ -626,6 +575,27 @@ export default class MapSymbols extends Component {
         </Row>
 
 
+        <Row>
+          <Col>
+            <Card>
+                <Table hover responsive className="table-outline mb-0 d-none d-sm-table">
+                  <thead className="thead-light">
+                  <tr>
+                    <th className="text-center"><i className="icon-people"></i></th>
+                    <th>Symbol Name</th>
+                    <th className="text-center">Theme</th>
+                    <th>Usage</th>
+                    <th className="text-center">Payment Method</th>
+                    <th>Activity</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  { mapSymbols.map((symbol, index) => this.mapSymbolRow(symbol, index))}
+                  </tbody>
+                </Table>
+            </Card>
+          </Col>
+        </Row>
       </div>
     );
   }
