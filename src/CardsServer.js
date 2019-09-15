@@ -1,19 +1,20 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const fs = require('fs')
-const dotenv = require('dotenv');
-dotenv.config({ path: "../"});
+//const dotenv = require('dotenv');
+//dotenv.config({ path: "../"});
 
-
+require('dotenv').config();
 const config = {
-  port: 3000,
-  dataPath : __dirname + "\\cards\\"
+  port: process.env.PORT || 3000,
+  dataPath : process.env.dataPath || __dirname + "\\cards\\"
 }
+
 
 /* ***********************************************************
  *
  * HELPERS
- * 
+ *
  * ********************************************************* */
 function leftPad(num, length, padString="0") {
   var str = num.toString();
@@ -24,7 +25,7 @@ function leftPad(num, length, padString="0") {
 
 function saveCard(card, id=undefined)
 {
-  let fileName 
+  let fileName
 
   console.log("Saving Card")
   if (id in cardFileNames) {
@@ -44,6 +45,7 @@ function saveCard(card, id=undefined)
   return id
 }
 
+
 /* ***********************************************************
  *
  * Analysing Card Database
@@ -52,19 +54,20 @@ function saveCard(card, id=undefined)
 var cardIds = []
 var cardFileNames = {}
 
-console.log("Reading cards if directory '" + config.dataPath + "'");
-fs.readdir(config.dataPath, function(err, fileNames)
-{
-  for (var i=0; i<fileNames.length; i++) {
-    var fileName = fileNames[i];
-    if (fileName.startsWith("Card_") && fileName.endsWith(".json"))  {
-      var cardId = parseInt(fileName.substring(5, fileName.length - 5))
-      cardIds.push(fileName)
-      cardFileNames[cardId] = fileName
+const readStoredCards = function () {
+  console.log("Reading cards in directory '" + config.dataPath + "'");
+  fs.readdir(config.dataPath, function (err, fileNames) {
+    for (var i = 0; i < fileNames.length; i++) {
+      var fileName = fileNames[i];
+      if (fileName.startsWith("Card_") && fileName.endsWith(".json")) {
+        var cardId = parseInt(fileName.substring(5, fileName.length - 5))
+        cardIds.push(fileName)
+        cardFileNames[cardId] = fileName
+      }
     }
-  }
-  console.log("Found " + cardIds.length + " cards.")
-});
+    console.log("Found " + cardIds.length + " cards.")
+  });
+}
 
 /* ***********************************************************
  *
@@ -79,13 +82,13 @@ const getCardById = (request, response) => {
   console.log("Requesting card #" + id)
   if (request.params.id in cardFileNames) {
     console.log("Card #" + id + " found.")
-    fs.readFile(config.dataPath + cardFileNames[id], 'utf8', function(err, data) {      
+    fs.readFile(config.dataPath + cardFileNames[id], 'utf8', function(err, data) {
       response.status(200).json(JSON.parse(data))
     });
   }
   else {
     response.status(200).json({})
-  }  
+  }
 }
 
 /* UPDATE */
@@ -118,7 +121,7 @@ const deleteCard = (request, response) => {
     const msg = "Warning: Card #" + id + " not found."
     console.log(msg)
     response.status(400).json({ msg: msg })
-  }  
+  }
 }
 
 /* ***********************************************************
@@ -126,17 +129,34 @@ const deleteCard = (request, response) => {
  * Server setup
  *
  * *********************************************************** */
-const app = express()
+const runServer = function()
+{
+  console.log("*********************************************")
+  console.log("*                                           *")
+  console.log("*  Card Server at port", config.port, "                *")
+  console.log("*                                           *")
+  console.log("*********************************************")
+  const app = express()
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true, }))
+  readStoredCards()
 
-app.get('/', (request, response) => { response.send('<p>Node.js Card Server</p>' ) })
-app.get('/cards/ids', getCardIds)
-app.get('/card/:id', getCardById)
-app.put('/card/:id', updateCard)
-app.post('/cards', createCard)
-app.delete('/card/:id', deleteCard)
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({extended: true,}))
 
-/* RUN SERVER */
-app.listen(config.port, () => { console.log(`Card server is running on port ${config.port}.`) })
+  app.get('/', (request, response) => {
+    response.send('<p>Node.js Card Server</p>')
+  })
+  app.get('/cards/ids', getCardIds)
+  app.get('/card/:id', getCardById)
+  app.put('/card/:id', updateCard)
+  app.post('/cards', createCard)
+  app.delete('/card/:id', deleteCard)
+
+  /* RUN SERVER */
+  app.listen(config.port, () => {
+    console.log(`Card server is running on port ${config.port}.`)
+  })
+}
+
+
+runServer()
