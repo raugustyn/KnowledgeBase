@@ -11,7 +11,7 @@ class UsersView extends Component {
                 <ListView
                     items={users.users}
                     renderers={{
-                        2: (item, key) => (<UserCard user={item} key={key} isClicable={true}/>)
+                        2: (item, key, levelOfDetail) => (<UserCard user={item} key={key} isClicable={true}/>)
                     }}
                 />
         )

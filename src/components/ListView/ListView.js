@@ -20,21 +20,30 @@ class ListView extends Component {
             viewStyle = keys[keys.length - 1]
         }
         this.state = {
-            viewStyle: viewStyle
+            viewStyle: viewStyle,
+            levelOfDetail: 0
         }
     }
 
     render() {
-        const { items, renderers } = this.props
-
+        const { items, renderers, levelsOfDetail, defaultDetail } = this.props
+        console.log(levelsOfDetail, defaultDetail)
         if (items && renderers) {
             const renderer = this.props.renderers[this.state.viewStyle]
             if (renderer) {
                 return (
                     <div className="ListView">
-                        <ToolBar />
+                        {levelsOfDetail ?
+                            <ToolBar
+                                levelsOfDetail={levelsOfDetail}
+                                defaultDetail={defaultDetail}
+                                onChangeViewType={(newSelection) => { this.setState({levelOfDetail: newSelection}) }}
+                            />
+                            :
+                            null
+                        }
                         <div className="Content">
-                            {items.map((item, index) => <div key={index} style={{ width: 300, margin: 15}}>{renderer(item, index)} </div>)}
+                            {items.map((item, index) => <div key={index} style={{ width: 300, margin: 15}}>{renderer(item, index, this.state.levelOfDetail)} </div>)}
                         </div>
                     </div>
                 )

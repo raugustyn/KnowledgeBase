@@ -1,5 +1,5 @@
 .ListView {
-
+    margin: 0;
 }
 
 .ListView > .Content {
@@ -17,4 +17,8 @@
     flex-wrap: wrap;
     justify-content: left;
     align-content: space-between;
+}
+
+.Toolbar {
+    background-color: white;
 }

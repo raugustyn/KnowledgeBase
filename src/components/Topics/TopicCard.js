@@ -19,11 +19,22 @@ class TopicCard extends Component {
         const topic = this.props.topic
         const openItem = topic.story.getOpenItem()
         const user = users.findUser(openItem.originator, false)
-        const lod = this.props.lod || 3
-        let previewImage
+        const lod = this.props.levelOfDetail || 0
+        let avatar, subHeader, previewImage, title
 
-        const avatar = lod > 1 ? <Avatar sx={{bgcolor: red[500]}} aria-label="recipe" src={'/Avatars/' + user.avatarImage}>{user.getInitials()}</Avatar> : null
-        let subHeader = lod > 0 ? (openItem != null ? 'opened on ' + openItem.timestamp : 'was closed on ' + topic.closedat) : null
+        title = topic.caption + ' #' + topic.uid
+        if (lod == 0) {
+            subHeader = title
+            title = null
+        }
+        else {
+            avatar = <Avatar sx={{bgcolor: red[500]}} aria-label="recipe" src={'/Avatars/' + user.avatarImage}>{user.getInitials()}</Avatar>
+        }
+
+        if (lod > 1) {
+            subHeader = openItem != null ? 'opened on ' + openItem.timestamp : 'was closed on ' + topic.closedat
+        }
+
         if (lod == 3) {
             const commentsCount = topic.story.timeline.filter(item => item.itemType == ISSUE_TYPES.COMMENT).length
             if (commentsCount) {
@@ -43,11 +54,7 @@ class TopicCard extends Component {
         }
         return (
             <Card sx={{maxWidth: 345}}>
-                <CardHeader
-                    avatar={avatar}
-                    title={topic.caption + ' #' + topic.uid}
-                    subheader={subHeader}
-                />
+                <CardHeader avatar={avatar} title={title} subheader={subHeader} />
                 {previewImage}
             </Card>
         )

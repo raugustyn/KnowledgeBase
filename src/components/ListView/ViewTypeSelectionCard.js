@@ -30,9 +30,9 @@ export default function ViewTypeSelectionCard() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label=<ViewComfyIcon /> {...a11yProps(0)} />
-          <Tab label=<GridViewIcon /> {...a11yProps(1)} />
-          <Tab label=<TableViewIcon /> {...a11yProps(2)} />
+          <Tab fontSize="small" label=<ViewComfyIcon /> {...a11yProps(0)} />
+          <Tab fontSize="small" label=<GridViewIcon /> {...a11yProps(1)} />
+          <Tab fontSize="small" label=<TableViewIcon /> {...a11yProps(2)} />
         </Tabs>
       </Box>
     </Box>
