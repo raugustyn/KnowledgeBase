@@ -5,6 +5,9 @@ import {issues} from "../../data"
 import ViewComfyIcon from "@mui/icons-material/ViewComfy";
 import GridViewIcon from "@mui/icons-material/GridView";
 import TableViewIcon from "@mui/icons-material/TableView";
+import { CgDetailsLess, CgDetailsMore } from "react-icons/cg"
+import { BiDetail } from "react-icons/bi";
+import { ImParagraphJustify } from "react-icons/im";
 
 class Topics extends Component {
 
@@ -13,10 +16,10 @@ class Topics extends Component {
                 <ListView
                     defaultDetail={0}
                     levelsOfDetail={[
-                        <ViewComfyIcon />,
-                        <GridViewIcon />,
-                        <TableViewIcon />,
-                        <TableViewIcon />
+                        <CgDetailsLess />,
+                        <CgDetailsMore />,
+                        <BiDetail />,
+                        <ImParagraphJustify />
                     ]}
                     items={issues}
                     renderers={{
