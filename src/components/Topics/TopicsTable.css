@@ -1,0 +1,88 @@
+:root {
+    --baseBackgroundColor: #2d333b;
+    --baseBorderColor: #444c56;
+    --color-fg-muted: #768390;
+    --color-done-fg: #986ee2;
+    --color-success-fg:#57ab5a;
+}
+
+.IssuesTable {
+
+}
+
+.IssuesTable a {
+    text-decoration: none;
+}
+
+.IssuesTable .Header {
+    background-color: var(--baseBackgroundColor);
+    border-color: var(--baseBorderColor);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/*
+https://stackoverflow.com/questions/628301/css3s-border-radius-property-and-border-collapsecollapse-dont-mix-how-can-i
+ */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border-radius: 6px;
+    border-style: hidden; /* hide standard table (collapsed) border */
+    box-shadow: 0 0 0 1px #666; /* this draws the table border  */
+    color: rgb(173, 186, 199);
+}
+
+td, th {
+    border-bottom: 1px solid #444c56;
+    __border-right: 1px solid #444c56;
+    text-align: left;
+    padding: 8px;
+    background-clip: padding-box;
+}
+
+th {
+    background-color: #2d333b;
+}
+
+.color-fg-muted {
+    color: var(--color-fg-muted) !important;
+}
+
+.text-small {
+    font-size: 12px;
+}
+
+.octicon {
+    display: inline-block;
+    overflow: visible !important;
+    vertical-align: text-bottom;
+    fill: currentColor;
+    vertical-align: text-bottom;
+    width: 16px;
+    height: 16px;
+}
+
+.closed.octicon {
+    color: var(--color-done-fg);
+}
+
+.open.octicon {
+    color: var(--color-success-fg);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 600 !important;
+}
+
+.Link--primary {
+    color: var(--color-fg-default) !important;
+}
+
+.Link--muted {
+    color: var(--color-fg-muted) !important;
+}

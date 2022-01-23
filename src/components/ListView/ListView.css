@@ -1,0 +1,20 @@
+.ListView {
+
+}
+
+.ListView > .Content {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content: space-between;
+}
+
+.ListView > .Toolbar {
+    padding-left: 15px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-content: space-between;
+}

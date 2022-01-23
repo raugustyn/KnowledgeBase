@@ -1,0 +1,12 @@
+.lh-condensed {
+    line-height: 1.25 !important;
+}
+
+.Summary {
+    border-bottom: rgb(68, 76, 86) 1px solid;
+    padding-bottom: 8px;
+}
+
+.Summary h1 {
+    font-size: 32px;
+}
