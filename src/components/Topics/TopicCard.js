@@ -70,6 +70,7 @@ class TopicCard extends Component {
 addRenderer(
     Issue.prototype,
     'Topic',
+    (item, key, levelOfDetail) => (<TopicCard topic={item} key={key} isClicable={true} levelOfDetail={levelOfDetail}/>),
     [
         <CgDetailsLess/>,
         <CgDetailsMore/>,
@@ -77,8 +78,7 @@ addRenderer(
         <ImParagraphJustify/>,
         <BsTable/>
     ],
-    1,
-    (item, key, levelOfDetail) => (<TopicCard topic={item} key={key} isClicable={true} levelOfDetail={levelOfDetail}/>)
+    1
 )
 
-export default TopicCard;
+export default TopicCard

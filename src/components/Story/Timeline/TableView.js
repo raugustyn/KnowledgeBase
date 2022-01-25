@@ -8,12 +8,13 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import UserLink from "../../Users/UserLink"
 
+
 export default function TableView(props) {
 
     const story = props.story
     return (
          <div className="TableView">
-            <h2>Story</h2>
+            <h2>Story as TableView</h2>
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 650}} size="small" aria-label="a dense table">
                     <TableHead>

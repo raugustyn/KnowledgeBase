@@ -46,8 +46,6 @@ class UserCard extends Component {
 addRenderer(
     User.prototype,
     'User',
-    [],
-    0,
     (item, key, levelOfDetail) => (<UserCard user={item} key={key} isClicable={true}/>)
 )
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import TimeLineRow from "../../StoryItem/TimeLineRow"
 
 class TimelineView extends Component {
+
     render() {
         const story = this.props.story
         return (
@@ -11,6 +12,7 @@ class TimelineView extends Component {
             </div>
         )
     }
+
 }
 
-export default TimelineView;
+export default TimelineView

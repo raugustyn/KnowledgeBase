@@ -14,13 +14,7 @@ class ListView extends Component {
     constructor(props) {
         super()
 
-        let viewStyle = props.viewStyle
-        if (!viewStyle) {
-            const keys = Object.keys(props.renderers)
-            viewStyle = keys[keys.length - 1]
-        }
         this.state = {
-            viewStyle: viewStyle,
             levelOfDetail: 0
         }
     }
@@ -29,16 +23,13 @@ class ListView extends Component {
         const { items } = this.props
         if (items) {
             const renderer = items[0].renderer
-            console.log(renderer)
-            console.log(renderer && renderer.icons && renderer.getComponent)
-            //const renderer = this.props.renderers[this.state.viewStyle]
             if (renderer && renderer.icons && renderer.getComponent) {
                 return (
                     <div className="ListView">
                         {renderer.icons ?
                             <ToolBar
                                 levelsOfDetail={renderer.icons}
-                                defaultDetail={renderer.defaultDetail}
+                                defaultDetail={renderer.defaultDetail || 0}
                                 onChangeViewType={(newSelection) => { this.setState({levelOfDetail: newSelection}) }}
                             />
                             :

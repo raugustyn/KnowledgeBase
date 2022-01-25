@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import Avatar from '@mui/material/Avatar'
-import {ISSUE_TYPES} from "../../data"
+import { ISSUE_TYPES} from "../../data"
 import './StoryItem.css'
 import UserLink from "../Users/UserLink"
 import { users } from "../../data"
+import addRenderer from "../ListView/Renderer"
+import {StoryItem} from "../../data"
 
 class TimeLineRow extends Component {
 
@@ -55,5 +57,11 @@ class TimeLineRow extends Component {
     }
 
 }
+
+addRenderer(
+    StoryItem.prototype,
+    'StoryItem',
+    (item, key, levelOfDetail) => (<TimeLineRow storyItem={item} key={key} isClicable={true} levelOfDetail={levelOfDetail}/>)
+)
 
 export default TimeLineRow
