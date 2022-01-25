@@ -4,7 +4,6 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 export default function ToggleButtons(props) {
   const { buttons, defaultSelection, onChangeSelection } = props
-  console.log(props, buttons, defaultSelection)
   const [selection, setSelection] = React.useState(defaultSelection || 0)
   const handleSelection = (event, newSelection) => {
     setSelection(newSelection)

@@ -7,6 +7,7 @@ export default class Issue {
         this.caption = caption
         this.props = {}
         this.story = story ? story : new Story()
+
     }
 
 }

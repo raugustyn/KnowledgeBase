@@ -2,12 +2,11 @@ import React, {Component} from 'react'
 import {ListView} from "../ListView"
 import TopicCard from "./TopicCard"
 import {issues} from "../../data"
-import ViewComfyIcon from "@mui/icons-material/ViewComfy";
-import GridViewIcon from "@mui/icons-material/GridView";
-import TableViewIcon from "@mui/icons-material/TableView";
 import { CgDetailsLess, CgDetailsMore } from "react-icons/cg"
 import { BiDetail } from "react-icons/bi";
 import { ImParagraphJustify } from "react-icons/im";
+import { BsTable} from "react-icons/bs";
+
 
 class Topics extends Component {
 
@@ -19,7 +18,8 @@ class Topics extends Component {
                         <CgDetailsLess />,
                         <CgDetailsMore />,
                         <BiDetail />,
-                        <ImParagraphJustify />
+                        <ImParagraphJustify />,
+                        <BsTable />
                     ]}
                     items={issues}
                     renderers={{
@@ -30,5 +30,6 @@ class Topics extends Component {
     }
 
 }
+
 
 export default Topics

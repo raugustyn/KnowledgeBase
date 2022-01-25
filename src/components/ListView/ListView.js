@@ -27,7 +27,6 @@ class ListView extends Component {
 
     render() {
         const { items, renderers, levelsOfDetail, defaultDetail } = this.props
-        console.log(levelsOfDetail, defaultDetail)
         if (items && renderers) {
             const renderer = this.props.renderers[this.state.viewStyle]
             if (renderer) {

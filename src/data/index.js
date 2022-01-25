@@ -3,6 +3,7 @@ import Story from "./Story"
 import StoryItem from "./StoryItem"
 import {ISSUE_TYPES} from "./IssueTypes"
 import { users } from "./Users"
+import "../components/Topics/Topics" // No dummy
 
 export const GROUP_TYPE = 'Familiar'
 
@@ -61,7 +62,7 @@ let issues = [
     createData('Soutok ústí do jiného toku...', '5 Nov 2021'),
     createData('Gaps na toku', '5 Nov 2021'),
 ]
-
+console.log('RRR:', issues[0].renderer)
 
 export {
     issues,

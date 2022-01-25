@@ -10,8 +10,13 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import {red} from '@mui/material/colors'
-import { users } from "../../data"
+import {Issue, users} from "../../data"
 import {ISSUE_TYPES} from "../../data"
+import {CgDetailsLess, CgDetailsMore} from "react-icons/cg";
+import {BiDetail} from "react-icons/bi";
+import {ImParagraphJustify} from "react-icons/im";
+import {BsTable} from "react-icons/bs";
+import addRenderer from "../ListView/Renderer"
 
 class TopicCard extends Component {
 
@@ -61,5 +66,19 @@ class TopicCard extends Component {
     }
 
 }
+
+addRenderer(
+    Issue.prototype,
+    'Topic',
+    [
+        <CgDetailsLess/>,
+        <CgDetailsMore/>,
+        <BiDetail/>,
+        <ImParagraphJustify/>,
+        <BsTable/>
+    ],
+    1,
+    (item, key, levelOfDetail) => (<TopicCard topic={item} key={key} isClicable={true} levelOfDetail={levelOfDetail}/>)
+)
 
 export default TopicCard;
