@@ -1,10 +1,10 @@
 
-const addRenderer = (classPrototype, caption, icons, defaultDetail, renderer) => {
+const addRenderer = (classPrototype, caption, icons, defaultDetail, getComponentProc) => {
     classPrototype.renderer = {
         caption: caption,
         icons: icons,
         defaultDetail: defaultDetail,
-        renderer: renderer
+        getComponent: getComponentProc
     }
 }
 

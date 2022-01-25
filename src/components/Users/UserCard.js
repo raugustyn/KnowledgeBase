@@ -4,8 +4,9 @@ import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import Avatar from '@mui/material/Avatar'
 import {red} from '@mui/material/colors'
-import { users } from '../../data'
-
+import {users} from '../../data'
+import addRenderer from "../ListView/Renderer"
+import {User} from "../../data/User"
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()}/>
@@ -41,5 +42,13 @@ class UserCard extends Component {
     }
 
 }
+
+addRenderer(
+    User.prototype,
+    'User',
+    [],
+    0,
+    (item, key, levelOfDetail) => (<UserCard user={item} key={key} isClicable={true}/>)
+)
 
 export default withParams(UserCard)

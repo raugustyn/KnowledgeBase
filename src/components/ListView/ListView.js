@@ -26,6 +26,37 @@ class ListView extends Component {
     }
 
     render() {
+        const { items } = this.props
+        if (items) {
+            const renderer = items[0].renderer
+            console.log(renderer)
+            console.log(renderer && renderer.icons && renderer.getComponent)
+            //const renderer = this.props.renderers[this.state.viewStyle]
+            if (renderer && renderer.icons && renderer.getComponent) {
+                return (
+                    <div className="ListView">
+                        {renderer.icons ?
+                            <ToolBar
+                                levelsOfDetail={renderer.icons}
+                                defaultDetail={renderer.defaultDetail}
+                                onChangeViewType={(newSelection) => { this.setState({levelOfDetail: newSelection}) }}
+                            />
+                            :
+                            null
+                        }
+                        <div className="Content">
+                            {items.map((item, index) => <div key={index} style={{ width: 300, margin: 15}}>{renderer.getComponent(item, index, this.state.levelOfDetail)} </div>)}
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        return <Fragment />
+
+    }
+
+    oldrender() {
         const { items, renderers, levelsOfDetail, defaultDetail } = this.props
         if (items && renderers) {
             const renderer = this.props.renderers[this.state.viewStyle]
