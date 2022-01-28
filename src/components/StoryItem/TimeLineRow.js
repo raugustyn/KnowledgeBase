@@ -1,35 +1,46 @@
 import React, {Component} from 'react'
 import Avatar from '@mui/material/Avatar'
-import { ISSUE_TYPES} from "../../data"
-import './StoryItem.css'
+import {ISSUE_TYPES} from "../../data"
 import UserLink from "../Users/UserLink"
-import { users } from "../../data"
+import {users} from "../../data"
 import addRenderer from "../ListView/Renderer"
 import {StoryItem} from "../../data"
+import '../Story/Timeline/TimelineView.css'
+import {composeTimestampLabel} from "../timestamp"
+import Sticker from "../Stickers/Sticker"
+
+const iconSVGs = {
+    showOptions: <svg aria-label="Show options" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" className="octicon octicon-kebab-horizontal"><path d="M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>,
+    octiconSmiley: <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" className="octicon octicon-smiley"><path fillRule="evenodd" d="M1.5 8a6.5 6.5 0 1113 0 6.5 6.5 0 01-13 0zM8 0a8 8 0 100 16A8 8 0 008 0zM5 8a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zM5.32 9.636a.75.75 0 011.038.175l.007.009c.103.118.22.222.35.31.264.178.683.37 1.285.37.602 0 1.02-.192 1.285-.371.13-.088.247-.192.35-.31l.007-.008a.75.75 0 111.222.87l-.614-.431c.614.43.614.431.613.431v.001l-.001.002-.002.003-.005.007-.014.019a1.984 1.984 0 01-.184.213c-.16.166-.338.316-.53.445-.63.418-1.37.638-2.127.629-.946 0-1.652-.308-2.126-.63a3.32 3.32 0 01-.715-.657l-.014-.02-.005-.006-.002-.003v-.002h-.001l.613-.432-.614.43a.75.75 0 01.183-1.044h.001z"></path></svg>
+}
 
 class TimeLineRow extends Component {
 
     renderComment(storyItem) {
         const originator = users.findUser(storyItem.originator, true)
-
         return (
-            <div className='StoryItem'>
-                <div className="AvatarCol">
-                    <Avatar alt={originator.getFullName()} src={'/Avatars/' + originator.avatarImage} >{originator.getInitials()}</Avatar>
+            <div className='TimelineItem'>
+                <div className="avatar-parent">
+                    <Avatar alt={originator.getFullName()} src={'/Avatars/' + originator.avatarImage}>{originator.getInitials()}</Avatar>
                 </div>
-                <div className="timeline-comment">
-                    <div className="CommentHeader">
-                        <UserLink userName={storyItem.originator} />&nbsp;
-                        commented at&nbsp;
-                        {storyItem.timestamp}
+                <div className="TimeLineItem-body">
+                    <div className="TimelineItem-Header">
+                        <div className="timeline-comment-actions flex-shrink-0">
+                            {iconSVGs.octiconSmiley}&nbsp;&nbsp;
+                            {iconSVGs.showOptions}
+                        </div>
+                        <div className="timeline-comment-header-text">
+                            <UserLink userName={storyItem.originator}/>&nbsp;
+                            commented &nbsp;
+                            {composeTimestampLabel(storyItem.timestamp)}
+                        </div>
                     </div>
-                    <div className="CommentText">
+                    <div className="TimelineItem-Comment">
                         {storyItem.value}
                     </div>
                 </div>
             </div>
         )
-
     }
 
     render() {
@@ -38,17 +49,37 @@ class TimeLineRow extends Component {
             case ISSUE_TYPES.COMMENT:
                 return this.renderComment(storyItem)
             default:
+                let processDescription
+                switch (storyItem.itemType) {
+                    case ISSUE_TYPES.ADD_LABEL:
+                        const labels = typeof storyItem.value == 'string' ? [storyItem.value] : storyItem.value
+                        processDescription = <span>added {labels.map((label, index) => <Sticker name={label} />) } label{labels.length > 1?'s':null}</span>
+                        break
+                    case ISSUE_TYPES.ADD_TO_MILESTONE:
+                        processDescription = <span>added this to the {storyItem.value} milestone</span>
+                        break;
+                    case ISSUE_TYPES.ASSIGN_TO:
+                        processDescription = (storyItem.originator == storyItem.value) ?
+                            'self assigned this'
+                            :
+                            <>assigned this to <UserLink userName={storyItem.value}/></>
+                        break
+                    default:
+                        processDescription = storyItem.itemType.message
+                }
                 return (
                     <div className='TimelineItem'>
-                        <div className="TimelineItem-badge">
-                        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
-                             className="octicon octicon-milestone color-fg-inherit">
-                            <path fillRule="evenodd"
-                                  d="M7.75 0a.75.75 0 01.75.75V3h3.634c.414 0 .814.147 1.13.414l2.07 1.75a1.75 1.75 0 010 2.672l-2.07 1.75a1.75 1.75 0 01-1.13.414H8.5v5.25a.75.75 0 11-1.5 0V10H2.75A1.75 1.75 0 011 8.25v-3.5C1 3.784 1.784 3 2.75 3H7V.75A.75.75 0 017.75 0zm0 8.5h4.384a.25.25 0 00.161-.06l2.07-1.75a.25.25 0 000-.38l-2.07-1.75a.25.25 0 00-.161-.06H2.75a.25.25 0 00-.25.25v3.5c0 .138.112.25.25.25h5z"></path>
-                        </svg>
+                        {storyItem.itemType.icon ?
+                            <div className={ storyItem.itemType == ISSUE_TYPES.CLOSE ? "TimelineItem-badge close-badge" : "TimelineItem-badge" }>
+                                {storyItem.itemType.icon}
                             </div>
-                        <div>
-                            Other Content
+                            :
+                            null
+                        }
+                        <div className="TimeLineItem-body">
+                            <UserLink userName={storyItem.originator}/>&nbsp;
+                            {processDescription}&nbsp;
+                            {composeTimestampLabel(storyItem.timestamp)}
                         </div>
                     </div>
                 )

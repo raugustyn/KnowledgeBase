@@ -36,6 +36,8 @@ class Users {
 export let users = new Users([
     new User('raugustyn', 'Radek', 'Augustýn', 'raugustyn.png'),
     new User('babnic'),
-    new User('langr', 'Jan', 'Langr'),
+    new User('janlangr', 'Jan', 'Langr'),
+    new User('kocenda', 'Antonín', 'Kočenda'),
+    new User('zemekjar', 'Jaroslav', 'Zemek', '', 'Jarda'),
     new User('droyda', 'Jiří', 'Drozda', 'droyda.png', 'droyd')
 ])

@@ -1,15 +1,12 @@
 import React, {Component} from 'react'
 import TimelineView from "../Story/Timeline/TimelineView"
 import {useParams} from "react-router-dom";
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { issues } from "../../data"
+import {ISSUE_TYPES, issues} from "../../data"
 import TableView from "../Story/Timeline/TableView"
 import './TopicView.css'
 import UserLink from "../Users/UserLink"
+import {composeTimestampLabel} from "../timestamp"
+
 
 function withParams(Component) { return props => <Component {...props} params={useParams()} /> }
 
@@ -31,8 +28,10 @@ class TopicView extends Component {
                 <div>
                     <div className="Summary">
                         <h1>{' ' + issue.caption || ''} #{issue.uid}</h1>
+                        { issue.story.getCloseItem() ? <span className='close-badge closed-chip'>{ISSUE_TYPES.CLOSE.icon}&nbsp;Closed</span> : null}
+                        &nbsp;
                         <UserLink userName={openItem.originator} />&nbsp;
-                        {openItem != null ? 'opened this topic on ' + openItem.timestamp : 'was closed on ' + issue.closedat}&nbsp;
+                        {openItem != null ? 'opened this topic ' + composeTimestampLabel(openItem.timestamp) : 'was closed ' + composeTimestampLabel(issue.closedat)}&nbsp;
                     </div>
                     <div>
                         { issue.description || '' }
@@ -50,4 +49,4 @@ class TopicView extends Component {
 
 }
 
-export default withParams(TopicView)
+export default withParams(TopicView);

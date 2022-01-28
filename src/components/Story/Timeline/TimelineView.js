@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import TimeLineRow from "../../StoryItem/TimeLineRow"
+import './TimelineView.css'
 
 class TimelineView extends Component {
 
@@ -8,7 +9,11 @@ class TimelineView extends Component {
         return (
             <div>
                 <h2>Timeline</h2>
-                {story.timeline.map((storyItem, index) =>  <TimeLineRow key={index} storyItem={storyItem} /> )}
+                <div className="Timeline">
+                    <div className="TimelineChannel">
+                        {story.timeline.map((storyItem, index) =>  <TimeLineRow key={index} storyItem={storyItem} /> )}
+                    </div>
+                </div>
             </div>
         )
     }

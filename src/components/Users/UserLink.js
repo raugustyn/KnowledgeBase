@@ -10,7 +10,7 @@ export const USER_DISPLAY_TYPE = {
 class UserLink extends Component {
 
     render() {
-        let user = this.props.user ? this.props.user : users.findUser(this.props.userName)
+        let user = this.props.user ? this.props.user : users.findUser(this.props.userName, false)
 
         if (user) {
             const displayType = this.props.displayType || USER_DISPLAY_TYPE.DT_SHORTNAME
@@ -23,14 +23,14 @@ class UserLink extends Component {
                     userName = user.getFullName()
                     break
                 default:
-                    console.warn('userName not found', displayType)
+                    console.warn('displayType not found', displayType)
                     return
             }
 
-            return <a className="Link--muted" href={'/Users/' + user.name}>{userName}</a>
+            return <a className="Link--muted para-highlites" href={'/Users/' + user.name}>{userName}</a>
         }
         else {
-            console.warn('User not found...')
+            return this.props.userName
         }
     }
 
