@@ -1,4 +1,7 @@
 .Image {
     max-width: 512px;
     max-height: 512px;
+    display: block;
+    overflow: hidden;
+    width: 100%
 }

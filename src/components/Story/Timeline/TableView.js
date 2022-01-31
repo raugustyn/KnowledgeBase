@@ -11,6 +11,14 @@ import UserLink from "../../Users/UserLink"
 
 export default function TableView(props) {
 
+    const itemDesc = (item) => {
+        if (typeof item.value == 'string') {
+            return item.value.length > 25 ? item.value.substr(0, 25) + '...' : item.value
+        }
+        else {
+            return typeof item.value
+        }
+    }
     const story = props.story
     return (
          <div className="TableView">
@@ -34,7 +42,7 @@ export default function TableView(props) {
                                     <TableCell>{storyItem.itemType.caption}</TableCell>
                                     <TableCell component="th" scope="row">{storyItem.timestamp}</TableCell>
                                     <TableCell><UserLink userName={storyItem.originator} /></TableCell>
-                                    <TableCell>{storyItem.value.length > 25 ? storyItem.value.substr(0, 25) + '...' : storyItem.value}</TableCell>
+                                    <TableCell>{itemDesc(storyItem)}</TableCell>
                                 </TableRow>
                             )
                         )}

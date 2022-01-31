@@ -34,16 +34,17 @@ body {
 }
 
 /* Vertical line */
-.TimelineItem::before {
+.leading-TimelineItem::before {
     position: absolute;
-    top: 0;
+    top: 5px;
     bottom: 0;
     left: 16px;
     display: block;
     width: 2px;
     content: "";
     background-color: var(--color-accent-muted);
-    height: 150%;
+    height: calc(100% + 15px);
+    z-index: -1;
 }
 
 .avatar-parent {
@@ -170,4 +171,8 @@ body {
 
 .para-highlites {
     font-weight: bolder;
+}
+
+.item-details {
+    margin-top: 10px;
 }

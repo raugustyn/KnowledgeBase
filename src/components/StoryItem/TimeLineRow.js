@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import Avatar from '@mui/material/Avatar'
 import {ISSUE_TYPES} from "../../data"
 import UserLink from "../Users/UserLink"
@@ -46,13 +46,14 @@ class TimeLineRow extends Component {
     }
 
     render() {
-        const storyItem = this.props.storyItem
-        let itemDetails
+        const { storyItem } = this.props
+        let content
         if (storyItem.itemType == ISSUE_TYPES.COMMENT) {
-            return this.renderComment(storyItem)
+            content = this.renderComment(storyItem)
         }
         else {
                 let processDescription
+                let itemDetails
                 switch (storyItem.itemType) {
                     case ISSUE_TYPES.ADD_LABEL:
                         const labels = typeof storyItem.value == 'string' ? [storyItem.value] : storyItem.value
@@ -74,9 +75,9 @@ class TimeLineRow extends Component {
                         itemDetails = renderers.buildComponent(storyItem, {})
                         break
                 }
-                processDescription = processDescription ? processDescription : storyItem.itemType.message
-                return (
-                    <div className='TimelineItem'>
+                processDescription = processDescription || storyItem.itemType.message
+                content = (
+                    <Fragment>
                         {storyItem.itemType.icon ?
                             <div className={ storyItem.itemType == ISSUE_TYPES.CLOSE ? "TimelineItem-badge close-badge" : "TimelineItem-badge" }>
                                 {storyItem.itemType.icon}
@@ -88,11 +89,13 @@ class TimeLineRow extends Component {
                             <UserLink userName={storyItem.originator}/>&nbsp;
                             {processDescription}&nbsp;
                             {composeTimestampLabel(storyItem.timestamp)}
-                            {itemDetails}
+                            { itemDetails ? <div className="item-details">{itemDetails}</div>:null }
                         </div>
-                    </div>
+                    </Fragment>
                 )
         }
+
+        return <div className={'TimelineItem' + (this.props.isLastItem ? '' : ' leading-TimelineItem')} >{content}</div>
 
     }
 

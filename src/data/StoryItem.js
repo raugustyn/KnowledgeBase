@@ -1,6 +1,10 @@
-export default class StoryItem {
+import Issue from "./Issue"
 
-    constructor(itemType, timestamp, originator, value = '') {
+export default class StoryItem extends Issue {
+
+    constructor(itemType, timestamp, originator, value = '', caption='', story = null) {
+        super(null, caption, story)
+
         this.itemType = itemType
         this.timestamp = (typeof timestamp == 'string') ? Date.parse(timestamp) : timestamp
         this.originator = originator

@@ -42,11 +42,12 @@ let issues = [
             new StoryItem(ISSUE_TYPES.ADD_LABEL, '02/13/2020 19:20', 'raugustyn', 'M1'),
             new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn', 'http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png'),
             new StoryItem(ISSUE_TYPES.COLLECTION, '02/13/2020 19:20', 'raugustyn', [
-                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png'),
-                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_02.png'),
-                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_03.png'),
-                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_04.png'),
-                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_05.png'),
+                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png', null, [new StoryItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Odsun náspu a zářezu od cesty', 'caption')]),
+                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_02.png', null, [new StoryItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Postupný odsun stromořadí a zářezů od silnice.', 'caption')]),
+                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_03.png', null, [new StoryItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Slícování náspu na lemovku železnice', 'caption')]),
+                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_04.png', null, [new StoryItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Odsun bodových prvků od sebe', 'caption')]),
+                new StoryItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_05.png', null, [new StoryItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Slícování terénní stupně na hranici užívání', 'caption')]),
+
             ]),
         ])
     ),

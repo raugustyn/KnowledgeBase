@@ -4,7 +4,7 @@ import {renderers} from "./Renderers"
 
 
 function buildComponent(item, params) {
-    return <img className="Image" src={item.value}></img>
+    return <img className="Image" src={item.value} />
 }
 
 renderers['Image'] = buildComponent
