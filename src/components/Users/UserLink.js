@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { users } from '../../data'
-
+import UserCard from "./UserCard"
+import './UserLink.css'
 export const USER_DISPLAY_TYPE = {
     DT_SHORTNAME: 0,
     DT_FULLNAME: 1,
@@ -27,7 +28,16 @@ class UserLink extends Component {
                     return
             }
 
-            return <a className="Link--muted para-highlites" href={'/Users/' + user.name}>{userName}</a>
+            return (
+                <Fragment>
+                    <a className="Link--muted para-highlites UserLink" href={'/Users/' + user.name}>
+                        {userName}
+                    </a>
+                    <div className="UserPopup">
+                        <UserCard user={user} />
+                    </div>
+                </Fragment>
+            )
         }
         else {
             return this.props.userName

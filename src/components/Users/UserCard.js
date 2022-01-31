@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import {useParams} from "react-router-dom"
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -15,7 +15,7 @@ function withParams(Component) {
 class UserCard extends Component {
 
     render() {
-        const user = this.props.user ? this.props.user : users.findUser(this.props.params.userName, false)
+        const user = this.props.user || users.findUser(this.props.params.userName, false) || users.findUser(this.props.userName, false)
         const isClicable = this.props.isClicable
         const cardHeader = <CardHeader
                             avatar={

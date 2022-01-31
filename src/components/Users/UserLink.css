@@ -1,0 +1,11 @@
+.UserLink:hover + .UserPopup {
+    display: block;
+    transition-delay: 0.5s;
+}
+
+.UserPopup {
+    position: absolute;
+    left: 10px;
+    z-index: 500;
+    display: none;
+}

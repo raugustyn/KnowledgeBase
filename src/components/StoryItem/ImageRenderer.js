@@ -1,0 +1,10 @@
+import React, {Fragment} from "react"
+import './ImageRenderer.css'
+import {renderers} from "./Renderers"
+
+
+function buildComponent(item, params) {
+    return <img className="Image" src={item.value}></img>
+}
+
+renderers['Image'] = buildComponent

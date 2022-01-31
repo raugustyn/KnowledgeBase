@@ -8,6 +8,8 @@ import {StoryItem} from "../../data"
 import '../Story/Timeline/TimelineView.css'
 import {composeTimestampLabel} from "../timestamp"
 import Sticker from "../Stickers/Sticker"
+import {renderers} from "./Renderers"
+import './index'
 
 const iconSVGs = {
     showOptions: <svg aria-label="Show options" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" className="octicon octicon-kebab-horizontal"><path d="M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>,
@@ -45,15 +47,16 @@ class TimeLineRow extends Component {
 
     render() {
         const storyItem = this.props.storyItem
-        switch (storyItem.itemType) {
-            case ISSUE_TYPES.COMMENT:
-                return this.renderComment(storyItem)
-            default:
+        let itemDetails
+        if (storyItem.itemType == ISSUE_TYPES.COMMENT) {
+            return this.renderComment(storyItem)
+        }
+        else {
                 let processDescription
                 switch (storyItem.itemType) {
                     case ISSUE_TYPES.ADD_LABEL:
                         const labels = typeof storyItem.value == 'string' ? [storyItem.value] : storyItem.value
-                        processDescription = <span>added {labels.map((label, index) => <Sticker name={label} />) } label{labels.length > 1?'s':null}</span>
+                        processDescription = <span>added {labels.map((label, index) => <Sticker key={index} name={label} />) } label{labels.length > 1?'s':null}</span>
                         break
                     case ISSUE_TYPES.ADD_TO_MILESTONE:
                         processDescription = <span>added this to the {storyItem.value} milestone</span>
@@ -64,9 +67,14 @@ class TimeLineRow extends Component {
                             :
                             <>assigned this to <UserLink userName={storyItem.value}/></>
                         break
-                    default:
-                        processDescription = storyItem.itemType.message
+                    case ISSUE_TYPES.IMAGE:
+                        itemDetails = renderers.buildComponent(storyItem, {})
+                        break
+                    case ISSUE_TYPES.COLLECTION:
+                        itemDetails = renderers.buildComponent(storyItem, {})
+                        break
                 }
+                processDescription = processDescription ? processDescription : storyItem.itemType.message
                 return (
                     <div className='TimelineItem'>
                         {storyItem.itemType.icon ?
@@ -80,6 +88,7 @@ class TimeLineRow extends Component {
                             <UserLink userName={storyItem.originator}/>&nbsp;
                             {processDescription}&nbsp;
                             {composeTimestampLabel(storyItem.timestamp)}
+                            {itemDetails}
                         </div>
                     </div>
                 )
