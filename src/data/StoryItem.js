@@ -12,3 +12,8 @@ export default class StoryItem extends Issue {
     }
 
 }
+
+export function storyItem(itemType, timestamp, originator, value = '', caption='', story = null)
+{
+    return new StoryItem(itemType, timestamp, originator, value, caption, story)
+}

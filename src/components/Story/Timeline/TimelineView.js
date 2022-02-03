@@ -6,6 +6,7 @@ class TimelineView extends Component {
 
     render() {
         const story = this.props.story
+
         return (
             <div>
                 <h2>Timeline</h2>

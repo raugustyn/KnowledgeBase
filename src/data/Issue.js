@@ -1,15 +1,23 @@
 import Story from "./Story"
 
+
 export default class Issue {
 
+    static allInstances = []
+
     constructor(uid = null, caption = '', story = null) {
-        this.uid = uid
+        this.uid = Issue.allInstances.length
         this.caption = caption
 
         if (Array.isArray(story)) {
             story = new Story(story)
         }
         this.story = story ? story : new Story()
+        Issue.allInstances.push(this)
+    }
+
+    destroy(){
+        Issue.allInstances.splice(Issue.allInstances.indexOf(this), 1);
     }
 
     getValue(name, defValue= null) {
@@ -23,4 +31,8 @@ export default class Issue {
             return defValue
         }
     }
+}
+
+export function getIssueById(uid) {
+    return Issue.allInstances.find(item => item.uid == uid)
 }

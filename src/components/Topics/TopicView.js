@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import TimelineView from "../Story/Timeline/TimelineView"
 import {useParams} from "react-router-dom";
-import {ISSUE_TYPES, issues} from "../../data"
+import {ISSUE_TYPES, issues, getIssueById} from "../../data"
 import TableView from "../Story/Timeline/TableView"
 import './TopicView.css'
 import UserLink from "../Users/UserLink"
@@ -13,13 +13,8 @@ function withParams(Component) { return props => <Component {...props} params={u
 class TopicView extends Component {
 
     render() {
-        let issue = this.props.issue
-        if (!issue) {
-            const filteredIssues = issues.filter(issue => issue.uid == this.props.params.id)
-            if (filteredIssues.length == 1) {
-                issue = filteredIssues[0]
-            }
-        }
+        let issue = this.props.issue || getIssueById(this.props.id || this.props.params.id)
+        console.log(issue)
 
         if (issue) {
            const openItem = issue.story.getOpenItem()
@@ -27,10 +22,10 @@ class TopicView extends Component {
             return (
                 <div>
                     <div className="Summary">
-                        <h1>{' ' + issue.caption || ''} #{issue.uid}</h1>
+                        <h1>{' ' + issue.caption || ''} #{issue.uid} {issue.constructor.name}</h1>
                         { issue.story.getCloseItem() ? <span className='close-badge closed-chip'>{ISSUE_TYPES.CLOSE.icon}&nbsp;Closed</span> : null}
                         &nbsp;
-                        <UserLink userName={openItem.originator} />&nbsp;
+                        {openItem ? <UserLink userName={openItem.originator} /> + '&nbsp;' : null }
                         {openItem != null ? 'opened this topic ' + composeTimestampLabel(openItem.timestamp) : 'was closed ' + composeTimestampLabel(issue.closedat)}&nbsp;
                     </div>
                     <div>

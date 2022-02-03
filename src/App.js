@@ -8,6 +8,7 @@ import {ListView} from './components/ListView'
 import {TopicView} from './components'
 import TableView from './components/Story/Timeline/TableView'
 import TimelineView from './components/Story/Timeline/TimelineView'
+import ReactDiffViewer from 'react-diff-viewer';
 
 const App = () => (
     <BrowserRouter>
@@ -18,6 +19,7 @@ const App = () => (
                 <li><Link to="/StoryItems">Story</Link></li>
                 <li><Link to="/StoryAsTable">StoryAsTable</Link></li>
                 <li><Link to="/StoryAsTimeline">StoryAsTimeline</Link></li>
+                <li><Link to="/DiffViewer">DiffViewer</Link></li>
             </ul>
         </nav>
 
@@ -32,8 +34,31 @@ const App = () => (
             <Route path="/StoryItems" element={<ListView items={issues[0].story.timeline}/>}/>
             <Route path="/StoryAsTable" element={<TableView story={issues[0].story}/>}/>
             <Route path="/StoryAsTimeline" element={<TimelineView story={issues[0].story}/>}/>
+            <Route path="/DiffViewer" element=<ReactDiffViewer
+        oldValue={`
+const a = 10
+const b = 10
+const c = () => console.log('foo')
+
+if(a > 10) {
+  console.log('bar')
+}
+
+console.log('done')
+`}
+        newValue={`
+const a = 10
+const boo = 10
+
+if(a === 10) {
+  console.log('bar')
+}
+`}
+        splitView={true} />
+            />
         </Routes>
     </BrowserRouter>
 )
+
 
 export default App
