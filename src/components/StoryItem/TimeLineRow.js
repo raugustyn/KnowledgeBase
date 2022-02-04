@@ -4,7 +4,7 @@ import {ISSUE_TYPES} from "../../data"
 import UserLink from "../Users/UserLink"
 import {users} from "../../data"
 import addRenderer from "../ListView/Renderer"
-import {StoryItem} from "../../data"
+import {Issue} from "../../data"
 import '../Story/Timeline/TimelineView.css'
 import {composeTimestampLabel} from "../timestamp"
 import Sticker from "../Stickers/Sticker"
@@ -103,8 +103,8 @@ class TimeLineRow extends Component {
 
 /*
 addRenderer(
-    StoryItem.prototype,
-    'StoryItem',
+    Issue.prototype,
+    'Issue',
     (item, key, levelOfDetail) => (<TimeLineRow storyItem={item} key={key} isClicable={true} levelOfDetail={levelOfDetail}/>)
 )
 */

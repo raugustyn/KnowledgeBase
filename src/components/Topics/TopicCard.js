@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
-import {styled} from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import {red} from '@mui/material/colors'
-import {StoryItem, users} from "../../data"
+import {Issue, users} from "../../data"
 import {ISSUE_TYPES} from "../../data"
 import {CgDetailsLess, CgDetailsMore} from "react-icons/cg";
 import {BiDetail} from "react-icons/bi";
@@ -69,7 +63,7 @@ class TopicCard extends Component {
 }
 
 addRenderer(
-    StoryItem.prototype,
+    Issue.prototype,
     'Topic',
     (item, key, levelOfDetail) => (<TopicCard topic={item} key={key} isClicable={true} levelOfDetail={levelOfDetail}/>),
     [

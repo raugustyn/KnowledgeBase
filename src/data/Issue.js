@@ -1,11 +1,11 @@
 import {ISSUE_TYPES} from "./IssueTypes"
 
-export default class StoryItem {
+export default class Issue {
 
     static allInstances = []
 
     constructor(itemType, timestamp, originator, value = '', caption='', story = null) {
-        this.uid = StoryItem.allInstances.length
+        this.uid = Issue.allInstances.length
         this.caption = caption
         this.story = story || []
         this.itemType = itemType
@@ -13,11 +13,11 @@ export default class StoryItem {
         this.originator = originator
         this.value = value
 
-        StoryItem.allInstances.push(this)
+        Issue.allInstances.push(this)
     }
 
     destroy(){
-        StoryItem.allInstances.splice(StoryItem.allInstances.indexOf(this), 1);
+        Issue.allInstances.splice(Issue.allInstances.indexOf(this), 1);
     }
 
     getValue(name, defValue= null) {
@@ -38,17 +38,18 @@ export default class StoryItem {
     getCaption() {
         return this.caption || this.itemType.caption
     }
+
 }
 
 export function getIssueById(uid) {
-    return StoryItem.allInstances.find(item => item.uid == uid)
+    return Issue.allInstances.find(item => item.uid == uid)
 }
 
 export function storyItem(itemType, timestamp, originator, value = '', caption='', story = null)
 {
-    return new StoryItem(itemType, timestamp, originator, value, caption, story)
+    return new Issue(itemType, timestamp, originator, value, caption, story)
 }
 
 export function createTopic(uid = null, caption = '', story = null) {
-    return new StoryItem(ISSUE_TYPES.TOPIC, Date.now(), 'raugustyn', null, caption, story)
+    return new Issue(ISSUE_TYPES.TOPIC, Date.now(), 'raugustyn', null, caption, story)
 }

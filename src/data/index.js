@@ -1,4 +1,4 @@
-import StoryItem, { storyItem, createTopic, getIssueById } from './StoryItem'
+import Issue, { storyItem, createTopic, getIssueById } from './Issue'
 import {ISSUE_TYPES} from './IssueTypes'
 import { users } from './Users'
 
@@ -71,7 +71,7 @@ export {
     users,
     findUser,
     getIssueById,
-    StoryItem,
+    Issue,
     storyItem,
     ISSUE_TYPES
 }
