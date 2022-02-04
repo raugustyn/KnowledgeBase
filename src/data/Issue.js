@@ -21,7 +21,7 @@ export default class Issue {
     }
 
     getLastValue(name, defValue= null) {
-        const lastItem = this.story.reverse().find(storyItem => storyItem.name == name)
+        const lastItem = this.story.reverse().find(storyItem => storyItem.name === name)
         return lastItem ? lastItem.value || defValue : defValue
     }
 
@@ -34,13 +34,13 @@ export default class Issue {
     }
 
     getCaption() {
-        return this.name || this.itemType.caption
+        return this.name || this.itemType.caption || ''
     }
 
 }
 
 export function getIssueById(uid) {
-    return Issue.allInstances.find(item => item.uid == uid)
+    return Issue.allInstances.find(item => item.uid === uid)
 }
 
 export function storyItem(itemType, timestamp, originator, value = '', name='', story = null)

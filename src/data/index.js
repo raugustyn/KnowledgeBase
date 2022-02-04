@@ -65,7 +65,6 @@ let issues = [
     createData('Gaps na toku', '5/11/2021'),
 ]
 
-
 export {
     issues,
     users,

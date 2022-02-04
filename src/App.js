@@ -3,11 +3,10 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import './App.css'
 import {users, issues} from './data'
 import UserCard from './components/Users/UserCard'
-import TopicCard from './components/Topics/TopicCard'
 import {ListView} from './components/ListView'
 import {TopicView} from './components'
-import TableView from './components/Story/Timeline/TableView'
-import TimelineView from './components/Story/Timeline/TimelineView'
+import TableView from './components/Story/TableView'
+import TimelineView from './components/Story/TimelineView'
 import ReactDiffViewer from 'react-diff-viewer'
 import { ISSUES_ROUTE, TOPICS_ROUTE } from "./Routes";
 

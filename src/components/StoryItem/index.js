@@ -1,5 +1,5 @@
 import './ImageRenderer'
-import './CollectionRenderer'
+import '../Story/CollectionRenderer'
 import { renderers } from "./Renderers"
 
 export { renderers }

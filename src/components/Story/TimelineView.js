@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TimeLineRow from "../../StoryItem/TimeLineRow"
+import TimeLineRow from "../StoryItem/TimeLineRow"
 import './TimelineView.css'
 
 class TimelineView extends Component {
@@ -12,7 +12,7 @@ class TimelineView extends Component {
                 <h2>Timeline</h2>
                 <div className="Timeline">
                     <div className="TimelineChannel">
-                        {story.map((storyItem, index) =>  <TimeLineRow key={index} storyItem={storyItem} isLastItem={index == story.length - 1}/> )}
+                        {story.map((storyItem, index) =>  <TimeLineRow key={index} storyItem={storyItem} isLastItem={index === story.length - 1}/> )}
                     </div>
                 </div>
             </div>

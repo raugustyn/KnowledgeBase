@@ -1,6 +1,6 @@
 import React from "react"
-import './ImageRenderer.css'
-import {renderers} from "./Renderers"
+import '../StoryItem/ImageRenderer.css'
+import {renderers} from "../StoryItem/Renderers"
 import Carousel from "./Carousel";
 
 function buildComponent(item, params) {

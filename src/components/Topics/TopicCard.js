@@ -11,6 +11,8 @@ import {BiDetail} from "react-icons/bi";
 import {ImParagraphJustify} from "react-icons/im";
 import {BsTable} from "react-icons/bs";
 import addRenderer from "../ListView/Renderer"
+import {composeTimestampLabel} from "../timestamp"
+import IssueLink from "../StoryItem/IssueLink"
 
 class TopicCard extends Component {
 
@@ -21,8 +23,8 @@ class TopicCard extends Component {
         const lod = this.props.levelOfDetail || 0
         let avatar, subHeader, previewImage, title
 
-        title = topic.getCaption() + ' #' + topic.uid
-        if (lod == 0) {
+      title = <span>{topic.getCaption()} <IssueLink issue={topic}># {topic.uid}</IssueLink></span>
+        if (lod === 0) {
             subHeader = title
             title = null
         }
@@ -31,16 +33,16 @@ class TopicCard extends Component {
         }
 
         if (lod > 1) {
-            subHeader = openItem != null ? 'opened on ' + openItem.timestamp : 'was closed on ' + topic.closedat
+            subHeader = openItem != null ? 'opened ' + composeTimestampLabel(openItem.timestamp) : 'was closed ' + composeTimestampLabel(topic.closedat)
         }
 
-        if (lod == 3) {
-            const commentsCount = topic.story.filter(item => item.itemType == ISSUE_TYPES.COMMENT).length
+        if (lod === 3) {
+            const commentsCount = topic.story.filter(item => item.itemType === ISSUE_TYPES.COMMENT).length
             if (commentsCount) {
                 subHeader += ', ' + commentsCount + ' comments'
             }
 
-            const firstImage = topic.story.find(item => item.itemType == ISSUE_TYPES.IMAGE)
+            const firstImage = topic.story.find(item => item.itemType === ISSUE_TYPES.IMAGE)
             if (firstImage) {
                 const imageURL = firstImage.value
                 previewImage = <CardMedia

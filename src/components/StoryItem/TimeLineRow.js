@@ -3,13 +3,11 @@ import Avatar from '@mui/material/Avatar'
 import {ISSUE_TYPES} from "../../data"
 import UserLink from "../Users/UserLink"
 import {users} from "../../data"
-import addRenderer from "../ListView/Renderer"
-import {Issue} from "../../data"
-import '../Story/Timeline/TimelineView.css'
-import {composeTimestampLabel} from "../timestamp"
+import '../Story/TimelineView.css'
 import Sticker from "../Stickers/Sticker"
 import {renderers} from "./Renderers"
 import './index'
+import IssueDateLink from "./IssueDateLink"
 
 const iconSVGs = {
     showOptions: <svg aria-label="Show options" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" className="octicon octicon-kebab-horizontal"><path d="M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>,
@@ -34,7 +32,7 @@ class TimeLineRow extends Component {
                         <div className="timeline-comment-header-text">
                             <UserLink userName={storyItem.originator}/>&nbsp;
                             commented &nbsp;
-                            {composeTimestampLabel(storyItem.timestamp)}
+                            <IssueDateLink issue={storyItem} />
                         </div>
                     </div>
                     <div className="TimelineItem-Comment">
@@ -48,7 +46,7 @@ class TimeLineRow extends Component {
     render() {
         const { storyItem } = this.props
         let content
-        if (storyItem.itemType == ISSUE_TYPES.COMMENT) {
+        if (storyItem.itemType === ISSUE_TYPES.COMMENT) {
             content = this.renderComment(storyItem)
         }
         else {
@@ -63,7 +61,7 @@ class TimeLineRow extends Component {
                         processDescription = <span>added this to the {storyItem.value} milestone</span>
                         break;
                     case ISSUE_TYPES.ASSIGN_TO:
-                        processDescription = (storyItem.originator == storyItem.value) ?
+                        processDescription = (storyItem.originator === storyItem.value) ?
                             'self assigned this'
                             :
                             <>assigned this to <UserLink userName={storyItem.value}/></>
@@ -74,12 +72,14 @@ class TimeLineRow extends Component {
                     case ISSUE_TYPES.COLLECTION:
                         itemDetails = renderers.buildComponent(storyItem, {})
                         break
+                    default:
+                        break
                 }
                 processDescription = processDescription || storyItem.itemType ? storyItem.itemType.message : ''
                 content = (
                     <Fragment>
                         {storyItem.itemType && storyItem.itemType.icon ?
-                            <div className={ storyItem.itemType == ISSUE_TYPES.CLOSE ? "TimelineItem-badge close-badge" : "TimelineItem-badge" }>
+                            <div className={ storyItem.itemType === ISSUE_TYPES.CLOSE ? "TimelineItem-badge close-badge" : "TimelineItem-badge" }>
                                 {storyItem.itemType.icon}
                             </div>
                             :
@@ -88,7 +88,7 @@ class TimeLineRow extends Component {
                         <div className="TimeLineItem-body">
                             <UserLink userName={storyItem.originator}/>&nbsp;
                             {processDescription}&nbsp;
-                            {composeTimestampLabel(storyItem.timestamp)}
+                            <IssueDateLink issue={storyItem} />
                             { itemDetails ? <div className="item-details">{itemDetails}</div>:null }
                         </div>
                     </Fragment>

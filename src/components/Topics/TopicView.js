@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import TimelineView from "../Story/Timeline/TimelineView"
+import TimelineView from "../Story/TimelineView"
 import {useParams} from "react-router-dom";
-import {ISSUE_TYPES, issues, getIssueById} from "../../data"
-import TableView from "../Story/Timeline/TableView"
+import {ISSUE_TYPES, getIssueById} from "../../data"
+import TableView from "../Story/TableView"
 import './TopicView.css'
 import UserLink from "../Users/UserLink"
 import {composeTimestampLabel} from "../timestamp"
