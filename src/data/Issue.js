@@ -5,7 +5,7 @@ export default class Issue {
     static allInstances = []
 
     constructor(itemType, timestamp, originator, name='', value = '', story = null) {
-        this.uid = Issue.allInstances.length
+        this.uid = Issue.allInstances.length + ''
         this.itemType = itemType
         this.name = name
         this.value = value
@@ -50,4 +50,8 @@ export function storyItem(itemType, timestamp, originator, value = '', name='', 
 
 export function createTopic(name = '', story = null) {
     return new Issue(ISSUE_TYPES.TOPIC, Date.now(), 'raugustyn', name, null, story)
+}
+
+export function getTopics() {
+    return Issue.allInstances.filter(item => item.itemType === ISSUE_TYPES.TOPIC)
 }

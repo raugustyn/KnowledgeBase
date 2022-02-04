@@ -13,13 +13,18 @@ class TopicView extends Component {
 
     render() {
         let issue = this.props.issue || getIssueById(this.props.id || this.props.params.id)
+        let issueId = this.props.id || this.props.params.id
+        if (!issue) {
+            issue = getIssueById(issueId)
+        }
         if (issue) {
            const openItem = issue.getOpenItem()
+            console.log(openItem)
 
             return (
                 <div>
                     <div className="Summary">
-                        <h1>{' ' + issue.caption || ''} #{issue.uid} {issue.constructor.name}</h1>
+                        <h1>{' ' + issue.name || ''} #{issue.uid} {issue.constructor.name}</h1>
                         { issue.getCloseItem() ? <span className='close-badge closed-chip'>{ISSUE_TYPES.CLOSE.icon}&nbsp;Closed</span> : null}
                         &nbsp;
                         {openItem ? <UserLink userName={openItem.originator} /> + '&nbsp;' : null }

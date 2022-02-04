@@ -5,7 +5,7 @@
  */
 import './TopicsTable.css'
 import * as React from 'react';
-import {issues} from "../../data"
+import {getTopics} from "../../data/Issue"
 
 export default function TopicsTable() {
     return (
@@ -16,7 +16,7 @@ export default function TopicsTable() {
             </tr>
             </thead>
             <tbody>
-            {(issues).map((issue) => {
+            {getTopics().map((issue) => {
                 const openItem = issue.getOpenItem()
 
                 return (

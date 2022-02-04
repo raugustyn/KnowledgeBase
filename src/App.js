@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import './App.css'
-import {users, issues} from './data'
+import {users} from './data'
 import UserCard from './components/Users/UserCard'
 import {ListView} from './components/ListView'
 import {TopicView} from './components'
@@ -9,7 +9,9 @@ import TableView from './components/Story/TableView'
 import TimelineView from './components/Story/TimelineView'
 import ReactDiffViewer from 'react-diff-viewer'
 import { ISSUES_ROUTE, TOPICS_ROUTE } from "./Routes";
+import {getTopics} from "./data/Issue"
 
+const issues = getTopics()
 const App = () => (
     <BrowserRouter>
         <nav>
@@ -29,10 +31,9 @@ const App = () => (
             <Route path="/Users" element={<ListView items={users.users}/>}/>
 
             <Route path={ TOPICS_ROUTE + ":id"} element={<TopicView/>}/>
-            <Route path={ TOPICS_ROUTE } element={<ListView items={issues}/>}/>
+            <Route path={ TOPICS_ROUTE } element={<ListView items={getTopics()}/>}/>
 
             <Route path={ISSUES_ROUTE + ":id"} element={<TopicView/>}/>
-
 
             <Route path="/StoryItems" element={<ListView items={issues[0].story}/>}/>
             <Route path="/StoryAsTable" element={<TableView story={issues[0].story}/>}/>

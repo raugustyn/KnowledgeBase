@@ -12,7 +12,7 @@ class UserLink extends Component {
 
     render() {
         let user = this.props.user ? this.props.user : users.findUser(this.props.userName, false)
-
+        console.log(this.props, user)
         if (user) {
             const displayType = this.props.displayType || USER_DISPLAY_TYPE.DT_SHORTNAME
             let userName = ''
