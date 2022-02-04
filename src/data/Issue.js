@@ -4,14 +4,14 @@ export default class Issue {
 
     static allInstances = []
 
-    constructor(itemType, timestamp, originator, value = '', caption='', story = null) {
+    constructor(itemType, timestamp, originator, name='', value = '', story = null) {
         this.uid = Issue.allInstances.length
-        this.caption = caption
-        this.story = story || []
         this.itemType = itemType
+        this.name = name
+        this.value = value
+        this.story = story || []
         this.timestamp = (typeof timestamp == 'string') ? Date.parse(timestamp) : timestamp
         this.originator = originator
-        this.value = value
 
         Issue.allInstances.push(this)
     }
@@ -20,11 +20,9 @@ export default class Issue {
         Issue.allInstances.splice(Issue.allInstances.indexOf(this), 1);
     }
 
-    getValue(name, defValue= null) {
-        return this.story != null ?
-                    this.story.reverse().find(storyItem => storyItem.caption == name).value || defValue
-                :
-                defValue
+    getLastValue(name, defValue= null) {
+        const lastItem = this.story.reverse().find(storyItem => storyItem.name == name)
+        return lastItem ? lastItem.value || defValue : defValue
     }
 
     getOpenItem() {
@@ -36,7 +34,7 @@ export default class Issue {
     }
 
     getCaption() {
-        return this.caption || this.itemType.caption
+        return this.name || this.itemType.caption
     }
 
 }
@@ -45,11 +43,11 @@ export function getIssueById(uid) {
     return Issue.allInstances.find(item => item.uid == uid)
 }
 
-export function storyItem(itemType, timestamp, originator, value = '', caption='', story = null)
+export function storyItem(itemType, timestamp, originator, value = '', name='', story = null)
 {
-    return new Issue(itemType, timestamp, originator, value, caption, story)
+    return new Issue(itemType, timestamp, originator, name, value, story)
 }
 
-export function createTopic(uid = null, caption = '', story = null) {
-    return new Issue(ISSUE_TYPES.TOPIC, Date.now(), 'raugustyn', null, caption, story)
+export function createTopic(name = '', story = null) {
+    return new Issue(ISSUE_TYPES.TOPIC, Date.now(), 'raugustyn', name, null, story)
 }

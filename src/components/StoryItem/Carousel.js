@@ -16,8 +16,7 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 function Carousel(props) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const images = props.items
-  const maxSteps = images.length;
+  const { items } = props
 
   const handleNext = () => { setActiveStep((prevActiveStep) => prevActiveStep + 1) }
   const handleBack = () => { setActiveStep((prevActiveStep) => prevActiveStep - 1) }
@@ -36,7 +35,7 @@ function Carousel(props) {
           bgcolor: 'background.default',
         }}
       >
-        <Typography>{images[activeStep].getValue('caption')}</Typography>
+        <Typography>{items[activeStep].getLastValue('caption')}</Typography>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -44,21 +43,21 @@ function Carousel(props) {
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {images.map((step, index) => (
+        {items.map((step, index) => (
           <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? renderers.buildComponent(step, {}) : null}
           </div>
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
-        steps={maxSteps}
+        steps={items.length}
         position="static"
         activeStep={activeStep}
         nextButton={
           <Button
             size="small"
             onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
+            disabled={activeStep === items.length - 1}
           >
             Next
             {theme.direction === 'rtl' ? (
@@ -83,4 +82,4 @@ function Carousel(props) {
   );
 }
 
-export default Carousel;
+export default Carousel

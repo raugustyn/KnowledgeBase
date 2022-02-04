@@ -5,7 +5,7 @@ import { users } from './Users'
 export const GROUP_TYPE = 'Familiar'
 
 function createData(name, timestamp, closedat = null, originator = 'babnic', story=[]) {
-    let result = createTopic(null, name, [
+    let result = createTopic(name, [
         storyItem(ISSUE_TYPES.OPEN, timestamp, originator, 'create'),
         ...story
     ])
@@ -16,7 +16,7 @@ function createData(name, timestamp, closedat = null, originator = 'babnic', sto
 function findUser(userName, createIfNotFound = true) { return users.findUser(userName, createIfNotFound) }
 
 let issues = [
-    createTopic(null, 'Odsun náspu a zářezu od cesty',
+    createTopic( 'Odsun náspu a zářezu od cesty',
         [
             storyItem(ISSUE_TYPES.COMMENT, '01/20/2022 19:30', 'raugustyn', 'V části průběhu liniového prvku kategorie "Komunikace" dochází k souběžnému, nesymetrickému průběhu dvou celých liniových objektů různých typů téže kategorie Terénní reliéf. Prostým vyjádřením průběhů kartografickými znaky, při čemž prioritní objekt komunikací nebude modifikován, by došlo ke kolizím: - čárky smluvené značky zářezu by se dotýkaly nebo překrývaly se značkou lesní cesty a hrana náspu by byla ke značce lesní cesty blíže, než je povolený limit.\n\nPozn.: Vyjádření situace kartografickými znaky po odstranění kolize ovlivní také kresbu liniových objektů terénního reliéfu - vrstevnice.'),
             storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 18:20', 'raugustyn', `odsun liniových prvků (Z_TerenniRelief_L) od cesty\n![](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/ThumbnailImages/Situace_01.png)\n[Plné rozlišení](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png) | [Karta situace](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/Situation_1.html) | [Aktualizuj kartu situace](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/TB04CUZK001_KnowledgeBase/rest.py/Build/SituationCard/1)\nPoslední komentář před uzavřením Issue, uvozený textem 'Popis situace:',  bude použit jako popis situace!`),

@@ -18,7 +18,6 @@ class TopicCard extends Component {
         const topic = this.props.topic
         const openItem = topic.getOpenItem()
         const user = users.findUser(openItem.originator, false)
-        console.log(user)
         const lod = this.props.levelOfDetail || 0
         let avatar, subHeader, previewImage, title
 

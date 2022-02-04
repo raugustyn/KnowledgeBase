@@ -29,7 +29,7 @@ export default function TopicsTable() {
                         </svg>
                     </td>
                     <td>
-                        <a className="Link--primary h4" href={'/Topics/' + issue.uid}>{issue.caption}</a>
+                        <a className="Link--primary h4" href={'/Topics/' + issue.uid}>{issue.name}</a>
                         <p className="color-fg-muted">
                             #{issue.uid}&nbsp;
                             {openItem == null ? 'opened on ' + openItem.timestamp : 'was closed on ' + issue.closedat}&nbsp;
