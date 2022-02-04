@@ -21,8 +21,9 @@ class ListView extends Component {
 
     render() {
         const { items } = this.props
-        if (items) {
+        if (items && items.length) {
             const renderer = items[0].renderer
+            console.log(renderer)
             if (renderer && renderer.icons && renderer.getComponent) {
                 return (
                     <div className="ListView">

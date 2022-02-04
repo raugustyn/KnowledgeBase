@@ -34,7 +34,7 @@ export default function TableView(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {story.timeline.map((storyItem, index) =>  (
+                        {story.map((storyItem, index) =>  (
                                 <TableRow
                                     key={index}
                                     sx={{'&:last-child td, &:last-child th': {border: 0}}}

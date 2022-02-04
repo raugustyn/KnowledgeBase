@@ -75,10 +75,10 @@ class TimeLineRow extends Component {
                         itemDetails = renderers.buildComponent(storyItem, {})
                         break
                 }
-                processDescription = processDescription || storyItem.itemType.message
+                processDescription = processDescription || storyItem.itemType ? storyItem.itemType.message : ''
                 content = (
                     <Fragment>
-                        {storyItem.itemType.icon ?
+                        {storyItem.itemType && storyItem.itemType.icon ?
                             <div className={ storyItem.itemType == ISSUE_TYPES.CLOSE ? "TimelineItem-badge close-badge" : "TimelineItem-badge" }>
                                 {storyItem.itemType.icon}
                             </div>
@@ -101,10 +101,11 @@ class TimeLineRow extends Component {
 
 }
 
+/*
 addRenderer(
     StoryItem.prototype,
     'StoryItem',
     (item, key, levelOfDetail) => (<TimeLineRow storyItem={item} key={key} isClicable={true} levelOfDetail={levelOfDetail}/>)
 )
-
+*/
 export default TimeLineRow

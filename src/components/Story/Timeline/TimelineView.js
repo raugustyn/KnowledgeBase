@@ -12,7 +12,7 @@ class TimelineView extends Component {
                 <h2>Timeline</h2>
                 <div className="Timeline">
                     <div className="TimelineChannel">
-                        {story.timeline.map((storyItem, index) =>  <TimeLineRow key={index} storyItem={storyItem} isLastItem={index == story.timeline.length - 1}/> )}
+                        {story.map((storyItem, index) =>  <TimeLineRow key={index} storyItem={storyItem} isLastItem={index == story.length - 1}/> )}
                     </div>
                 </div>
             </div>

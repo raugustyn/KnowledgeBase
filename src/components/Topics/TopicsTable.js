@@ -17,7 +17,7 @@ export default function TopicsTable() {
             </thead>
             <tbody>
             {(issues).map((issue) => {
-                const openItem = issue.story.getOpenItem()
+                const openItem = issue.getOpenItem()
 
                 return (
                 <tr key={issue.uid}>

@@ -4,7 +4,7 @@ import {renderers} from "./Renderers"
 import Carousel from "./Carousel";
 
 function buildComponent(item, params) {
-    return <Carousel items={item.value} params={params}/>
+    return <Carousel items={item.story} params={params}/>
 }
 
 renderers['Collection'] = buildComponent

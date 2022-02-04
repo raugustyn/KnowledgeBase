@@ -40,7 +40,7 @@ class UserLink extends Component {
             )
         }
         else {
-            return this.props.userName
+            return this.props.userName || ''
         }
     }
 

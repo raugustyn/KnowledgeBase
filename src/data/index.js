@@ -1,16 +1,14 @@
-import Issue, {getIssueById} from './Issue'
-import Story from './Story'
-import StoryItem, { storyItem } from './StoryItem'
+import StoryItem, { storyItem, createTopic, getIssueById } from './StoryItem'
 import {ISSUE_TYPES} from './IssueTypes'
 import { users } from './Users'
 
 export const GROUP_TYPE = 'Familiar'
 
 function createData(name, timestamp, closedat = null, originator = 'babnic', story=[]) {
-    let result = new Issue(null, name, new Story([
+    let result = createTopic(null, name, [
         storyItem(ISSUE_TYPES.OPEN, timestamp, originator, 'create'),
         ...story
-    ]))
+    ])
 
     return result
 }
@@ -18,8 +16,8 @@ function createData(name, timestamp, closedat = null, originator = 'babnic', sto
 function findUser(userName, createIfNotFound = true) { return users.findUser(userName, createIfNotFound) }
 
 let issues = [
-    new Issue(null, 'Odsun náspu a zářezu od cesty',
-        new Story([
+    createTopic(null, 'Odsun náspu a zářezu od cesty',
+        [
             storyItem(ISSUE_TYPES.COMMENT, '01/20/2022 19:30', 'raugustyn', 'V části průběhu liniového prvku kategorie "Komunikace" dochází k souběžnému, nesymetrickému průběhu dvou celých liniových objektů různých typů téže kategorie Terénní reliéf. Prostým vyjádřením průběhů kartografickými znaky, při čemž prioritní objekt komunikací nebude modifikován, by došlo ke kolizím: - čárky smluvené značky zářezu by se dotýkaly nebo překrývaly se značkou lesní cesty a hrana náspu by byla ke značce lesní cesty blíže, než je povolený limit.\n\nPozn.: Vyjádření situace kartografickými znaky po odstranění kolize ovlivní také kresbu liniových objektů terénního reliéfu - vrstevnice.'),
             storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 18:20', 'raugustyn', `odsun liniových prvků (Z_TerenniRelief_L) od cesty\n![](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/ThumbnailImages/Situace_01.png)\n[Plné rozlišení](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png) | [Karta situace](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/Situation_1.html) | [Aktualizuj kartu situace](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/TB04CUZK001_KnowledgeBase/rest.py/Build/SituationCard/1)\nPoslední komentář před uzavřením Issue, uvozený textem 'Popis situace:',  bude použit jako popis situace!`),
             storyItem(ISSUE_TYPES.ASSIGN_TO, '02/13/2020 19:20', 'raugustyn', 'raugustyn'),
@@ -36,7 +34,7 @@ let issues = [
             storyItem(ISSUE_TYPES.ADD_TO_MILESTONE, '02/13/2020 19:20', 'kocenda', 'Pojmenování jednotlivých situací'),
             storyItem(ISSUE_TYPES.ADD_LABEL, '02/13/2020 19:20', 'raugustyn', 'M1'),
             storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn', 'http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png'),
-            storyItem(ISSUE_TYPES.COLLECTION, '02/13/2020 19:20', 'raugustyn', [
+            storyItem(ISSUE_TYPES.COLLECTION, '02/13/2020 19:20', 'raugustyn', null, null, [
                 storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png', null, [storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Odsun náspu a zářezu od cesty', 'caption')]),
                 storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_02.png', null, [storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Postupný odsun stromořadí a zářezů od silnice.', 'caption')]),
                 storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_03.png', null, [storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Slícování náspu na lemovku železnice', 'caption')]),
@@ -44,7 +42,7 @@ let issues = [
                 storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn','http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_05.png', null, [storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Slícování terénní stupně na hranici užívání', 'caption')]),
 
             ]),
-        ])
+        ]
     ),
     createData('Pixel samples', '4/10/2021', null, 'raugustyn', [
         storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn', '/TopicSamples/02_PixelSamples.png'),
@@ -72,9 +70,7 @@ export {
     issues,
     users,
     findUser,
-    Issue,
     getIssueById,
-    Story,
     StoryItem,
     storyItem,
     ISSUE_TYPES
