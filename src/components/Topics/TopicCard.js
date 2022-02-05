@@ -25,7 +25,9 @@ class TopicCard extends Component {
         const lod = this.props.levelOfDetail || 0
         let avatar, subHeader, previewImage, title
 
-      title = <span>{topic.getCaption()} <IssueLink issue={topic}># {topic.uid}</IssueLink></span>
+      const bindToLink = (content) => (content ? <CardActionArea href={getIssueRoute(topic.uid)}>{content}</CardActionArea>: null)
+
+      title = <span>{topic.getCaption()} #{topic.uid}</span>
         if (lod === 0) {
             subHeader = title
             title = null
@@ -46,21 +48,18 @@ class TopicCard extends Component {
 
             const firstImage = topic.story.find(item => item.itemType === ISSUE_TYPES.IMAGE)
             if (firstImage) {
-                const imageURL = firstImage.value
                 previewImage = <CardMedia
                     component="img"
                     height="194"
-                    image={imageURL}
-                    alt="Paella dish"
+                    image={firstImage.value}
+                    alt={firstImage.value}
                   />
             }
         }
         return (
             <Card sx={{maxWidth: 345}}>
-                <CardActionArea href={getIssueRoute(topic.uid)}>
-                    <CardHeader avatar={avatar} title={title} subheader={subHeader} />
+                    <CardHeader avatar={avatar} title={bindToLink(title)} subheader={bindToLink(subHeader)} />
                     {previewImage}
-                </CardActionArea>
             </Card>
         )
     }
