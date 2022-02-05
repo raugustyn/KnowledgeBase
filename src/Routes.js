@@ -1,3 +1,5 @@
+import {Issue} from "./data"
+
 export const ISSUES_ROUTE = '/Issues/'
 export const TOPICS_ROUTE = '/Topics/'
 

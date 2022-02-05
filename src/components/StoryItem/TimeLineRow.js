@@ -73,9 +73,10 @@ class TimeLineRow extends Component {
                         itemDetails = renderers.buildComponent(storyItem, {})
                         break
                     default:
+                        itemDetails = storyItem.name + '=' + String(storyItem.value)
                         break
                 }
-                processDescription = processDescription || storyItem.itemType ? storyItem.itemType.message : ''
+                processDescription = processDescription || storyItem.itemType ? 'added ' + storyItem.itemType.message : ''
                 content = (
                     <Fragment>
                         {storyItem.itemType && storyItem.itemType.icon ?

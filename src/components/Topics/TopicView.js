@@ -7,7 +7,9 @@ import './TopicView.css'
 import UserLink from "../Users/UserLink"
 import {composeTimestampLabel} from "../timestamp"
 
-function withParams(Component) { return props => <Component {...props} params={useParams()} /> }
+function withParams(Component) {
+    return props => <Component {...props} params={useParams()}/>
+}
 
 class TopicView extends Component {
 
@@ -18,27 +20,24 @@ class TopicView extends Component {
             issue = getIssueById(issueId)
         }
         if (issue) {
-           const openItem = issue.getOpenItem()
-            console.log(openItem)
-
+            const openItem = issue.getOpenItem()
             return (
                 <div>
                     <div className="Summary">
                         <h1>{' ' + issue.name || ''} #{issue.uid} {issue.constructor.name}</h1>
-                        { issue.getCloseItem() ? <span className='close-badge closed-chip'>{ISSUE_TYPES.CLOSE.icon}&nbsp;Closed</span> : null}
+                        {issue.getCloseItem() ? <span className='close-badge closed-chip'>{ISSUE_TYPES.CLOSE.icon}&nbsp;Closed</span> : null}
                         &nbsp;
-                        {openItem ? <UserLink userName={openItem.originator} /> + '&nbsp;' : null }
+                        {openItem ? <UserLink userName={openItem.originator}/> : null}&nbsp;
                         {openItem != null ? 'opened this topic ' + composeTimestampLabel(openItem.timestamp) : 'was closed ' + composeTimestampLabel(issue.closedat)}&nbsp;
                     </div>
                     <div>
-                        { issue.description || '' }
-                        <TimelineView story={issue.story} />
+                        {issue.description || ''}
+                        <TimelineView story={issue.story}/>
                         <TableView story={issue.story}/>
                     </div>
                 </div>
             )
-        }
-        else {
+        } else {
             return <p>Issue: null</p>
         }
 

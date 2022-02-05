@@ -2,11 +2,20 @@ import React from "react";
 import {BiImage} from "react-icons/bi"
 import { MdOutlineTopic } from "react-icons/md";
 import {HiOutlineCollection} from "react-icons/hi"
+import FaceIcon from '@mui/icons-material/Face';
+import BadgeIcon from '@mui/icons-material/Badge'
+import DnsIcon from '@mui/icons-material/Dns'
+import AltRouteIcon from '@mui/icons-material/AltRoute'
 
 const createIssueType = (caption, message = '', icon = null) => ({caption, message, icon})
 
 export const ISSUE_TYPES = {
+    AVATARIMAGE: createIssueType('Avatar Image', 'avatar image', <FaceIcon />),
+    FIRSTNAME: createIssueType('First Name', 'first name', <DnsIcon />),
+    LASTNAME: createIssueType('Last Name', 'last name', <BadgeIcon />),
+    OTHER: createIssueType('Other', 'other issue', <AltRouteIcon />),
     TOPIC: createIssueType('Topic', '', <MdOutlineTopic />),
+    USER: createIssueType('User'),
     OPEN: createIssueType('Open Issue'),
     CLOSE: createIssueType('Close Issue', 'closed this', <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" className="octicon octicon-issue-closed color-fg-inherit"><path d="M11.28 6.78a.75.75 0 00-1.06-1.06L7.25 8.69 5.78 7.22a.75.75 0 00-1.06 1.06l2 2a.75.75 0 001.06 0l3.5-3.5z"></path><path fillRule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-1.5 0a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"></path></svg>),
     COMMENT: createIssueType('Comment'),

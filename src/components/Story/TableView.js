@@ -30,6 +30,7 @@ export default function TableView(props) {
                             <TableCell>Type</TableCell>
                             <TableCell>Time</TableCell>
                             <TableCell>Originator</TableCell>
+                            <TableCell>Name</TableCell>
                             <TableCell>Content</TableCell>
                         </TableRow>
                     </TableHead>
@@ -42,6 +43,7 @@ export default function TableView(props) {
                                     <TableCell>{storyItem.itemType.caption}</TableCell>
                                     <TableCell component="th" scope="row">{storyItem.timestamp}</TableCell>
                                     <TableCell><UserLink userName={storyItem.originator} /></TableCell>
+                                    <TableCell>{storyItem.name}</TableCell>
                                     <TableCell>{itemDesc(storyItem)}</TableCell>
                                 </TableRow>
                             )
