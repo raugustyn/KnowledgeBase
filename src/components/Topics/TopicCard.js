@@ -1,20 +1,18 @@
-import React, {Component} from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
+import React, {Component} from 'react'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import CardMedia from '@mui/material/CardMedia'
 import {CardActionArea} from "@mui/material"
-import Avatar from '@mui/material/Avatar';
-import {red} from '@mui/material/colors'
 import {Issue, users} from "../../data"
 import {ISSUE_TYPES} from "../../data"
-import {CgDetailsLess, CgDetailsMore} from "react-icons/cg";
-import {BiDetail} from "react-icons/bi";
-import {ImParagraphJustify} from "react-icons/im";
-import {BsTable} from "react-icons/bs";
+import {CgDetailsLess, CgDetailsMore} from "react-icons/cg"
+import {BiDetail} from "react-icons/bi"
+import {ImParagraphJustify} from "react-icons/im"
+import {BsTable} from "react-icons/bs"
 import addRenderer from "../ListView/Renderer"
 import {composeTimestampLabel} from "../timestamp"
-import IssueLink from "../StoryItem/IssueLink"
 import {getIssueRoute} from "../../Routes"
+import UserAvatar from "../Users/UserAvatar"
 
 class TopicCard extends Component {
 
@@ -33,7 +31,7 @@ class TopicCard extends Component {
             title = null
         }
         else {
-            avatar = <Avatar sx={{bgcolor: red[500]}} aria-label="recipe" src={'/Avatars/' + user.avatarImage}>{user.getInitials()}</Avatar>
+            avatar = <UserAvatar user={user} />
         }
 
         if (lod > 1) {

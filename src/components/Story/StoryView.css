@@ -1,0 +1,18 @@
+:root {
+    --color-avatar-border: rgba(205, 217, 229, 0.1);
+    --color-avatar-bg: rgba(205, 217, 229, 0.1);
+    --color-border-muted: #293549;
+    --color-accent-muted: rgba(65, 132, 228, 0.4);
+    --color-fg-muted:rgb(118, 131, 144);
+    --color-canvas-default:  rgb(34, 39, 46);
+    --color-border-default: #444c56;
+    --color-done-emphasis: rgb(130, 86, 208);
+}
+
+.StoryView > .Comment {
+    border: 1px solid var(--color-border-default);
+    border-radius: 6px;
+    margin: 5px;
+    padding: 5px;
+    background-color: var(--color-border-default);
+}

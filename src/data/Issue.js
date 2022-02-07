@@ -16,6 +16,14 @@ export default class Issue {
         Issue.allInstances.push(this)
     }
 
+    isVisible() {
+        if (this.itemType == ISSUE_TYPES.COMMENT) {
+            return this.story.find(item => item.itemType == ISSUE_TYPES.ADD_LABEL && item.value == 'PARAGRAPH')
+        }
+
+        return false
+    }
+
     destroy(){
         Issue.allInstances.splice(Issue.allInstances.indexOf(this), 1);
     }

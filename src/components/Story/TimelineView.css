@@ -9,6 +9,10 @@
     --color-done-emphasis: rgb(130, 86, 208);
 }
 
+.slot {
+    max-width: 12cm;
+}
+
 body {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     font-size: 14px;
@@ -20,7 +24,7 @@ body {
 .Timeline {
     min-width: 10cm;
     min-height: 5cm;
-    max-width: 15cm;
+    _max-width: 15cm;
 }
 
 .TimelineChannel {
@@ -82,7 +86,7 @@ body {
 
 .TimelineItem-Header {
     background-color: var(--color-border-muted);
-    height: 32px;
+    _height: 32px;
     display: flex;
     align-items: center;
     padding-right: 16px;
@@ -160,7 +164,7 @@ body {
     margin-top: 16px !important;
 }
 
-.timeline-comment-actions {
+.timeline-comment-actions, .timeline-comment-labels {
     float: right;
     margin-left: 8px;
 }

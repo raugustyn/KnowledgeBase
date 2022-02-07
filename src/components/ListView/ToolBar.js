@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 import './ListView.css'
 import SortCard from "./SortCard"
-import ToggleButtons from "./ToggleButtons";
+import ToggleButtons from "./ToggleButtons"
 
 class ToolBar extends Component {
   /**
