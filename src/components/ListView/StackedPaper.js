@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-
+import './StackedPaper.css'
 class StackedPaper extends Component {
     render() {
         return (
-            <div>
+            <div className="Diagonal-paper">
                 
             </div>
         );

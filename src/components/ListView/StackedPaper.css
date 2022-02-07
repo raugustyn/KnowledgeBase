@@ -1,0 +1,65 @@
+/*
+https://css-tricks.com/snippets/css/stack-of-paper/
+*/
+.Vertical-paper-stack {
+  background: #fff;
+  box-shadow:
+    /* The top layer shadow */
+    0 -1px 1px rgba(0,0,0,0.15),
+    /* The second layer */
+    0 -10px 0 -5px #eee,
+    /* The second layer shadow */
+    0 -10px 1px -4px rgba(0,0,0,0.15),
+     /* The third layer */
+    0 -20px 0 -10px #eee,
+    /* The third layer shadow */
+    0 -20px 1px -9px rgba(0,0,0,0.15);
+    /* Padding for demo purposes */
+    padding: 30px;
+    width: 21cm;
+    min-height: 28cm;
+}
+
+
+/* Diagonal stacked paper effect */
+.Diagonal-paper {
+  background-color: #fff;
+  /* Need position to allow stacking of pseudo-elements */
+  position: relative;
+  /* Padding for demo purposes */
+  padding: 30px;
+    width: 21cm;
+    min-height: 28cm;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Diagonal-paper,
+.Diagonal-paper::before,
+.Diagonal-paper::after {
+  /* Add shadow to distinguish sheets from one another */
+  box-shadow: 2px 1px 1px rgba(0,0,0,0.15);
+}
+
+.Diagonal-paper::before,
+.Diagonal-paper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+/* Second sheet of paper */
+.Diagonal-paper::before {
+  left: 7px;
+  top: 5px;
+  z-index: -1;
+}
+
+/* Third sheet of paper */
+.Diagonal-paper::after {
+  left: 12px;
+  top: 10px;
+  z-index: -2;
+}

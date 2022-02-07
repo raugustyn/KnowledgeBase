@@ -16,11 +16,14 @@ function findUser(userName, createIfNotFound = true) {
     return users.findUser(userName, createIfNotFound)
 }
 
+const paragraphLabel = () => storyItem(ISSUE_TYPES.ADD_LABEL, Date.now(), 'raugustyn', 'PARAGRAPH')
+
+
 createTopic('Odsun náspu a zářezu od cesty',
     [
         storyItem(ISSUE_TYPES.COMMENT, '01/20/2022 19:30', 'raugustyn', 'V části průběhu liniového prvku kategorie "Komunikace" dochází k souběžnému, nesymetrickému průběhu dvou celých liniových objektů různých typů téže kategorie Terénní reliéf. Prostým vyjádřením průběhů kartografickými znaky, při čemž prioritní objekt komunikací nebude modifikován, by došlo ke kolizím: - čárky smluvené značky zářezu by se dotýkaly nebo překrývaly se značkou lesní cesty a hrana náspu by byla ke značce lesní cesty blíže, než je povolený limit.\n\nPozn.: Vyjádření situace kartografickými znaky po odstranění kolize ovlivní také kresbu liniových objektů terénního reliéfu - vrstevnice.',
             null, [
-                storyItem(ISSUE_TYPES.ADD_LABEL, Date.now(), 'raugustyn', 'PARAGRAPH'),
+                paragraphLabel(),
                 storyItem(ISSUE_TYPES.ADD_LABEL, Date.now(), 'raugustyn', 'DESCRIPTION')
             ]),
         storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 18:20', 'raugustyn', `odsun liniových prvků (Z_TerenniRelief_L) od cesty\n![](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/ThumbnailImages/Situace_01.png)\n[Plné rozlišení](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png) | [Karta situace](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/Situation_1.html) | [Aktualizuj kartu situace](http://www.vugtk.cz/euradin/TB04CUZK001/03_CartographicSituations/web/TB04CUZK001_KnowledgeBase/rest.py/Build/SituationCard/1)\nPoslední komentář před uzavřením Issue, uvozený textem 'Popis situace:',  bude použit jako popis situace!`),
@@ -28,7 +31,7 @@ createTopic('Odsun náspu a zářezu od cesty',
         storyItem(ISSUE_TYPES.ASSIGN_TO, '02/13/2020 19:20', 'raugustyn', 'kocenda'),
         storyItem(ISSUE_TYPES.ADD_TO_MILESTONE, '02/13/2020 19:20', 'janlangr', 'Popis jednotlivých situací'),
         storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:30', 'droyda', 'Značka terénního stupně je dosunuta na úroveň tresholdu - je nutné dodržet levo/pravostrannost značky.\n\nPři odsunu dochází k paralelizaci průběhu obou prvků.', null, [
-            storyItem(ISSUE_TYPES.ADD_LABEL, Date.now(), 'raugustyn', 'PARAGRAPH')
+            paragraphLabel()
         ]),
         storyItem(ISSUE_TYPES.ADD_LABEL, '02/13/2020 19:20', 'zemekjar', ['Pochopil Zem', 'Generalization Issue']),
         storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 18:20', 'raugustyn', `Upřesnění hangout 20.10. kolize s vrstevnicemi je řešena pomocí maskování při vykreslování dat.`),
@@ -36,16 +39,16 @@ createTopic('Odsun náspu a zářezu od cesty',
         storyItem(ISSUE_TYPES.ADD_LABEL, '02/13/2020 19:20', 'raugustyn', 'Generalizace'),
         storyItem(ISSUE_TYPES.CLOSE, '02/13/2020 19:20', 'raugustyn', 'http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png'),
         storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 18:20', 'raugustyn', `V části liniového prvku z kategorie Komunikace dochází k souběžnému, nesymetrickému průběhu dvou celých liniových objektů různých typů z téže kategorie Terénní reliéf. Prioritním prvkem v této situaci je komunikace.`, null,
-            [storyItem(ISSUE_TYPES.ADD_LABEL, Date.now(), 'raugustyn', 'PARAGRAPH')]),
+            [paragraphLabel()]),
         storyItem(ISSUE_TYPES.ADD_LABEL, '02/13/2020 19:20', 'janlangr', 'Pochopil Lan'),
         storyItem(ISSUE_TYPES.ADD_TO_MILESTONE, '02/13/2020 19:20', 'kocenda', 'Pojmenování jednotlivých situací'),
         storyItem(ISSUE_TYPES.ADD_LABEL, '02/13/2020 19:20', 'raugustyn', 'M1'),
         storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn', 'http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png', null, [
-            storyItem(ISSUE_TYPES.ADD_LABEL, Date.now(), 'raugustyn', 'PARAGRAPH'),
+            paragraphLabel(),
             storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Odsun náspu a zářezu od cesty', 'caption')
         ]),
         storyItem(ISSUE_TYPES.COLLECTION, '02/13/2020 19:20', 'raugustyn', null, null, [
-            storyItem(ISSUE_TYPES.ADD_LABEL, Date.now(), 'raugustyn', 'PARAGRAPH'),
+            paragraphLabel(),
             storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn', 'http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_01.png', null, [storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Odsun náspu a zářezu od cesty', 'caption')]),
             storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn', 'http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_02.png', null, [storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Postupný odsun stromořadí a zářezů od silnice.', 'caption')]),
             storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn', 'http://www.vugtk.cz/TB04CUZK001/03_CartographicSituations/ZM10/Situace_03.png', null, [storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Slícování náspu na lemovku železnice', 'caption')]),
@@ -75,7 +78,20 @@ createData('endpoint na jezeře nemusí být přítok, ale výtok', '5/11/2021')
 createData('Ústí vysychajících toků je na soutoku', 'Nov 2021')
 createData('Soutok ústí do jiného toku...', '5/11/2021')
 createData('Gaps na toku', '5/11/2021')
+createTopic('Ústí vysychajících toků je na soutoku', [
+        storyItem(ISSUE_TYPES.IMAGE, '02/13/2020 19:20', 'raugustyn', '/TopicSamples/05_RiverMouths.png', null, [
+            paragraphLabel(),
+            storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 19:20', 'raugustyn', 'Ústí vysychajících toků je na soutoku', 'caption')
+        ],
+        storyItem(ISSUE_TYPES.COMMENT, '02/13/2020 18:20', 'raugustyn', `when cluster_size <> 2 then null
+                        else (select max(is_startpoint::int) = 0
+                              from cluster_elements
+                              where with_adjacent_edges.cluster_id = cluster_elements.cluster_id)
+                        end is_death_confluence`, null,
+            [paragraphLabel()]),
+            ),
 
+])
 
 export {
     users,

@@ -10,15 +10,14 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import {renderers} from "../StoryItem/Renderers"
+import {ISSUE_TYPES} from "../../data";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 function Carousel(props) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const { items } = props
-    console.log(items.filter(item => item.renderer))
-
+  const items = props.items.filter(item => item.itemType !== ISSUE_TYPES.ADD_LABEL)
   const handleNext = () => { setActiveStep((prevActiveStep) => prevActiveStep + 1) }
   const handleBack = () => { setActiveStep((prevActiveStep) => prevActiveStep - 1) }
   const handleStepChange = (step) => { setActiveStep(step) }

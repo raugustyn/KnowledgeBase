@@ -8,6 +8,7 @@ import {composeTimestampLabel} from "../timestamp"
 import ToggleButtons from "../ListView/ToggleButtons"
 import './TopicView.css'
 import StoryView from "../Story/StoryView"
+import StackedPaper from "../ListView/StackedPaper"
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()}/>
@@ -42,6 +43,9 @@ class TopicView extends Component {
                 case 2:
                     details = <TableView story={issue.story}/>
                     break
+                case 3:
+                    details = <StackedPaper />
+                    break
                 default:
                     details = <StoryView story={issue.story}/>
             }
@@ -58,7 +62,7 @@ class TopicView extends Component {
                         {issue.description || ''}
                         <ToggleButtons
                             defaultSelection={0}
-                            buttons={['Story', 'Timeline', 'Table']}
+                            buttons={['Story', 'Timeline', 'Table', 'Paper']}
                             onChangeSelection={this.changeSelection.bind(this)}
                         />
                         {details}
