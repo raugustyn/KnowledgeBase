@@ -40,7 +40,16 @@ a {
     text-decoration: none;
 }
 
+MuiCardHeader-title > a {
+    color: inherit;
+    font-weight: bolder;
+}
+
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: #986ee2;
+}
+
+.MuiCard-root > a:hover {
+    text-decoration: none;
 }

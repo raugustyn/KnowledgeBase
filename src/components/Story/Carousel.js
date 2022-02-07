@@ -17,6 +17,7 @@ function Carousel(props) {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const { items } = props
+    console.log(items.filter(item => item.renderer))
 
   const handleNext = () => { setActiveStep((prevActiveStep) => prevActiveStep + 1) }
   const handleBack = () => { setActiveStep((prevActiveStep) => prevActiveStep - 1) }
@@ -45,7 +46,7 @@ function Carousel(props) {
       >
         {items.map((step, index) => (
           <div key={index}>
-            {Math.abs(activeStep - index) <= 2 ? renderers.buildComponent(step, {}) : null}
+            {Math.abs(activeStep - index) <= 2 ? renderers.buildComponent(step, props.params) : null}
           </div>
         ))}
       </AutoPlaySwipeableViews>

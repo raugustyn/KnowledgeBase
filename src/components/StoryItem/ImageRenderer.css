@@ -3,5 +3,19 @@
     max-height: 512px;
     display: block;
     overflow: hidden;
+}
+
+.Image-top-margin {
+    margin-top: 5px;
+}
+
+.Image > img {
+    display: block;
+    overflow: hidden;
     width: 100%
+}
+
+.Image > .Caption {
+    text-align: center;
+    margin-top: 0px;
 }

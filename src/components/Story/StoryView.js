@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {ISSUE_TYPES} from "../../data"
 import './StoryView.css'
+import {renderers} from "../StoryItem";
 
 class StoryView extends Component {
 
@@ -10,7 +11,15 @@ class StoryView extends Component {
                         .filter(item => item.isVisible())
                         .map((storyItem, index) => {
                             if (storyItem.itemType == ISSUE_TYPES.COMMENT) {
-                                return <div className="Comment">{storyItem.value}</div>
+                                return (
+                                    <div className="Comment">
+                                        {storyItem.value}
+                                    </div>
+                                )
+                            }
+                            else {
+                                return renderers.buildComponent(storyItem, {})
+
                             }
                             return null
                         })
@@ -19,8 +28,9 @@ class StoryView extends Component {
             <div className="StoryView">
                 {items}
             </div>
-        );
+        )
     }
+
 }
 
 export default StoryView

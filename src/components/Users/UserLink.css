@@ -1,6 +1,6 @@
 .UserLink:hover + .UserPopup {
     display: block;
-    transition-delay: 0.5s;
+    transition-delay: 1.5s;
 }
 
 .UserPopup {

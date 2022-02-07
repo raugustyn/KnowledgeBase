@@ -8,9 +8,10 @@ import {renderers} from "./Renderers"
 import './index'
 import IssueDateLink from "./IssueDateLink"
 import UserAvatar from "../Users/UserAvatar"
-import IconButton from "@mui/material/IconButton";
-import {getIssueRoute} from "../../Routes";
-import {FcTimeline} from "react-icons/fc";
+import IconButton from "@mui/material/IconButton"
+import {getIssueRoute} from "../../Routes"
+import {FcTimeline} from "react-icons/fc"
+import '../Story/StoryView.css'
 
 const iconSVGs = {
     showOptions: <svg aria-label="Show options" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
@@ -61,9 +62,15 @@ class TimeLineRow extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="slot">
-                    {storyItem.isVisible() ? storyItem.value : null}
-                </div>
+                {storyItem.isVisible() ?
+                    <div className="StoryView slot hilited">
+                        <div className="Comment">
+                            {storyItem.value}
+                        </div>
+                    </div>
+                    :
+                    null
+                }
             </div>
         )
     }
@@ -76,6 +83,7 @@ class TimeLineRow extends Component {
         } else {
             let processDescription
             let itemDetails
+            let renderedStory
             switch (storyItem.itemType) {
                 case ISSUE_TYPES.ADD_LABEL:
                     const labels = typeof storyItem.value == 'string' ? [storyItem.value] : storyItem.value
@@ -102,9 +110,18 @@ class TimeLineRow extends Component {
                     itemDetails = storyItem.name + '=' + String(storyItem.value)
                     break
             }
+
+            const isVisible = storyItem.isVisible()
+            if (isVisible) {
+                console.log(isVisible, storyItem)
+                renderedStory = itemDetails
+                const sticker = <Sticker name="PARAGRAPH"/>
+                itemDetails = itemDetails ? [sticker, <div style={{ marginBottom: 10 }} />, itemDetails] : sticker
+            }
             processDescription = processDescription || storyItem.itemType ? 'added ' + storyItem.itemType.message : ''
             content = (
                 <Fragment>
+                    <div className="slot flex-div">
                     {storyItem.itemType && storyItem.itemType.icon ?
                         <div className={storyItem.itemType === ISSUE_TYPES.CLOSE ? "TimelineItem-badge close-badge" : "TimelineItem-badge"}>
                             {storyItem.itemType.icon}
@@ -118,6 +135,8 @@ class TimeLineRow extends Component {
                         <IssueDateLink issue={storyItem}/>
                         {itemDetails ? <div className="item-details">{itemDetails}</div> : null}
                     </div>
+                    </div>
+                    {isVisible?  <div className="StoryView slot hilited">{renderedStory}</div> : null}
                 </Fragment>
             )
         }
@@ -135,4 +154,4 @@ addRenderer(
     (item, key, levelOfDetail) => (<TimeLineRow storyItem={item} key={key} isClicable={true} levelOfDetail={levelOfDetail}/>)
 )
 */
-export default TimeLineRow
+export default TimeLineRow;

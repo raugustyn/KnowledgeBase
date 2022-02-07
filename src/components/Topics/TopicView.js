@@ -37,13 +37,13 @@ class TopicView extends Component {
             let details
             switch (this.state.selection) {
                 case 1:
-                    details = <TableView story={issue.story}/>
+                    details = <TimelineView story={issue.story}/>
                     break
                 case 2:
-                    details = <StoryView story={issue.story}/>
+                    details = <TableView story={issue.story}/>
                     break
                 default:
-                    details = <TimelineView story={issue.story}/>
+                    details = <StoryView story={issue.story}/>
             }
             return (
                 <div>
@@ -58,7 +58,7 @@ class TopicView extends Component {
                         {issue.description || ''}
                         <ToggleButtons
                             defaultSelection={0}
-                            buttons={['Timeline', 'Table', 'Story']}
+                            buttons={['Story', 'Timeline', 'Table']}
                             onChangeSelection={this.changeSelection.bind(this)}
                         />
                         {details}

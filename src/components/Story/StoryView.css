@@ -9,10 +9,21 @@
     --color-done-emphasis: rgb(130, 86, 208);
 }
 
-.StoryView > .Comment {
-    border: 1px solid var(--color-border-default);
-    border-radius: 6px;
+.StoryView {
     margin: 5px;
     padding: 5px;
+}
+
+.StoryView > .Comment, .StoryView > img {
+    padding-top: 5px;
+}
+
+.StoryView > img {
+    margin-top: 50px;
+}
+
+.StoryView.hilited {
+    border: 1px solid var(--color-border-default);
+    border-radius: 6px;
     background-color: var(--color-border-default);
 }

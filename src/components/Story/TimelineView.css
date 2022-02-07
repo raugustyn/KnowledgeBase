@@ -33,8 +33,8 @@ body {
 
 .TimelineItem {
     position: relative;
-    margin-bottom: 16px;
     display: flex;
+    margin-bottom: 16px;
 }
 
 /* Vertical line */
@@ -84,6 +84,9 @@ body {
     flex: auto;
 }
 
+.flex-div {
+    display: flex;
+}
 .TimelineItem-Header {
     background-color: var(--color-border-muted);
     _height: 32px;

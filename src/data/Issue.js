@@ -17,11 +17,7 @@ export default class Issue {
     }
 
     isVisible() {
-        if (this.itemType == ISSUE_TYPES.COMMENT) {
-            return this.story.find(item => item.itemType == ISSUE_TYPES.ADD_LABEL && item.value == 'PARAGRAPH')
-        }
-
-        return false
+      return this.story.find(item => item.itemType == ISSUE_TYPES.ADD_LABEL && item.value == 'PARAGRAPH')
     }
 
     destroy(){

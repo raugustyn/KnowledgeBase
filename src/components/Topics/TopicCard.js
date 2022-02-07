@@ -56,8 +56,12 @@ class TopicCard extends Component {
         }
         return (
             <Card sx={{maxWidth: 345}}>
-                    <CardHeader avatar={avatar} title={bindToLink(title)} subheader={bindToLink(subHeader)} />
-                    {previewImage}
+                <CardHeader
+                    avatar={avatar}
+                    title={bindToLink(title)}
+                    subheader={bindToLink(subHeader)}
+                />
+                {previewImage}
             </Card>
         )
     }
