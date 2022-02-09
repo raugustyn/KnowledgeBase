@@ -1,3 +1,8 @@
+:root {
+    --caption-font-size: 80%;
+    --caption-text-align: center;
+}
+
 .Image {
     max-width: 512px;
     max-height: 512px;
@@ -17,5 +22,15 @@
 
 .Image > .Caption {
     text-align: center;
+    margin-top: 0px;
+}
+
+.ImageList {
+
+}
+
+.Image > .Caption, .ImageList > .Caption {
+    font-size: var(--caption-font-size);
+    text-align: var(--caption-text-align);
     margin-top: 0px;
 }

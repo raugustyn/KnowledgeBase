@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import './StackedPaper.css'
-class StackedPaper extends Component {
-    render() {
-        return (
-            <div className="Diagonal-paper">
-                
-            </div>
-        );
-    }
-}
 
-export default StackedPaper;
+const StackedPaper = (props) => (
+            <div className={"Diagonal-paper " + (props.className || '')} >
+                {props.children}
+            </div>
+)
+
+export default StackedPaper

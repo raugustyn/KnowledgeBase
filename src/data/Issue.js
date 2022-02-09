@@ -17,7 +17,7 @@ export default class Issue {
     }
 
     isVisible() {
-      return this.story.find(item => item.itemType == ISSUE_TYPES.ADD_LABEL && item.value == 'PARAGRAPH')
+      return this.story.find(item => item.itemType == ISSUE_TYPES.ADD_LABEL && ( item.value == 'PARAGRAPH' || item.value == 'HEADING' ))
     }
 
     destroy(){
@@ -41,6 +41,13 @@ export default class Issue {
         return this.name || this.itemType.caption || ''
     }
 
+    getItemsToBePublished() {
+        return this.story.filter(item => item.itemType.publish)
+    }
+
+    hasSticker(name) {
+        return this.story.find(item => item.itemType == ISSUE_TYPES.ADD_LABEL && item.value == name)
+    }
 }
 
 export function getIssueById(uid) {

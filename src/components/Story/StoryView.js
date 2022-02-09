@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {ISSUE_TYPES} from "../../data"
 import './StoryView.css'
-import {renderers} from "../StoryItem";
+import {renderers} from "../StoryItem"
+import StackedPaper from "../ListView/StackedPaper"
 
 class StoryView extends Component {
 
@@ -11,8 +12,9 @@ class StoryView extends Component {
                         .filter(item => item.isVisible())
                         .map((storyItem, index) => {
                             if (storyItem.itemType == ISSUE_TYPES.COMMENT) {
+                                const className = storyItem.hasSticker('HEADING') ? ' Heading1' : ''
                                 return (
-                                    <div className="Comment">
+                                    <div className={"Comment" + className}>
                                         {storyItem.value}
                                     </div>
                                 )
@@ -25,9 +27,9 @@ class StoryView extends Component {
                         })
 
         return (
-            <div className="StoryView">
+            <StackedPaper className="StoryView">
                 {items}
-            </div>
+            </StackedPaper>
         )
     }
 

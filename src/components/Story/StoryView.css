@@ -27,3 +27,13 @@
     border-radius: 6px;
     background-color: var(--color-border-default);
 }
+
+.Heading1, .Heading2 {
+    font-weight: bold;
+    color: rgb(69, 48, 21);
+    font-size: 200%;
+}
+
+.Heading3, .Heading4, .paragraph, .StoryView > p {
+    color: rgb(111, 90, 64);
+}

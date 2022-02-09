@@ -106,6 +106,9 @@ class TimeLineRow extends Component {
                 case ISSUE_TYPES.COLLECTION:
                     itemDetails = renderers.buildComponent(storyItem, {})
                     break
+                case ISSUE_TYPES.IMAGELIST:
+                    itemDetails = renderers.buildComponent(storyItem, {})
+                    break
                 default:
                     itemDetails = storyItem.name + '=' + String(storyItem.value)
                     break
@@ -113,7 +116,6 @@ class TimeLineRow extends Component {
 
             const isVisible = storyItem.isVisible()
             if (isVisible) {
-                console.log(isVisible, storyItem)
                 renderedStory = itemDetails
                 const sticker = <Sticker name="PARAGRAPH"/>
                 itemDetails = itemDetails ? [sticker, <div style={{ marginBottom: 10 }} />, itemDetails] : sticker

@@ -13,6 +13,7 @@ import addRenderer from "../ListView/Renderer"
 import {composeTimestampLabel} from "../timestamp"
 import {getIssueRoute} from "../../Routes"
 import UserAvatar from "../Users/UserAvatar"
+import {resetImageCount} from "../StoryItem/ImageRenderer"
 
 class TopicCard extends Component {
 
@@ -23,6 +24,7 @@ class TopicCard extends Component {
         const lod = this.props.levelOfDetail || 0
         let avatar, subHeader, previewImage, title
 
+      resetImageCount()
       const bindToLink = (content) => (content ? <CardActionArea href={getIssueRoute(topic.uid)}>{content}</CardActionArea>: null)
 
       title = <span>{topic.getCaption()} #{topic.uid}</span>

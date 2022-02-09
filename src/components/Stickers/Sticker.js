@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import {red, blue,amber,deepPurple, green, yellow, orange} from "@mui/material/colors";
+import {red, blue,amber,deepPurple, green, yellow, orange, purple} from "@mui/material/colors";
 import './Sticker.css'
 
 const stickerColors = {
-    'Generalizace': red,
+    Generalizace: red,
     'Pochopil Aug': amber,
     'Pochopil Zem': deepPurple,
     'Generalization Issue': green,
-    'PARAGRAPH': yellow,
-    'DESCRIPTION': orange
+    PARAGRAPH: yellow,
+    DESCRIPTION: orange,
+    HEADING: purple
 }
 
 function addAlpha(color, opacity) {
